@@ -50,11 +50,30 @@ backend:
   name: github
   repo: Oshadha345/FYP1
   branch: main
-  base_url: https://YOUR_OAUTH_PROVIDER.example.com
-  auth_endpoint: auth
+  base_url: https://fyp-1-ten.vercel.app
+  auth_endpoint: api/auth
 ```
 
-Create a GitHub OAuth app for your Decap auth proxy. The proxy callback URL belongs to the OAuth service, and `/admin` remains the CMS entry point served by Vercel.
+Create a GitHub OAuth app for the built-in Decap auth routes.
+
+Use these GitHub OAuth app values:
+
+```text
+Homepage URL:
+https://fyp-1-ten.vercel.app
+
+Authorization callback URL:
+https://fyp-1-ten.vercel.app/api/callback
+```
+
+Then set these Vercel environment variables:
+
+```text
+OAUTH_CLIENT_ID=<GitHub OAuth Client ID>
+OAUTH_CLIENT_SECRET=<GitHub OAuth Client Secret>
+```
+
+`/admin` remains the CMS entry point served by Vercel. Only GitHub users with write access to `Oshadha345/FYP1` can publish changes.
 
 ## Vercel Deployment
 

@@ -23,32 +23,49 @@ backend:
   name: github
   repo: Oshadha345/FYP1
   branch: main
-  base_url: https://YOUR_OAUTH_PROVIDER.example.com
-  auth_endpoint: auth
+  base_url: https://fyp-1-ten.vercel.app
+  auth_endpoint: api/auth
 ```
 
-Replace `OWNER/REPOSITORY` with the GitHub repository slug. Use the branch that Vercel deploys from.
+Use the branch that Vercel deploys from.
 
 ## OAuth
 
-Decap's GitHub backend requires an OAuth service between the browser and GitHub. Common options are:
+Decap's GitHub backend requires an OAuth service between the browser and GitHub. This project includes the OAuth routes at:
 
-- Deploy the official Netlify GitHub auth flow if the site is on Netlify.
-- Deploy a small GitHub OAuth proxy for Vercel and set `base_url` plus `auth_endpoint` in `config.yml`.
-- For local authoring, run the Decap local backend and keep `local_backend: true`.
+```text
+/api/auth
+/api/callback
+```
 
-The GitHub OAuth app callback URL should point to the OAuth service callback, not directly to `/admin`.
+Create a GitHub OAuth app with:
+
+```text
+Homepage URL:
+https://fyp-1-ten.vercel.app
+
+Authorization callback URL:
+https://fyp-1-ten.vercel.app/api/callback
+```
+
+Then set these Vercel environment variables:
+
+```text
+OAUTH_CLIENT_ID=<GitHub OAuth Client ID>
+OAUTH_CLIENT_SECRET=<GitHub OAuth Client Secret>
+```
+
+For local authoring, run the Decap local backend and keep `local_backend: true`.
 
 ## Vercel Notes
 
 On Vercel, `/admin` is served from `public/admin/index.html`. The CMS commits MDX files back to GitHub, then Vercel rebuilds from the pushed commit.
 
-Recommended environment values for an OAuth proxy:
+Required environment values for the built-in OAuth routes:
 
 ```bash
-GITHUB_CLIENT_ID=...
-GITHUB_CLIENT_SECRET=...
-OAUTH_REDIRECT_URI=https://your-oauth-service.example.com/callback
+OAUTH_CLIENT_ID=...
+OAUTH_CLIENT_SECRET=...
 ```
 
 ## Media and PDFs

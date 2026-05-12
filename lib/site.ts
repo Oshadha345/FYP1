@@ -4,5 +4,5 @@ export const siteConfig = {
   description:
     "Portfolio of Oshadha Samarakoon's contribution toward EE405 - Undergraduate Project I.",
   author: "Oshadha Samarakoon",
-  url: "https://ee405-fyp-portfolio.vercel.app",
+  url: "https://fyp-1-ten.vercel.app",
 };

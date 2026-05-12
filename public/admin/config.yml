@@ -2,8 +2,8 @@ backend:
   name: github
   repo: Oshadha345/FYP1
   branch: main
-  base_url: https://YOUR_OAUTH_PROVIDER.example.com
-  auth_endpoint: auth
+  base_url: https://fyp-1-ten.vercel.app
+  auth_endpoint: api/auth
 
 local_backend: true
 publish_mode: editorial_workflow
