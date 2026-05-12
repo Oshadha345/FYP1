@@ -1,0 +1,150 @@
+backend:
+  name: github
+  repo: Oshadha345/FYP1
+  branch: main
+  base_url: https://YOUR_OAUTH_PROVIDER.example.com
+  auth_endpoint: auth
+
+local_backend: true
+publish_mode: editorial_workflow
+
+media_folder: public/uploads
+public_folder: /uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+editor:
+  preview: false
+
+common_fields: &common_fields
+  - { label: Title, name: title, widget: string }
+  - { label: Slug, name: slug, widget: string, hint: "Stable id used for URLs and links, for example uncertainty-calibration." }
+  - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+  - { label: Updated, name: updated, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+  - { label: Summary, name: summary, widget: text }
+  - { label: Status, name: status, widget: select, options: [draft, published, archived], default: draft }
+  - { label: Draft, name: draft, widget: boolean, default: false, required: false }
+  - { label: Featured, name: featured, widget: boolean, default: false, required: false }
+  - { label: Category, name: category, widget: string, required: false }
+  - { label: Tags, name: tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string } }
+  - { label: Concepts, name: concepts, widget: list, required: false, field: { label: Concept, name: concept, widget: string } }
+  - label: Graph Links
+    name: links
+    widget: list
+    required: false
+    hint: "Reference another page by slug, for example uncertainty-calibration, or route/slug, for example papers/calibration-modern-neural-networks."
+    field: { label: Page Slug or Path, name: link, widget: string }
+  - { label: Related Entries, name: related, widget: list, required: false, field: { label: Entry, name: entry, widget: string } }
+  - { label: Linked Notes, name: notes, widget: list, required: false, field: { label: Note, name: note, widget: string } }
+  - { label: Linked Papers, name: papers, widget: list, required: false, field: { label: Paper, name: paper, widget: string } }
+  - { label: Linked Experiments, name: experiments, widget: list, required: false, field: { label: Experiment, name: experiment, widget: string } }
+  - { label: Datasets, name: datasets, widget: list, required: false, field: { label: Dataset, name: dataset, widget: string } }
+  - { label: Highlights, name: highlights, widget: list, required: false, field: { label: Highlight, name: highlight, widget: text } }
+  - { label: TODO Blocks, name: todos, widget: list, required: false, field: { label: Task, name: task, widget: text } }
+  - { label: Important Quotes, name: quotes, widget: list, required: false, field: { label: Quote, name: quote, widget: text } }
+  - { label: Cover Image, name: cover, widget: image, required: false, media_library: { config: { multiple: false } } }
+  - label: Attachments
+    name: attachments
+    widget: list
+    required: false
+    fields:
+      - { label: Label, name: label, widget: string }
+      - { label: File, name: file, widget: file }
+      - { label: Description, name: description, widget: text, required: false }
+  - label: Video Embeds
+    name: videos
+    widget: list
+    required: false
+    fields:
+      - { label: Provider, name: provider, widget: select, options: [youtube, vimeo, loom, local, other] }
+      - { label: URL, name: url, widget: string }
+      - { label: Caption, name: caption, widget: string, required: false }
+  - label: References
+    name: references
+    widget: list
+    required: false
+    fields:
+      - { label: Key, name: key, widget: string }
+      - { label: Citation, name: citation, widget: text }
+      - { label: URL, name: url, widget: string, required: false }
+      - { label: DOI, name: doi, widget: string, required: false }
+  - label: Equations
+    name: equations
+    widget: object
+    required: false
+    fields:
+      - { label: Uses LaTeX, name: latex, widget: boolean, default: true, required: false }
+      - { label: Notation Notes, name: notation, widget: text, required: false }
+      - label: Symbols
+        name: symbols
+        widget: list
+        required: false
+        fields:
+          - { label: Symbol, name: symbol, widget: string }
+          - { label: Meaning, name: meaning, widget: string }
+  - { label: Authors, name: authors, widget: list, required: false, field: { label: Author, name: author, widget: string } }
+  - { label: PDF, name: pdf, widget: file, required: false }
+  - { label: Venue, name: venue, widget: string, required: false }
+  - { label: DOI, name: doi, widget: string, required: false }
+  - { label: BibTeX Key, name: bibtex_key, widget: string, required: false }
+  - { label: Week Number, name: week, widget: number, value_type: int, required: false }
+  - { label: Resource Type, name: resource_type, widget: select, options: [dataset, tool, paper-list, website, video, template, other], required: false }
+  - { label: URL, name: url, widget: string, required: false }
+  - { label: Repository, name: repository, widget: string, required: false }
+  - { label: Body, name: body, widget: markdown }
+
+collections:
+  - name: notes
+    label: Notes
+    label_singular: Note
+    folder: content/notes
+    create: true
+    extension: mdx
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    summary: "{{title}} - {{category}}"
+    fields: *common_fields
+
+  - name: papers
+    label: Papers
+    label_singular: Paper
+    folder: content/papers
+    create: true
+    extension: mdx
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    summary: "{{title}} - {{venue}}"
+    fields: *common_fields
+
+  - name: weekly_logs
+    label: Weekly Logs
+    label_singular: Weekly Log
+    folder: content/weekly_logs
+    create: true
+    extension: mdx
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    fields: *common_fields
+
+  - name: blogs
+    label: Blog
+    label_singular: Essay
+    folder: content/blogs
+    create: true
+    extension: mdx
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    fields: *common_fields
+
+  - name: resources
+    label: Resources
+    label_singular: Resource
+    folder: content/resources
+    create: true
+    extension: mdx
+    format: frontmatter
+    slug: "{{fields.slug}}"
+    fields: *common_fields

@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 5.5%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 188 94% 57%;
+  --primary-foreground: 240 10% 3.9%;
+  --secondary: 240 4% 12%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+  --accent: 188 94% 12%;
+  --accent-foreground: 188 94% 84%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 4% 16%;
+  --input: 240 4% 16%;
+  --ring: 188 94% 57%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+::selection {
+  background: rgba(103, 232, 249, 0.28);
+  color: white;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  a {
+    text-underline-offset: 4px;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(103 232 249 / 0.85);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .mdx-callout {
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    background: rgb(255 255 255 / 0.045);
+    padding: 1rem;
+    color: rgb(212 212 216);
+  }
+
+  .mdx-callout-note,
+  .mdx-callout-tip,
+  .mdx-callout-important {
+    border-color: rgb(103 232 249 / 0.22);
+    background: rgb(103 232 249 / 0.06);
+  }
+
+  .mdx-callout-warning,
+  .mdx-callout-danger {
+    border-color: rgb(251 191 36 / 0.22);
+    background: rgb(251 191 36 / 0.06);
+  }
+
+  .citation {
+    border-radius: 999px;
+    background: rgb(103 232 249 / 0.1);
+    padding: 0.1rem 0.35rem;
+    color: rgb(165 243 252);
+    text-decoration: none;
+  }
+
+  .prose pre {
+    border: 1px solid rgb(255 255 255 / 0.1);
+    background: rgb(9 9 11 / 0.82);
+  }
+
+  .prose table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+  }
+}

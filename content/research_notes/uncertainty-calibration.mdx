@@ -1,0 +1,49 @@
+---
+title: "Uncertainty Calibration Notes"
+slug: "uncertainty-calibration"
+date: "2026-05-12"
+updated: "2026-05-12"
+summary: "Notes on calibration error, reliability diagrams, and experiment design."
+status: "published"
+category: "methodology"
+tags:
+  - uncertainty
+  - evaluation
+cover: "/uploads/covers/calibration.png"
+attachments: []
+videos: []
+references:
+  - key: "guo2017"
+    citation: "Guo, C. et al. On Calibration of Modern Neural Networks. ICML, 2017."
+    url: "https://proceedings.mlr.press/v70/guo17a.html"
+equations:
+  latex: true
+  notation: "ECE aggregates absolute confidence-accuracy gaps across bins."
+links:
+  - papers/calibration-modern-neural-networks
+  - ece-temperature-scaling-baseline
+concepts:
+  - expected calibration error
+  - reliability diagrams
+---
+
+> [!IMPORTANT]
+> Track whether calibration is measured before or after thresholding; the interpretation changes.
+
+Expected calibration error:
+
+$$
+\operatorname{ECE} = \sum_{m=1}^{M}\frac{|B_m|}{n}\left|\operatorname{acc}(B_m)-\operatorname{conf}(B_m)\right|
+$$
+
+| Bin | Confidence | Accuracy | Gap |
+| --- | ---: | ---: | ---: |
+| 0.6-0.7 | 0.64 | 0.59 | 0.05 |
+| 0.7-0.8 | 0.74 | 0.73 | 0.01 |
+
+```python
+def calibration_gap(confidence: float, accuracy: float) -> float:
+    return abs(confidence - accuracy)
+```
+
+See [@guo2017] for the canonical framing.

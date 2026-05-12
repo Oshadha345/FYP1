@@ -1,0 +1,79 @@
+---
+title: "On Calibration of Modern Neural Networks"
+slug: "calibration-modern-neural-networks"
+date: "2026-05-12"
+updated: "2026-05-12"
+summary: "Paper note focused on temperature scaling and reliability diagrams."
+status: "published"
+category: "paper-note"
+tags:
+  - calibration
+  - neural-networks
+cover: "/uploads/covers/paper-calibration.png"
+attachments:
+  - label: "Annotated PDF"
+    file: "/uploads/pdfs/guo-2017-annotated.pdf"
+videos: []
+references:
+  - key: "guo2017"
+    citation: "Guo, C. et al. On Calibration of Modern Neural Networks. ICML, 2017."
+    url: "https://proceedings.mlr.press/v70/guo17a.html"
+authors:
+  - "Chuan Guo"
+  - "Geoff Pleiss"
+  - "Yu Sun"
+  - "Kilian Q. Weinberger"
+venue: "ICML 2017"
+doi: ""
+pdf: "/uploads/pdfs/guo-2017.pdf"
+bibtex_key: "guo2017calibration"
+equations:
+  latex: true
+  notation: "Temperature scaling divides logits by T before softmax."
+links:
+  - uncertainty-calibration
+  - ece-temperature-scaling-baseline
+notes:
+  - uncertainty-calibration
+experiments:
+  - ece-temperature-scaling-baseline
+datasets:
+  - CIFAR-10
+concepts:
+  - calibration
+  - temperature scaling
+highlights:
+  - "Modern neural networks can be accurate while poorly calibrated."
+todos:
+  - "Replicate temperature scaling on the FYP baseline."
+quotes:
+  - "Calibration matters when confidence is part of the output contract."
+---
+
+## Core Claim
+
+Modern networks can be accurate while poorly calibrated [@guo2017].
+
+The post-hoc scaling objective is:
+
+$$
+\hat{q}_i = \max_k \sigma(z_i / T)^{(k)}
+$$
+
+```bibtex
+@inproceedings{guo2017calibration,
+  title={On Calibration of Modern Neural Networks},
+  author={Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger, Kilian Q.},
+  booktitle={International Conference on Machine Learning},
+  year={2017}
+}
+```
+
+```mermaid
+sequenceDiagram
+  participant Logits
+  participant Temperature
+  participant Softmax
+  Logits->>Temperature: divide by T
+  Temperature->>Softmax: calibrated probabilities
+```

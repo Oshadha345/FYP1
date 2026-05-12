@@ -1,0 +1,61 @@
+---
+title: "ECE Baseline With Temperature Scaling"
+slug: "ece-temperature-scaling-baseline"
+date: "2026-05-12"
+updated: "2026-05-12"
+summary: "Baseline experiment record for measuring calibration before and after temperature scaling."
+status: "published"
+category: "experiment"
+tags:
+  - baseline
+  - metrics
+cover: "/uploads/covers/experiment-ece.png"
+attachments: []
+videos: []
+references:
+  - key: "guo2017"
+    citation: "Guo, C. et al. On Calibration of Modern Neural Networks. ICML, 2017."
+hypothesis: "Temperature scaling reduces ECE without materially changing accuracy."
+dataset: "CIFAR-10 validation split"
+repository: ""
+metrics:
+  - name: "ECE before"
+    value: "0.082"
+  - name: "ECE after"
+    value: "0.021"
+  - name: "Accuracy delta"
+    value: "-0.001"
+equations:
+  latex: true
+  notation: "Softmax is applied after dividing logits by learned temperature T."
+links:
+  - papers/calibration-modern-neural-networks
+  - uncertainty-calibration
+papers:
+  - calibration-modern-neural-networks
+notes:
+  - uncertainty-calibration
+concepts:
+  - temperature scaling
+  - expected calibration error
+---
+
+## Protocol
+
+1. Train the baseline classifier.
+2. Freeze weights.
+3. Optimize $T$ on the validation split.
+4. Report ECE, NLL, and accuracy.
+
+```bash
+python experiments/calibration/run.py --dataset cifar10 --bins 15 --temperature-scale
+```
+
+| Metric | Before | After |
+| --- | ---: | ---: |
+| ECE | 0.082 | 0.021 |
+| NLL | 0.714 | 0.691 |
+| Accuracy | 0.876 | 0.875 |
+
+> [!WARNING]
+> Reuse of the validation split for model selection and calibration can overstate the gain.

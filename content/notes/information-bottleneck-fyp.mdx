@@ -1,0 +1,52 @@
+---
+title: "Information Bottleneck as an FYP Lens"
+slug: "information-bottleneck-fyp"
+date: "2026-05-12"
+updated: "2026-05-12"
+summary: "A research note connecting representation compression, calibration, and the FYP evaluation plan."
+status: "published"
+category: "research"
+tags:
+  - fyp
+  - information-bottleneck
+  - deep-learning
+concepts:
+  - representation learning
+  - calibration
+links:
+  - papers/calibration-modern-neural-networks
+  - uncertainty-calibration
+papers:
+  - calibration-modern-neural-networks
+datasets:
+  - CIFAR-10
+highlights:
+  - "Compression is useful only if it preserves task-relevant uncertainty."
+todos:
+  - "Compare calibration before and after bottleneck strength changes."
+---
+
+> [!NOTE]
+> This note is authored as part of the unified Notes database. It can be linked from papers, logs, FYP pages, and essays.
+
+The working objective can be written as:
+
+$$
+L_{IB} = I(Z;Y) - \beta I(Z;X)
+$$
+
+The FYP question is not only whether compression improves accuracy. The stronger question is whether the representation improves downstream confidence estimates.
+
+## Connections
+
+- Related paper: [[calibration-modern-neural-networks]]
+- Related note: [[uncertainty-calibration]]
+- Related experiment: [[ece-temperature-scaling-baseline]]
+
+```ts
+type BottleneckRun = {
+  beta: number;
+  accuracy: number;
+  ece: number;
+};
+```

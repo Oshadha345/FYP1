@@ -1,0 +1,44 @@
+---
+title: "Probabilistic Machine Learning: Week 01"
+slug: "probabilistic-machine-learning-week-01"
+date: "2026-05-12"
+updated: "2026-05-12"
+summary: "Course notes on Bayes' rule, likelihoods, and posterior inference."
+status: "draft"
+category: "course-note"
+tags:
+  - bayes
+  - probability
+cover: "/uploads/covers/pml-week-01.png"
+attachments:
+  - label: "Lecture slides PDF"
+    file: "/uploads/pdfs/pml-week-01-slides.pdf"
+videos:
+  - provider: "local"
+    url: "/uploads/videos/pml-week-01.mp4"
+references:
+  - key: "murphy2022"
+    citation: "Murphy, K. P. Probabilistic Machine Learning: An Introduction. MIT Press, 2022."
+course: "Probabilistic Machine Learning"
+week: 1
+instructor: "Research Group Seminar"
+equations:
+  latex: true
+  notation: "Posterior is proportional to likelihood times prior."
+---
+
+Bayes' rule:
+
+$$
+p(\theta \mid D) = \frac{p(D \mid \theta)p(\theta)}{p(D)}
+$$
+
+| Term | Role |
+| --- | --- |
+| $p(\theta)$ | Prior belief |
+| $p(D \mid \theta)$ | Likelihood |
+| $p(\theta \mid D)$ | Posterior belief |
+
+```r
+posterior <- likelihood * prior / evidence
+```

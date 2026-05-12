@@ -1,0 +1,48 @@
+---
+title: "Deep Learning"
+slug: "deep-learning-goodfellow"
+date: "2026-05-12"
+updated: "2026-05-12"
+summary: "Reading note for optimization, representation learning, and probabilistic modeling chapters."
+status: "published"
+category: "book-note"
+tags:
+  - deep-learning
+  - reading
+cover: "/uploads/covers/deep-learning-book.png"
+attachments:
+  - label: "Chapter summary PDF"
+    file: "/uploads/pdfs/deep-learning-chapter-summary.pdf"
+videos: []
+references:
+  - key: "goodfellow2016"
+    citation: "Goodfellow, I., Bengio, Y., and Courville, A. Deep Learning. MIT Press, 2016."
+    url: "https://www.deeplearningbook.org/"
+authors:
+  - "Ian Goodfellow"
+  - "Yoshua Bengio"
+  - "Aaron Courville"
+isbn: "9780262035613"
+publisher: "MIT Press"
+rating: 5
+equations:
+  latex: true
+  notation: "The note uses gradient notation from the optimization chapters."
+---
+
+## Useful Frame
+
+Optimization in deep learning is often less about finding a global minimum and more about finding a useful representation [@goodfellow2016].
+
+$$
+\theta_{t+1} = \theta_t - \eta \nabla_\theta J(\theta_t)
+$$
+
+| Chapter | Takeaway |
+| --- | --- |
+| 6 | Backpropagation is a dynamic programming procedure. |
+| 8 | Optimizer behavior depends on curvature and noise. |
+
+```python
+theta = theta - learning_rate * grad(loss, theta)
+```

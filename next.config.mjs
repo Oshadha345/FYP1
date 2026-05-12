@@ -1,0 +1,16 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "github.com" },
+      { protocol: "https", hostname: "raw.githubusercontent.com" }
+    ]
+  },
+  experimental: {
+    mdxRs: true
+  }
+};
+
+export default nextConfig;

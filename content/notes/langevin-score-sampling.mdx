@@ -1,0 +1,37 @@
+---
+title: "Langevin Dynamics and Score-Based Sampling"
+slug: "langevin-score-sampling"
+date: "2026-05-11"
+updated: "2026-05-12"
+summary: "Mathematics note for iterative sampling, score functions, and stochastic updates."
+status: "published"
+category: "mathematics"
+tags:
+  - mathematics
+  - probability
+  - diffusion
+concepts:
+  - score function
+  - stochastic process
+links:
+  - information-bottleneck-fyp
+---
+
+The basic discretized update is:
+
+$$
+x_{t+1} = x_t + \eta \nabla_x \log p(x_t) + \sqrt{2\eta}\epsilon_t
+$$
+
+The important intuition is that the gradient term moves samples toward higher density while the noise term keeps exploration alive.
+
+<Collapsible title="Implementation note">
+
+Use small step sizes first. Debug the score norm and sample variance before interpreting visual quality.
+
+</Collapsible>
+
+```python
+def langevin_step(x, score, eta, noise):
+    return x + eta * score(x) + (2 * eta) ** 0.5 * noise
+```
