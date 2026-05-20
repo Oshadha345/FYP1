@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Moon, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { useState } from "react";
 
@@ -15,147 +15,94 @@ import { siteConfig } from "@/lib/site";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className="min-h-screen bg-[#f8fbf9] text-slate-950">
       <ReadingProgress />
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_22%_0%,rgba(34,211,238,0.10),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.035),transparent_18%)]" />
-      <div className="relative flex min-h-screen">
-        <aside
-          className={cn(
-            "fixed inset-y-0 left-0 z-40 hidden border-r border-white/10 bg-zinc-950/86 backdrop-blur-xl lg:block",
-            collapsed ? "w-20" : "w-72",
-          )}
-        >
-          <SidebarContent collapsed={collapsed} pathname={pathname} />
-          <div className="absolute bottom-4 left-4 right-4">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(187,247,208,0.28),transparent_24%),radial-gradient(circle_at_82%_0%,rgba(186,230,253,0.30),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,251,249,0.96)_30%,rgba(255,255,255,0.98))]" />
+
+      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/72 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-[118rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
+          <Link href="/" className="flex shrink-0 items-center" aria-label="Home">
+            <span className="rounded-l-md border border-slate-950 px-3 py-2 text-sm font-semibold leading-none text-slate-950">
+              EE405
+            </span>
+            <span className="rounded-r-md border-y border-r border-slate-950 px-3 py-2 text-sm font-semibold leading-none text-slate-950">
+              FYP Portfolio
+            </span>
+          </Link>
+
+          <nav className="ml-auto hidden items-center lg:flex" aria-label="Primary navigation">
+            {navigation.map((item) => {
+              const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "min-w-28 border border-slate-950 px-4 py-2 text-center text-xs font-medium uppercase tracking-[0.14em] transition first:rounded-l-md last:rounded-r-md",
+                    active ? "bg-slate-950 text-white" : "bg-white/35 text-slate-800 hover:bg-slate-100",
+                  )}
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="ml-auto flex items-center gap-2 lg:ml-4">
+            <CommandPalette />
             <Button
               variant="ghost"
-              className={cn("w-full", collapsed ? "px-0" : "justify-start")}
-              onClick={() => setCollapsed((value) => !value)}
-              aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+              size="icon"
+              className="lg:hidden"
+              onClick={() => setMobileOpen((value) => !value)}
+              aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
             >
-              {collapsed ? <PanelLeftOpen className="size-4" /> : <PanelLeftClose className="size-4" />}
-              {!collapsed ? <span>Collapse</span> : null}
+              {mobileOpen ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
             </Button>
           </div>
-        </aside>
+        </div>
 
         {mobileOpen ? (
-          <div
-            className="fixed inset-0 z-40 bg-zinc-950/75 backdrop-blur-sm lg:hidden"
-            onMouseDown={(event) => {
-              if (event.target === event.currentTarget) setMobileOpen(false);
-            }}
-          >
-            <aside className="h-full w-[min(22rem,86vw)] border-r border-white/10 bg-zinc-950">
-              <SidebarContent collapsed={false} pathname={pathname} onNavigate={() => setMobileOpen(false)} />
-            </aside>
-          </div>
-        ) : null}
-
-        <div className={cn("flex min-h-screen flex-1 flex-col", collapsed ? "lg:pl-20" : "lg:pl-72")}>
-          <header className="sticky top-0 z-30 border-b border-white/10 bg-zinc-950/72 backdrop-blur-xl">
-            <div className="flex h-16 items-center gap-3 px-4 sm:px-6">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="lg:hidden"
-                onClick={() => setMobileOpen(true)}
-                aria-label="Open navigation"
-              >
-                <Menu className="size-5" aria-hidden="true" />
-              </Button>
-              <Link href="/" className="min-w-0 text-sm font-semibold tracking-normal text-zinc-100 lg:hidden">
-                {siteConfig.name}
-              </Link>
-              <div className="ml-auto flex min-w-0 items-center gap-2">
-                <CommandPalette />
-                <Button variant="ghost" size="icon" aria-label="Dark mode active">
-                  <Moon className="size-4" aria-hidden="true" />
-                </Button>
-              </div>
+          <nav className="border-t border-slate-200 bg-white px-4 py-3 lg:hidden" aria-label="Mobile navigation">
+            <div className="grid gap-2 sm:grid-cols-2">
+              {navigation.map((item) => {
+                const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "rounded-md border px-3 py-2 text-sm transition",
+                      active
+                        ? "border-slate-950 bg-slate-950 text-white"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-cyan-300 hover:text-cyan-800",
+                    )}
+                  >
+                    {item.title}
+                  </Link>
+                );
+              })}
             </div>
-          </header>
-          <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SidebarContent({
-  collapsed,
-  pathname,
-  onNavigate,
-}: {
-  collapsed: boolean;
-  pathname: string;
-  onNavigate?: () => void;
-}) {
-  return (
-    <div className="flex h-full flex-col overflow-y-auto px-3 py-5">
-      <Link
-        href="/"
-        onClick={onNavigate}
-        className={cn("mb-6 flex items-center gap-3 rounded-md px-3 py-2", collapsed && "justify-center px-2")}
-      >
-        <span className="grid size-10 shrink-0 place-items-center rounded-md border border-cyan-300/25 bg-cyan-300/10 text-sm font-bold text-cyan-100">
-          OS
-        </span>
-        {!collapsed ? (
-          <span className="min-w-0">
-            <span className="block truncate text-sm font-semibold text-white">{siteConfig.name}</span>
-            <span className="block truncate text-xs text-zinc-500">FYP research portfolio</span>
-          </span>
+          </nav>
         ) : null}
-      </Link>
+      </header>
 
-      <nav className="space-y-1" aria-label="Primary navigation">
-        {navigation.map((item) => {
-          const Icon = item.icon;
-          const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onNavigate}
-              title={collapsed ? item.title : undefined}
-              className={cn(
-                "group flex items-center gap-3 rounded-md px-3 py-2.5 text-sm text-zinc-400 transition",
-                "hover:bg-white/[0.07] hover:text-zinc-100 focus-visible:bg-white/[0.07] focus-visible:outline-none",
-                active && "bg-cyan-300/10 text-cyan-100 ring-1 ring-cyan-300/15",
-                collapsed && "justify-center px-2",
-              )}
-            >
-              <Icon className="size-4 shrink-0" aria-hidden="true" />
-              {!collapsed ? <span className="truncate">{item.title}</span> : null}
-            </Link>
-          );
-        })}
-      </nav>
+      <main className="relative px-4 py-8 sm:px-6 lg:px-8">{children}</main>
+
+      <footer className="relative border-t border-slate-200 bg-white/70 px-4 py-8 text-sm text-slate-500 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[118rem] flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p>{siteConfig.name}</p>
+          <p>University of Peradeniya - EEE</p>
+        </div>
+      </footer>
     </div>
   );
 }
 
 export function TopRouteRail() {
-  return (
-    <div className="no-scrollbar -mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6 lg:hidden">
-      {navigation.slice(1).map((item) => {
-        const Icon = item.icon;
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="inline-flex h-10 shrink-0 items-center gap-2 rounded-md border border-white/10 bg-white/[0.05] px-3 text-sm text-zinc-300"
-          >
-            <Icon className="size-4" aria-hidden="true" />
-            {item.title}
-          </Link>
-        );
-      })}
-    </div>
-  );
+  return null;
 }

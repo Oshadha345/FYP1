@@ -42,19 +42,19 @@ export function FilterableContent({
     <section className="mt-8" aria-labelledby="content-index-title">
       <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <div className="flex items-center gap-2 text-sm font-medium text-cyan-100">
+          <div className="flex items-center gap-2 text-sm font-medium text-cyan-800">
             <SlidersHorizontal className="size-4" aria-hidden="true" />
             <h2 id="content-index-title">{title}</h2>
           </div>
-          <p className="mt-1 text-sm text-zinc-500">{filtered.length} records shown</p>
+          <p className="mt-1 text-sm text-slate-500">{filtered.length} records shown</p>
         </div>
         <label className="relative block w-full lg:w-80">
           <span className="sr-only">Search entries</span>
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-zinc-500" />
+          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="h-10 w-full rounded-md border border-white/10 bg-white/[0.05] pl-9 pr-3 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-600 focus:border-cyan-300/45"
+            className="h-10 w-full rounded-md border border-slate-200 bg-white/80 pl-9 pr-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-cyan-400"
             placeholder="Search title, category, or tag"
           />
         </label>
@@ -65,7 +65,7 @@ export function FilterableContent({
           <button
             type="button"
             onClick={() => setActiveCategory(null)}
-            className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs text-zinc-400 transition hover:border-cyan-300/35 hover:text-cyan-100 aria-pressed:border-cyan-300/45 aria-pressed:bg-cyan-300/10 aria-pressed:text-cyan-100"
+            className="rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs text-slate-500 transition hover:border-cyan-300 hover:text-cyan-800 aria-pressed:border-cyan-400 aria-pressed:bg-cyan-50 aria-pressed:text-cyan-800"
             aria-pressed={!activeCategory}
           >
             All categories
@@ -90,7 +90,7 @@ export function FilterableContent({
             key={tag}
             type="button"
             onClick={() => setActiveTag((value) => (value === tag ? null : tag))}
-            className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs text-zinc-400 transition hover:border-cyan-300/35 hover:text-cyan-100 aria-pressed:border-cyan-300/45 aria-pressed:bg-cyan-300/10 aria-pressed:text-cyan-100"
+            className="rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs text-slate-500 transition hover:border-cyan-300 hover:text-cyan-800 aria-pressed:border-cyan-400 aria-pressed:bg-cyan-50 aria-pressed:text-cyan-800"
             aria-pressed={activeTag === tag}
           >
             #{tag}
@@ -117,9 +117,9 @@ export function FilterableContent({
           ))}
         </div>
       ) : (
-        <div className="rounded-lg border border-dashed border-white/15 bg-white/[0.035] p-8 text-center">
+        <div className="rounded-lg border border-dashed border-slate-200 bg-white/80 p-8 text-center">
           <Badge>No results</Badge>
-          <p className="mt-3 text-sm text-zinc-500">Adjust the search query or remove the selected tag.</p>
+          <p className="mt-3 text-sm text-slate-500">Adjust the search query or remove the selected tag.</p>
         </div>
       )}
     </section>

@@ -62,23 +62,23 @@ export function categoryClassName(category?: string) {
   const normalized = category?.toLowerCase() ?? "";
 
   if (normalized.includes("research")) {
-    return "border-cyan-300/25 bg-cyan-300/10 text-cyan-100";
+    return "border-cyan-200 bg-cyan-50 text-cyan-800";
   }
   if (normalized.includes("math")) {
-    return "border-violet-300/25 bg-violet-300/10 text-violet-100";
+    return "border-violet-200 bg-violet-50 text-violet-800";
   }
   if (normalized.includes("deep") || normalized.includes("model")) {
-    return "border-blue-300/25 bg-blue-300/10 text-blue-100";
+    return "border-blue-200 bg-blue-50 text-blue-800";
   }
   if (normalized.includes("course")) {
-    return "border-emerald-300/25 bg-emerald-300/10 text-emerald-100";
+    return "border-emerald-200 bg-emerald-50 text-emerald-800";
   }
   if (normalized.includes("program") || normalized.includes("system")) {
-    return "border-amber-300/25 bg-amber-300/10 text-amber-100";
+    return "border-amber-200 bg-amber-50 text-amber-800";
   }
   if (normalized.includes("experiment")) {
-    return "border-rose-300/25 bg-rose-300/10 text-rose-100";
+    return "border-rose-200 bg-rose-50 text-rose-800";
   }
 
-  return "border-white/10 bg-white/[0.06] text-zinc-300";
+  return "border-slate-200 bg-slate-50 text-slate-600";
 }

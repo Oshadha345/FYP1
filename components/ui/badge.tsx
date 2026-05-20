@@ -13,11 +13,11 @@ export function Badge({ children, className, tone = "zinc" }: BadgeProps) {
     <span
       className={cn(
         "inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium",
-        tone === "cyan" && "border-cyan-300/25 bg-cyan-300/10 text-cyan-100",
-        tone === "violet" && "border-violet-300/25 bg-violet-300/10 text-violet-100",
-        tone === "green" && "border-emerald-300/25 bg-emerald-300/10 text-emerald-100",
-        tone === "amber" && "border-amber-300/25 bg-amber-300/10 text-amber-100",
-        tone === "zinc" && "border-white/10 bg-white/[0.06] text-zinc-300",
+        tone === "cyan" && "border-cyan-200 bg-cyan-50 text-cyan-800",
+        tone === "violet" && "border-violet-200 bg-violet-50 text-violet-800",
+        tone === "green" && "border-emerald-200 bg-emerald-50 text-emerald-800",
+        tone === "amber" && "border-amber-200 bg-amber-50 text-amber-800",
+        tone === "zinc" && "border-slate-200 bg-slate-50 text-slate-600",
         className,
       )}
     >

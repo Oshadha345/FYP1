@@ -15,8 +15,8 @@ export default async function PapersPage() {
     <div className="mx-auto max-w-7xl">
       <header className="max-w-3xl py-8">
         <p className="text-sm font-medium text-cyan-200">Literature review</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-normal text-zinc-50 sm:text-6xl">Papers reviewed for the project</h1>
-        <p className="mt-5 text-lg leading-8 text-zinc-400">
+        <h1 className="mt-4 text-4xl font-semibold tracking-normal text-slate-950 sm:text-6xl">Papers reviewed for the project</h1>
+        <p className="mt-5 text-lg leading-8 text-slate-600">
           Each record summarizes one paper: the main idea, useful methods, important equations, limitations, and how it
           connects to our FYP work.
         </p>

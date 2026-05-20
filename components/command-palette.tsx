@@ -67,7 +67,7 @@ export function CommandPalette() {
     <>
       <Button
         variant="outline"
-        className="h-10 w-full justify-between px-3 text-zinc-400 md:w-72"
+        className="h-10 w-full justify-between px-3 text-slate-500 md:w-72"
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={open}
@@ -76,14 +76,14 @@ export function CommandPalette() {
           <Search className="size-4 shrink-0" aria-hidden="true" />
           <span className="truncate">Search FYP records</span>
         </span>
-        <kbd className="rounded border border-white/10 bg-white/[0.06] px-1.5 py-0.5 text-[10px] text-zinc-500">
+        <kbd className="rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[10px] text-slate-500">
           Ctrl K
         </kbd>
       </Button>
 
       {open ? (
         <div
-          className="fixed inset-0 z-50 bg-zinc-950/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-slate-950/20 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label="Command palette"
@@ -91,9 +91,9 @@ export function CommandPalette() {
             if (event.target === event.currentTarget) setOpen(false);
           }}
         >
-          <div className="mx-auto mt-16 max-w-2xl overflow-hidden rounded-lg border border-white/10 bg-zinc-950 shadow-2xl">
-            <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
-              <Command className="size-5 text-cyan-200" aria-hidden="true" />
+          <div className="mx-auto mt-16 max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+            <div className="flex items-center gap-3 border-b border-slate-200 px-4 py-3">
+              <Command className="size-5 text-cyan-700" aria-hidden="true" />
               <input
                 ref={inputRef}
                 value={query}
@@ -104,7 +104,7 @@ export function CommandPalette() {
                     setOpen(false);
                   }
                 }}
-                className="h-10 flex-1 bg-transparent text-sm text-zinc-100 outline-none placeholder:text-zinc-500"
+                className="h-10 flex-1 bg-transparent text-sm text-slate-950 outline-none placeholder:text-slate-400"
                 placeholder="Jump to notes, papers, weekly logs, resources, or FYP"
               />
               <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close command palette">
@@ -120,20 +120,20 @@ export function CommandPalette() {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        "flex items-start gap-3 rounded-md px-3 py-3 transition hover:bg-white/[0.07] focus:bg-white/[0.07] focus:outline-none",
-                        pathname === item.href && "bg-cyan-300/10",
+                        "flex items-start gap-3 rounded-md px-3 py-3 transition hover:bg-slate-50 focus:bg-slate-50 focus:outline-none",
+                        pathname === item.href && "bg-cyan-50",
                       )}
                     >
-                      <Icon className="mt-0.5 size-5 text-cyan-200" aria-hidden="true" />
+                      <Icon className="mt-0.5 size-5 text-cyan-700" aria-hidden="true" />
                       <span className="min-w-0">
-                        <span className="block text-sm font-medium text-zinc-100">{item.title}</span>
-                        <span className="block truncate text-xs text-zinc-500">{item.description}</span>
+                        <span className="block text-sm font-medium text-slate-950">{item.title}</span>
+                        <span className="block truncate text-xs text-slate-500">{item.description}</span>
                       </span>
                     </Link>
                   );
                 })
               ) : (
-                <div className="flex items-center gap-3 px-3 py-8 text-sm text-zinc-500">
+                <div className="flex items-center gap-3 px-3 py-8 text-sm text-slate-500">
                   <FileSearch className="size-5" aria-hidden="true" />
                   No matching route found.
                 </div>

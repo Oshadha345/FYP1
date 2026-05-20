@@ -60,14 +60,14 @@ export function Mermaid({ chart }: { chart: string }) {
   }
 
   return (
-    <figure className="my-8 overflow-x-auto rounded-lg border border-white/10 bg-zinc-950/70 p-4">
+    <figure className="my-8 overflow-x-auto rounded-lg border border-slate-200 bg-white p-4">
       {svg ? (
         <div
           className="min-w-full [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-w-full"
           dangerouslySetInnerHTML={{ __html: svg }}
         />
       ) : (
-        <div className="h-40 animate-pulse rounded-md bg-white/[0.04]" aria-label="Loading diagram" />
+        <div className="h-40 animate-pulse rounded-md bg-slate-100" aria-label="Loading diagram" />
       )}
     </figure>
   );

@@ -1,105 +1,120 @@
 import Link from "next/link";
-import { ArrowRight, ClipboardList, Search, Users } from "lucide-react";
+import { ArrowRight, ClipboardList, FileText, Users } from "lucide-react";
 
-import { ContentCard } from "@/components/content-card";
-import { GraphView } from "@/components/knowledge/graph-view";
-import { Badge } from "@/components/ui/badge";
-import { buildKnowledgeGraph, getKnowledgeItems, getWeeklyBuckets } from "@/lib/content";
-import { itemToCard } from "@/lib/format";
+import { SatelliteVisual } from "@/components/schedule/satellite-visual";
+import { WeekAccordion } from "@/components/schedule/week-accordion";
+import { WeekGrid } from "@/components/schedule/week-grid";
+import { getKnowledgeItems, getWeeklyBuckets } from "@/lib/content";
+import { activeWeek, projectWeeks } from "@/lib/schedule";
 
 export default async function HomePage() {
-  const [items, graph, weeks] = await Promise.all([
-    getKnowledgeItems(),
-    buildKnowledgeGraph(),
-    getWeeklyBuckets(),
-  ]);
-  const latest = items.slice(0, 6);
-  const noteCount = items.filter((item) => ["notes", "research_notes", "course_notes", "books", "experiments"].includes(item.meta.collection)).length;
-  const paperCount = items.filter((item) => item.meta.collection === "papers").length;
+  const [items, weeks] = await Promise.all([getKnowledgeItems(), getWeeklyBuckets()]);
+  const completed = projectWeeks.filter((week) => week.status === "completed").length;
+  const papers = items.filter((item) => item.meta.collection === "papers").length;
+  const notes = items.filter((item) => ["notes", "research_notes", "course_notes", "books", "experiments"].includes(item.meta.collection)).length;
 
   return (
     <div className="mx-auto max-w-7xl">
-      <section className="grid min-h-[72vh] content-center gap-10 py-10 lg:grid-cols-[minmax(0,1fr)_26rem]">
-        <div>
-          <Badge tone="cyan">EE405 - Undergraduate Project I</Badge>
-          <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-tight tracking-normal text-zinc-50 sm:text-7xl">
-            FYP1 contribution portfolio
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-            This site records my contribution toward EE405 - Undergraduate Project I. It includes weekly progress,
-            literature review notes, technical notes, experiment records, resources, and project milestones.
-          </p>
-          <div className="mt-6 grid gap-3 text-sm leading-6 text-zinc-400 sm:grid-cols-2">
-            <div className="rounded-md border border-white/10 bg-white/[0.035] p-4">
-              <div className="mb-2 flex items-center gap-2 font-medium text-zinc-100">
-                <Users className="size-4 text-cyan-200" aria-hidden="true" />
+      <section className="grid min-h-[calc(100vh-7rem)] items-center gap-8 py-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(28rem,1.08fr)] lg:py-16">
+        <div className="space-y-7">
+          <div className="inline-flex rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-cyan-800">
+            EE405 - Undergraduate Project I
+          </div>
+          <div>
+            <h1 className="max-w-3xl text-5xl font-light leading-[1.02] tracking-tight text-slate-950 sm:text-7xl">
+              Satellite based change detection
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+              Portfolio of my FYP1 contribution: weekly progress, literature review, dataset planning,
+              benchmark setup, and technical notes for remote sensing change detection.
+            </p>
+          </div>
+
+          <div className="grid gap-3 text-sm leading-6 text-slate-600 sm:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-white/75 p-4 shadow-sm backdrop-blur">
+              <div className="mb-2 flex items-center gap-2 font-medium text-slate-950">
+                <Users className="size-4 text-cyan-700" aria-hidden="true" />
                 Team
               </div>
               <p>Oshadha Samarakoon, Dineth Perera, Thaariq Firdous</p>
             </div>
-            <div className="rounded-md border border-white/10 bg-white/[0.035] p-4">
-              <div className="mb-2 flex items-center gap-2 font-medium text-zinc-100">
-                <ClipboardList className="size-4 text-cyan-200" aria-hidden="true" />
+            <div className="rounded-2xl border border-slate-200 bg-white/75 p-4 shadow-sm backdrop-blur">
+              <div className="mb-2 flex items-center gap-2 font-medium text-slate-950">
+                <ClipboardList className="size-4 text-cyan-700" aria-hidden="true" />
                 Advisors
               </div>
               <p>Prof. Roshan Godaliyadda, Prof. Parakrama Ekanayake, Prof. Vijitha Herath</p>
             </div>
           </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/notes" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-cyan-300/40 bg-cyan-300 px-4 text-sm font-medium text-zinc-950 transition hover:bg-cyan-200">
-              View notes
+
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/fyp"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-950 bg-slate-950 px-5 text-sm font-medium text-white transition hover:bg-slate-800"
+            >
+              View project schedule
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
-            <Link href="/papers" className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-4 text-sm font-medium text-zinc-100 transition hover:border-cyan-300/40 hover:bg-cyan-300/10">
-              View literature review
+            <Link
+              href="/weekly-logs"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/80 px-5 text-sm font-medium text-slate-800 transition hover:border-cyan-400 hover:text-cyan-800"
+            >
+              Open weekly logs
             </Link>
           </div>
         </div>
 
-        <div className="space-y-3 rounded-lg border border-white/10 bg-white/[0.035] p-4 shadow-panel">
-          {[
-            ["Total records", items.length],
-            ["Technical notes", noteCount],
-            ["Papers reviewed", paperCount],
-            ["Weekly logs", weeks.length],
-          ].map(([label, value]) => (
-            <div key={label} className="flex items-center justify-between rounded-md border border-white/10 bg-zinc-950/50 p-4">
-              <span className="text-sm text-zinc-500">{label}</span>
-              <span className="text-2xl font-semibold text-zinc-100">{value}</span>
-            </div>
-          ))}
-        </div>
+        <SatelliteVisual />
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
-        <GraphView nodes={graph.nodes} edges={graph.edges} compact />
-        <div className="rounded-lg border border-white/10 bg-white/[0.035] p-5">
-          <div className="flex items-center gap-2 text-sm font-semibold text-zinc-100">
-            <ClipboardList className="size-4 text-cyan-200" aria-hidden="true" />
-            How to read this site
+      <section className="grid gap-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          ["Completed weeks", `${completed}/14`],
+          ["Active week", activeWeek.code],
+          ["Papers reviewed", papers],
+          ["Technical records", notes + weeks.length],
+        ].map(([label, value]) => (
+          <div key={label} className="rounded-lg border border-slate-200 bg-white/80 p-5 backdrop-blur">
+            <div className="text-sm text-slate-500">{label}</div>
+            <div className="mt-3 text-3xl font-semibold text-slate-950">{value}</div>
           </div>
-          <p className="mt-4 text-sm leading-7 text-zinc-400">
-            Start with the FYP page for the project status. Use Weekly Logs to see progress over time. Use Notes and
-            Papers for the technical background and literature review.
-          </p>
-          <div className="mt-5 space-y-2 text-sm text-zinc-500">
-            <div className="flex items-center gap-2"><Search className="size-4" /> Search across all records</div>
-            <div className="flex items-center gap-2"><Users className="size-4" /> Clear sections for examiners and supervisors</div>
-          </div>
-        </div>
+        ))}
       </section>
 
-      <section className="mt-12">
-        <div className="mb-4 flex items-end justify-between gap-4">
+      <section className="py-12 lg:py-16">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-zinc-50">Recent work</h2>
-            <p className="mt-1 text-sm text-zinc-500">Latest notes, literature records, weekly logs, and resources.</p>
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-slate-500">At a glance</p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Weekly status overview</h2>
           </div>
-          <Link href="/weekly-logs" className="text-sm text-cyan-200 hover:text-cyan-100">Weekly progress</Link>
+          <Link href="/weekly-logs" className="inline-flex items-center gap-2 text-sm font-medium text-cyan-800 hover:text-cyan-950">
+            See weekly reflections
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {latest.map((item) => <ContentCard key={item.meta.href} card={itemToCard(item)} />)}
-        </div>
+        <WeekGrid compact />
+      </section>
+
+      <section className="py-12 lg:py-16">
+        <WeekAccordion />
+      </section>
+
+      <section className="grid gap-4 py-12 md:grid-cols-3 lg:py-16">
+        {[
+          ["FYP", "Progress summary, milestones, and 14-week plan.", "/fyp"],
+          ["Papers", "Literature review notes and paper summaries.", "/papers"],
+          ["Notes", "Technical notes, equations, datasets, and implementation records.", "/notes"],
+        ].map(([title, description, href]) => (
+          <Link
+            key={title}
+            href={href}
+            className="rounded-lg border border-slate-200 bg-white/75 p-5 transition hover:border-cyan-300"
+          >
+            <FileText className="size-5 text-cyan-700" aria-hidden="true" />
+            <h3 className="mt-4 text-lg font-semibold text-slate-950">{title}</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+          </Link>
+        ))}
       </section>
     </div>
   );

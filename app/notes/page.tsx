@@ -24,8 +24,8 @@ export default async function NotesPage() {
     <div className="mx-auto max-w-7xl">
       <header className="max-w-3xl py-8">
         <p className="text-sm font-medium text-cyan-200">Technical notes</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-normal text-zinc-50 sm:text-6xl">Project notes and supporting theory</h1>
-        <p className="mt-5 text-lg leading-8 text-zinc-400">
+        <h1 className="mt-4 text-4xl font-semibold tracking-normal text-slate-950 sm:text-6xl">Project notes and supporting theory</h1>
+        <p className="mt-5 text-lg leading-8 text-slate-600">
           These notes document the concepts, methods, equations, implementation details, and course material used for
           my FYP1 contribution. Use the category filters to view only one type of note.
         </p>
