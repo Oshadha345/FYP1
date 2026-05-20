@@ -1,0 +1,45 @@
+---
+title: "Representative Attention for Vision Transformers"
+slug: "representative-attention-vision-transformers"
+date: "2026-05-21"
+activity_date: "2026-05-09"
+updated: "2026-05-21"
+summary: "Representative Attention compresses visual tokens in representation space instead of fixed spatial partitions."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - attention
+  - vision-transformer
+  - efficient-attention
+authors:
+  - "Yuntong Li"
+  - "Hainuo Wang"
+  - "Hengxing Liu"
+  - "Mingjia Li"
+  - "Xiaojie Guo"
+venue: "arXiv 2026"
+url: "https://arxiv.org/abs/2605.14913"
+bibtex_key: "li2026representativeattention"
+links:
+  - image-encoders-research-track
+concepts:
+  - linear attention
+  - representative tokens
+  - token compression
+references:
+  - key: "li2026representativeattention"
+    citation: "Y. Li et al., Representative Attention for Vision Transformers, arXiv:2605.14913, 2026."
+---
+
+## Core Reading Note
+
+The main idea is to gather spatial tokens into learned representative tokens, let those representatives interact globally, then distribute information back to the original tokens.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Efficient global context | Relevant when attention cost becomes expensive at high resolution. |
+| Semantic token grouping | May be useful when changed regions are spatially separated but semantically related. |
+| Benchmark role | It is a Transformer-efficiency direction, not a direct change detection model. |

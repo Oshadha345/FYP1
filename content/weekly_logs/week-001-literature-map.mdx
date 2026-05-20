@@ -1,79 +1,73 @@
 ---
-title: "Week 001: Literature Map and Research Questions"
+title: "Week 01: Literature Map and Research Questions"
 slug: "week-001-literature-map"
-date: "2026-05-12"
-updated: "2026-05-12"
-summary: "Initial FYP1 log covering project scope, literature review direction, and early evaluation criteria."
+date: "2026-04-26"
+activity_date: "2026-04-20"
+updated: "2026-05-21"
+summary: "Initial project week focused on understanding remote sensing change detection, common datasets, model families, and early research gaps."
 status: "published"
 category: "weekly-log"
 week: 1
 tags:
   - fyp
   - literature-review
-  - planning
-cover: "/uploads/covers/literature-map.png"
-attachments: []
-videos: []
+  - problem-understanding
 references:
-  - key: "knuth1984"
-    citation: "Knuth, D. E. Literate Programming. The Computer Journal, 1984."
-    doi: "10.1093/comjnl/27.2.97"
-equations:
-  latex: true
-  notation: "Priority score balances uncertainty, impact, and estimated effort."
-  symbols:
-    - symbol: "P"
-      meaning: "Priority score"
-    - symbol: "I"
-      meaning: "Research impact"
+  - key: "bandara2022changeformer"
+    citation: "W. G. C. Bandara and V. M. Patel, A Transformer-Based Siamese Network for Change Detection, arXiv:2201.01293, 2022."
+  - key: "chen2020stanet"
+    citation: "H. Chen and Z. Shi, A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection, Remote Sensing, vol. 12, no. 10, 2020."
+  - key: "zhao2026ldguid"
+    citation: "J. Zhao and A. Bereyhi, LDGuid: A Framework for Robust Change Detection via Latent Difference Guidance, arXiv:2605.15582, 2026."
 links:
-  - information-bottleneck-fyp
-  - papers/calibration-modern-neural-networks
-  - ece-temperature-scaling-baseline
+  - papers/changeformer-transformer-siamese-change-detection
+  - papers/ldguid-latent-difference-guidance
+  - deep-learning-core-learning-log
+  - deep-learning-goodfellow
 concepts:
-  - literature review
-  - experiment backlog
+  - binary change detection
+  - semantic segmentation
+  - dataset bias
+  - benchmark datasets
 ---
 
-> [!NOTE]
-> This weekly log records the starting point of my EE405 FYP1 contribution.
+## Dates
 
-## Focus
+20/04/2026 - 26/04/2026
 
-The first pass groups the literature into three clusters:
+## Planned Work
 
-| Cluster | Question | Output |
-| --- | --- | --- |
-| Retrieval | What evidence is available? | Annotated bibliography |
-| Modeling | Which assumptions matter? | Experiment backlog |
-| Evaluation | How will claims be tested? | Metrics sheet |
+| Task | Status |
+| --- | --- |
+| Review change detection techniques in remote sensing | Completed |
+| Identify gaps in existing methods | Completed |
+| Identify common datasets and image-feature issues | Completed |
+| Start parallel deep learning revision | Started |
 
-The planning heuristic is:
+## Findings
 
-$$
-P = \frac{I \times U}{E + 1}
-$$
+| Area | Observation |
+| --- | --- |
+| Model families | CNN and Transformer based models are the main starting points for recent remote sensing change detection. |
+| Datasets | DSIFN-CD, WHU-CD, SYSU-CD, and LEVIR-CD are common benchmark datasets. |
+| Open problem | Change class limitations, dataset bias, spectral noise, and domain shift can reduce model robustness. |
+| Transformer direction | ChangeFormer is a useful reference for Siamese Transformer change detection [@bandara2022changeformer]. |
+| Difference modeling | LDGuid suggests that explicitly learning semantic differences can improve robustness [@zhao2026ldguid]. |
 
-where impact $I$, uncertainty $U$, and effort $E$ are scored from 1 to 5.
+## Decisions
 
-```ts
-type ResearchTask = {
-  title: string;
-  impact: number;
-  uncertainty: number;
-  effort: number;
-};
+| Decision | Reason |
+| --- | --- |
+| Use classical image inspection before model selection. | Dataset characteristics should be understood before designing a model. |
+| Track dataset limitations from Week 1. | A model improvement is weak if it only works on biased or narrow benchmarks. |
+| Keep the first benchmark binary and controlled. | It gives a cleaner evaluation surface before exploring semantic change detection. |
 
-export function priority(task: ResearchTask) {
-  return (task.impact * task.uncertainty) / (task.effort + 1);
-}
-```
+## Next Week
 
-```mermaid
-flowchart LR
-  A[Reading] --> B[Claims]
-  B --> C[Experiments]
-  C --> D[Weekly review]
-```
+Week 2 focuses on dataset study, disaster data planning, Google Earth Engine, and possible satellite image sources.
 
-Citation example: structured research logs make project progress easier to review [@knuth1984].
+## References
+
+- W. G. C. Bandara and V. M. Patel, "A Transformer-Based Siamese Network for Change Detection," arXiv:2201.01293, 2022.
+- H. Chen and Z. Shi, "A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection," Remote Sensing, vol. 12, no. 10, 2020.
+- J. Zhao and A. Bereyhi, "LDGuid: A Framework for Robust Change Detection via Latent Difference Guidance," arXiv:2605.15582, 2026.

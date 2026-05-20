@@ -17,15 +17,23 @@ export function Mermaid({ chart }: { chart: string }) {
         mermaid.initialize({
           startOnLoad: false,
           securityLevel: "strict",
-          theme: "dark",
+          theme: "base",
           themeVariables: {
             background: "transparent",
-            primaryColor: "#0f172a",
-            primaryTextColor: "#e4e4e7",
-            primaryBorderColor: "#22d3ee",
-            lineColor: "#67e8f9",
-            secondaryColor: "#18181b",
-            tertiaryColor: "#27272a",
+            mainBkg: "#ecfeff",
+            primaryColor: "#e6fffb",
+            primaryTextColor: "#0f172a",
+            primaryBorderColor: "#0891b2",
+            lineColor: "#0891b2",
+            secondaryColor: "#ecfdf5",
+            secondaryBorderColor: "#0d9488",
+            tertiaryColor: "#fff7ed",
+            tertiaryBorderColor: "#f97316",
+            clusterBkg: "#ffffff",
+            clusterBorder: "#cbd5e1",
+            edgeLabelBackground: "#ffffff",
+            nodeBorder: "#0891b2",
+            fontSize: "16px",
             fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
           },
         });
@@ -52,7 +60,7 @@ export function Mermaid({ chart }: { chart: string }) {
 
   if (error) {
     return (
-      <pre className="my-6 overflow-x-auto rounded-md border border-amber-300/20 bg-amber-300/5 p-4 text-sm text-amber-100">
+      <pre className="my-6 overflow-x-auto rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
         {`Mermaid diagram could not be rendered: ${error}\n\n`}
         {chart}
       </pre>
@@ -60,7 +68,7 @@ export function Mermaid({ chart }: { chart: string }) {
   }
 
   return (
-    <figure className="my-8 overflow-x-auto rounded-lg border border-slate-200 bg-white p-4">
+    <figure className="my-8 overflow-x-auto rounded-lg border border-cyan-100 bg-white/55 p-4 shadow-sm">
       {svg ? (
         <div
           className="min-w-full [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-w-full"

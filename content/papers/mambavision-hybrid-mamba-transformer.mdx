@@ -1,0 +1,42 @@
+---
+title: "MambaVision: A Hybrid Mamba-Transformer Vision Backbone"
+slug: "mambavision-hybrid-mamba-transformer"
+date: "2026-05-21"
+activity_date: "2026-05-09"
+updated: "2026-05-21"
+summary: "MambaVision is a hybrid backbone that combines Mamba-style sequence modeling with Transformer-style vision design."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - mambavision
+  - vision-encoder
+  - hybrid-backbone
+authors:
+  - "Ali Hatamizadeh"
+  - "Jan Kautz"
+venue: "arXiv 2024"
+url: "https://arxiv.org/abs/2407.08083"
+bibtex_key: "mambavision2024"
+links:
+  - image-encoders-research-track
+concepts:
+  - hybrid encoder
+  - mamba
+  - transformer
+references:
+  - key: "mambavision2024"
+    citation: "A. Hatamizadeh and J. Kautz, MambaVision: A Hybrid Mamba-Transformer Vision Backbone, arXiv:2407.08083, 2024."
+---
+
+## Core Reading Note
+
+MambaVision is relevant as a possible practical encoder candidate because it does not treat Mamba and attention as mutually exclusive.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Hybrid design | Useful if pure SSM models lose local or semantic detail. |
+| Benchmark candidate | Can be compared against ResNet, Swin, and VMamba families. |
+| Edge concern | Hybrid backbones must still be profiled for latency and memory. |

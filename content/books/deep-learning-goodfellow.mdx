@@ -2,10 +2,12 @@
 title: "Deep Learning"
 slug: "deep-learning-goodfellow"
 date: "2026-05-12"
-updated: "2026-05-12"
-summary: "Reading note for optimization, representation learning, and probabilistic modeling chapters."
+activity_date: "2026-04-25"
+updated: "2026-05-21"
+summary: "Reference reading for neural network fundamentals, optimization, representation learning, and model training behavior."
 status: "published"
 category: "book-note"
+week: 1
 tags:
   - deep-learning
   - reading
@@ -18,6 +20,7 @@ references:
   - key: "goodfellow2016"
     citation: "Goodfellow, I., Bengio, Y., and Courville, A. Deep Learning. MIT Press, 2016."
     url: "https://www.deeplearningbook.org/"
+repository: "https://github.com/Oshadha345/ai-ml-core"
 authors:
   - "Ian Goodfellow"
   - "Yoshua Bengio"
@@ -32,7 +35,7 @@ equations:
 
 ## Useful Frame
 
-Optimization in deep learning is often less about finding a global minimum and more about finding a useful representation [@goodfellow2016].
+Optimization in deep learning is often less about finding a global minimum and more about finding a useful representation [@goodfellow2016]. For the FYP, this is relevant because the benchmark will compare encoders that produce different feature geometries for the same change detection task.
 
 $$
 \theta_{t+1} = \theta_t - \eta \nabla_\theta J(\theta_t)
@@ -42,6 +45,14 @@ $$
 | --- | --- |
 | 6 | Backpropagation is a dynamic programming procedure. |
 | 8 | Optimizer behavior depends on curvature and noise. |
+
+## Current Use
+
+| Area | How it supports the project |
+| --- | --- |
+| Optimization | Helps interpret training stability and benchmark fairness. |
+| Regularization | Helps reason about overfitting on small remote sensing datasets. |
+| Representation learning | Supports the encoder comparison work. |
 
 ```python
 theta = theta - learning_rate * grad(loss, theta)

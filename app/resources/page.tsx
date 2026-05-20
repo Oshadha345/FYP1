@@ -14,7 +14,7 @@ export default async function ResourcesPage() {
   return (
     <div className="mx-auto max-w-7xl">
       <header className="max-w-3xl py-8">
-        <p className="text-sm font-medium text-cyan-200">Resources</p>
+        <p className="text-sm font-semibold text-cyan-800">Resources</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-normal text-slate-950 sm:text-6xl">Project references and useful files</h1>
         <p className="mt-5 text-lg leading-8 text-slate-600">
           This section keeps datasets, tools, templates, PDFs, links, and other material used during the project.

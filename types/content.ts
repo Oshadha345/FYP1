@@ -18,6 +18,7 @@ export type FrontmatterBase = {
   slug?: string;
   description: string;
   date: string;
+  activity_date?: string;
   updated?: string;
   status: ContentStatus;
   draft: boolean;

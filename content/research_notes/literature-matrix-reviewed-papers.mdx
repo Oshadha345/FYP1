@@ -1,0 +1,43 @@
+---
+title: "Reviewed Literature Matrix"
+slug: "literature-matrix-reviewed-papers"
+date: "2026-05-21"
+activity_date: "2026-05-10"
+updated: "2026-05-21"
+summary: "Structured matrix of the papers reviewed so far for change detection, vision encoders, and state-space models."
+status: "published"
+category: "research"
+week: 3
+tags:
+  - literature-review
+  - change-detection
+  - mamba
+  - vision-encoders
+links:
+  - papers/changeformer-transformer-siamese-change-detection
+  - papers/ddpm-cd-diffusion-feature-extractor
+  - papers/vmamba-visual-state-space-model
+  - papers/mamba-fcs-spatio-frequency-feature-fusion
+concepts:
+  - literature matrix
+  - benchmark design
+---
+
+## Reviewed Groups
+
+| Group | Papers / directions | Use in FYP |
+| --- | --- | --- |
+| Change detection baselines | ChangeFormer, LDGuid, ChangeFlow, DDPM-CD, consistency regularization | Establish baseline families and failure modes. |
+| Department-related work | Precision fusion, Mamba-FCS, diffusion-based feature extraction, semi-supervised CD | Align with local research direction and advisor context. |
+| Vision encoders | ViT, Representative Attention, VMamba, Vision Mamba, MambaVision, SF-Mamba, Spatial-Mamba | Select encoder candidates for controlled benchmarking. |
+| Segmentation and open-vocabulary RS | Frequency-conditioned spatial adaptation, open-vocabulary RS segmentation | Inform boundary handling and dataset bias analysis. |
+| Sequence/state-space foundations | S4, Mamba, Mamba-3, InfoMamba, DyG-Mamba, Block-Biased Mamba | Understand why SSMs may be useful for long-range spatial context. |
+
+## Working Decisions
+
+| Decision | Reason |
+| --- | --- |
+| Start with controlled binary change detection benchmarks. | It gives a clean evaluation surface before proposing a new model. |
+| Track CNN, Transformer, and SSM/VSS encoders separately. | Their strengths and costs are different. |
+| Record dataset bias and class limitations from the beginning. | Disaster data can be sparse, imbalanced, and domain-shifted. |
+| Keep local department work visible. | It clarifies how this FYP connects to ongoing research at Peradeniya. |

@@ -49,7 +49,7 @@ export function WeekAccordion() {
                 <span className="w-12 shrink-0 font-mono text-xs font-semibold text-slate-500">{week.code}</span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-semibold text-slate-950 sm:text-base">{week.title}</span>
-                  <span className="mt-1 block text-xs text-slate-500">{week.focus} · {statusLabel(week.status)}</span>
+                  <span className="mt-1 block text-xs text-slate-500">{week.focus} - {statusLabel(week.status)}</span>
                 </span>
                 <ChevronDown
                   className={cn("size-4 shrink-0 text-slate-400 transition", open && "rotate-180 text-slate-700")}
@@ -76,10 +76,10 @@ export function WeekAccordion() {
                         </Link>
                       ) : null}
                       <Link
-                        href={`/fyp#week-${week.week}`}
+                        href={`/weekly-logs#week-${week.week}`}
                         className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700 transition hover:border-cyan-300 hover:text-cyan-700"
                       >
-                        View in FYP overview
+                        View in weekly logs
                       </Link>
                     </div>
                   </div>

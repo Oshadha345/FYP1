@@ -34,6 +34,7 @@ export const frontmatterSchema = z
     slug: z.string().min(1).optional(),
     description: z.string().min(1).optional(),
     date: dateLike,
+    activity_date: dateLike.optional(),
     updated: dateLike.optional(),
     status: z.enum(["draft", "published", "archived"]).default("published"),
     draft: z.boolean().default(false),

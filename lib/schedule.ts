@@ -28,8 +28,10 @@ export const projectWeeks: ProjectWeek[] = [
       "Reviewed the change detection problem, identified early literature clusters, and clarified the direction of my FYP1 contribution.",
     logHref: "/weekly-logs/week-001-literature-map",
     activityLinks: [
-      { label: "Week 001 reflection", href: "/weekly-logs/week-001-literature-map", type: "write-up" },
-      { label: "Calibration paper note", href: "/papers/calibration-modern-neural-networks", type: "paper" },
+      { label: "Week 01 reflection", href: "/weekly-logs/week-001-literature-map", type: "write-up" },
+      { label: "ChangeFormer paper", href: "/papers/changeformer-transformer-siamese-change-detection", type: "paper" },
+      { label: "LDGuid paper", href: "/papers/ldguid-latent-difference-guidance", type: "paper" },
+      { label: "Deep learning core log", href: "/notes/deep-learning-goodfellow", type: "note" },
     ],
   },
   {
@@ -41,8 +43,11 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Data planning",
     summary:
       "Studied available satellite-image change detection datasets and planned what type of disaster-related data would be useful for evaluation.",
+    logHref: "/weekly-logs/week-002-dataset-study",
     activityLinks: [
-      { label: "Research template pack", href: "/resources/research-template-pack", type: "resource" },
+      { label: "Week 02 reflection", href: "/weekly-logs/week-002-dataset-study", type: "write-up" },
+      { label: "Linear algebra log", href: "/notes/linear-algebra-to-the-edge", type: "note" },
+      { label: "Computer vision log", href: "/notes/computer-vision-a-to-z", type: "note" },
     ],
   },
   {
@@ -54,8 +59,12 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Benchmark plan",
     summary:
       "Defined the controlled benchmark setup, including the evaluation assumptions and comparison structure needed before model design.",
+    logHref: "/weekly-logs/week-003-controlled-benchmark-design",
     activityLinks: [
-      { label: "Uncertainty calibration notes", href: "/notes/uncertainty-calibration", type: "note" },
+      { label: "Week 03 reflection", href: "/weekly-logs/week-003-controlled-benchmark-design", type: "write-up" },
+      { label: "Literature matrix", href: "/notes/literature-matrix-reviewed-papers", type: "note" },
+      { label: "Image encoders track", href: "/notes/image-encoders-research-track", type: "note" },
+      { label: "Distance geometry log", href: "/notes/distance-geometry-ml", type: "note" },
     ],
   },
   {
@@ -67,8 +76,11 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Implementation",
     summary:
       "Preparing the implementation environment, experiment notes, and baseline structure for upcoming benchmarking work.",
+    logHref: "/weekly-logs/week-004-benchmark-implementation-setup",
     activityLinks: [
-      { label: "ECE baseline record", href: "/notes/ece-temperature-scaling-baseline", type: "experiment" },
+      { label: "Week 04 reflection", href: "/weekly-logs/week-004-benchmark-implementation-setup", type: "write-up" },
+      { label: "Liquid Siamese paper", href: "/papers/lightweight-liquid-siamese-change-detection", type: "paper" },
+      { label: "ChangeFlow paper", href: "/papers/changeflow-latent-rectified-flow", type: "paper" },
     ],
   },
   {

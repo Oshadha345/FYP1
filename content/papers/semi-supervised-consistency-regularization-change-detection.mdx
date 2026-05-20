@@ -1,0 +1,42 @@
+---
+title: "Consistency Regularization for Semi-supervised Change Detection"
+slug: "semi-supervised-consistency-regularization-change-detection"
+date: "2026-05-21"
+activity_date: "2026-05-04"
+updated: "2026-05-21"
+summary: "This paper uses consistency regularization on feature differences to reduce dependence on dense change-mask labels."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - change-detection
+  - semi-supervised-learning
+  - consistency-regularization
+authors:
+  - "Wele Gedara Chaminda Bandara"
+  - "Vishal M. Patel"
+venue: "Remote sensing change detection paper"
+url: "https://github.com/wgcban/SemiCD"
+bibtex_key: "bandara2022semicd"
+links:
+  - literature-matrix-reviewed-papers
+concepts:
+  - semi-supervised learning
+  - feature difference map
+  - label efficiency
+references:
+  - key: "bandara2022semicd"
+    citation: "W. G. C. Bandara and V. M. Patel, Revisiting Consistency Regularization for Semi-supervised Change Detection in Remote Sensing Images."
+---
+
+## Core Reading Note
+
+The paper constrains predicted change probability maps to remain consistent under small perturbations applied to latent feature differences.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Limited labels | Disaster data annotation will likely be expensive. |
+| Feature difference map | Connects directly to Siamese encoder design. |
+| Practical value | Gives a possible future route if annotated samples are limited. |

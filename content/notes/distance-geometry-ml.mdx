@@ -1,0 +1,56 @@
+---
+title: "Geometry of Distance for Machine Learning"
+slug: "distance-geometry-ml"
+date: "2026-05-21"
+activity_date: "2026-05-08"
+updated: "2026-05-21"
+summary: "Learning record on distance measures, norms, similarity, divergence, and their relevance to segmentation and change detection."
+status: "published"
+category: "mathematics"
+week: 3
+tags:
+  - distance
+  - metrics
+  - segmentation
+  - learning
+repository: "https://github.com/Oshadha345/distance-geometry-ml"
+links:
+  - papers/changeformer-transformer-siamese-change-detection
+  - papers/precision-spatio-temporal-feature-fusion
+concepts:
+  - distance geometry
+  - IoU
+  - Dice score
+  - Hausdorff distance
+  - Wasserstein distance
+---
+
+## Learning Goal
+
+This learning project studies one basic question:
+
+> When a machine learning algorithm says two samples are close, what does that mean?
+
+For the FYP, the most relevant part is not only Euclidean distance. Change detection evaluation also depends on overlap measures, boundary mismatch, and distribution shift.
+
+## Completed Work
+
+| Area | Status | Relevance to FYP |
+| --- | --- | --- |
+| Norm-based distances | Completed | Builds intuition for feature-space geometry. |
+| Euclidean, Manhattan, Chebyshev, Minkowski | Completed | Helps compare how feature spaces behave under different assumptions. |
+| Standardized Euclidean and weighted Minkowski | Completed | Useful when satellite image features have different scales or importance. |
+
+## FYP Connection
+
+| Distance family | FYP use |
+| --- | --- |
+| Jaccard / IoU | Main overlap measure for binary change masks. |
+| Dice | Useful when changed pixels are sparse. |
+| Hausdorff | Boundary-sensitive evaluation for region edges. |
+| Wasserstein | Possible future tool for distribution shift and generative mask outputs. |
+| Mahalanobis | Useful when feature channels are correlated. |
+
+## Repository
+
+Source: [distance-geometry-ml](https://github.com/Oshadha345/distance-geometry-ml)

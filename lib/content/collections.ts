@@ -157,6 +157,10 @@ function sortContent(a: ContentItem, b: ContentItem) {
   return new Date(b.meta.date).getTime() - new Date(a.meta.date).getTime();
 }
 
+export function getEffectiveActivityDate(item: ContentItem) {
+  return item.meta.activity_date ?? item.meta.date;
+}
+
 export const getCollections = cache(async () => {
   if (!(await exists(CONTENT_ROOT))) {
     return DEFAULT_COLLECTIONS;
@@ -394,7 +398,7 @@ export async function getWeeklyBuckets() {
   const buckets = new Map<string, ContentItem[]>();
 
   for (const item of items) {
-    const date = new Date(item.meta.date);
+    const date = new Date(getEffectiveActivityDate(item));
     const day = date.getUTCDay();
     const start = new Date(date);
     start.setUTCDate(date.getUTCDate() - ((day + 6) % 7));
@@ -408,7 +412,10 @@ export async function getWeeklyBuckets() {
       const start = new Date(key);
       const end = new Date(start);
       end.setUTCDate(start.getUTCDate() + 6);
-      const reflection = logs.find((log) => log.meta.date.slice(0, 10) >= key && log.meta.date.slice(0, 10) <= end.toISOString().slice(0, 10));
+      const reflection = logs.find((log) => {
+        const logDate = getEffectiveActivityDate(log).slice(0, 10);
+        return logDate >= key && logDate <= end.toISOString().slice(0, 10);
+      });
 
       return {
         key,

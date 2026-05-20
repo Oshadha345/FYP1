@@ -42,7 +42,7 @@ export function WeekGrid({ compact = false }: { compact?: boolean }) {
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
       {projectWeeks.map((week, index) => {
         const Icon = icons[index] ?? Satellite;
-        const href = week.logHref ?? `/fyp#week-${week.week}`;
+        const href = week.logHref ?? `/weekly-logs#week-${week.week}`;
         return <WeekTile key={week.code} week={week} href={href} icon={Icon} compact={compact} />;
       })}
     </div>

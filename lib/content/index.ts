@@ -6,6 +6,7 @@ export {
   getCollection,
   getCollections,
   getContentBySlug,
+  getEffectiveActivityDate,
   getKnowledgeItems,
   getRelatedContent,
   getRouteCollection,

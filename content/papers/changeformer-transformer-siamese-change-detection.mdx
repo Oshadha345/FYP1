@@ -1,0 +1,51 @@
+---
+title: "ChangeFormer: A Transformer-Based Siamese Network for Change Detection"
+slug: "changeformer-transformer-siamese-change-detection"
+date: "2026-05-21"
+activity_date: "2026-04-22"
+updated: "2026-05-21"
+summary: "ChangeFormer uses a Siamese Transformer encoder and lightweight decoder to improve context modeling for remote sensing change detection."
+status: "published"
+category: "paper-note"
+week: 1
+tags:
+  - change-detection
+  - transformer
+  - siamese-network
+authors:
+  - "Wele Gedara Chaminda Bandara"
+  - "Vishal M. Patel"
+venue: "arXiv 2022"
+url: "https://arxiv.org/abs/2201.01293"
+bibtex_key: "bandara2022changeformer"
+links:
+  - literature-matrix-reviewed-papers
+  - image-encoders-research-track
+concepts:
+  - Siamese encoder
+  - Transformer
+  - remote sensing change detection
+datasets:
+  - LEVIR-CD
+  - DSIFN-CD
+  - WHU-CD
+highlights:
+  - "Transformer context modeling is useful for bitemporal remote sensing because changes can depend on distant spatial context."
+todos:
+  - "Use as one reference baseline when selecting Transformer-based change detection models."
+references:
+  - key: "bandara2022changeformer"
+    citation: "W. G. C. Bandara and V. M. Patel, A Transformer-Based Siamese Network for Change Detection, arXiv:2201.01293, 2022."
+---
+
+## Core Reading Note
+
+ChangeFormer is a key early paper for understanding why Transformer-based encoders became important in remote sensing change detection. The central idea is to use Siamese feature extraction with stronger global context modeling than a purely convolutional design.
+
+## FYP Relevance
+
+| Question | Note |
+| --- | --- |
+| Why not only CNNs? | CNNs are efficient but can miss long-range context. |
+| Why compare encoders? | Encoder choice changes the type of spatial and temporal evidence the model can use. |
+| What benchmark role? | Useful as a Transformer-family reference point for binary change detection. |

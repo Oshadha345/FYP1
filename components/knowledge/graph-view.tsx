@@ -34,7 +34,7 @@ export function GraphView({
           <h2 className="text-sm font-semibold text-slate-950">Related records</h2>
           <p className="mt-1 text-xs text-slate-500">{nodes.length} records, {edges.length} links</p>
         </div>
-        <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-xs text-cyan-100">
+        <span className="rounded-full border border-cyan-200 bg-cyan-50 px-2.5 py-1 text-xs font-medium text-cyan-800">
           linked index
         </span>
       </div>
@@ -51,9 +51,9 @@ export function GraphView({
                 onMouseEnter={() => setActive(node.id)}
                 className={cn(
                   "max-w-44 rounded-full border px-3 py-2 text-xs transition",
-                  "hover:-translate-y-0.5 hover:border-cyan-300/45 hover:bg-cyan-300/10 hover:text-cyan-100",
+                  "hover:-translate-y-0.5 hover:border-cyan-300 hover:bg-cyan-50 hover:text-cyan-900",
                   isActive
-                    ? "border-cyan-300/50 bg-cyan-300/15 text-cyan-50 shadow-glow"
+                    ? "border-cyan-300 bg-cyan-50 text-cyan-900 shadow-sm"
                     : isConnected
                       ? "border-cyan-200 bg-white text-slate-900"
                       : "border-slate-200 bg-white/80 text-slate-600",

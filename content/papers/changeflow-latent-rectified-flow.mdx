@@ -1,0 +1,44 @@
+---
+title: "ChangeFlow: Latent Rectified Flow for Remote Sensing Change Detection"
+slug: "changeflow-latent-rectified-flow"
+date: "2026-05-21"
+activity_date: "2026-05-07"
+updated: "2026-05-21"
+summary: "ChangeFlow formulates change detection as latent-space mask generation and uses sampling agreement as an uncertainty signal."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - change-detection
+  - generative-models
+  - uncertainty
+authors:
+  - "Blaz Rolih"
+  - "Matic Fucka"
+  - "Filip Wolf"
+  - "Luka Cehovin Zajc"
+venue: "arXiv 2026"
+url: "https://arxiv.org/abs/2605.15375"
+bibtex_key: "rolih2026changeflow"
+links:
+  - literature-matrix-reviewed-papers
+concepts:
+  - rectified flow
+  - mask generation
+  - uncertainty estimation
+references:
+  - key: "rolih2026changeflow"
+    citation: "B. Rolih, M. Fucka, F. Wolf, and L. Cehovin Zajc, ChangeFlow: Latent Rectified Flow for Change Detection in Remote Sensing, arXiv:2605.15375, 2026."
+---
+
+## Core Reading Note
+
+ChangeFlow treats a change mask as a coherent generated object rather than only a collection of independent pixel decisions. Multiple sampled masks can be aggregated, and agreement between samples can indicate ambiguity.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Region-level mask view | Useful because change masks often represent object or region conventions. |
+| Sampling agreement | Offers a possible way to report uncertainty in ambiguous regions. |
+| Benchmark caution | Generative models must be compared carefully against strong discriminative baselines. |

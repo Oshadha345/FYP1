@@ -1,0 +1,76 @@
+---
+title: "Week 03: Controlled Benchmark Design"
+slug: "week-003-controlled-benchmark-design"
+date: "2026-05-10"
+activity_date: "2026-05-04"
+updated: "2026-05-21"
+summary: "Designed the controlled benchmark direction by reviewing CNN, Transformer, diffusion, and state-space model families."
+status: "published"
+category: "weekly-log"
+week: 3
+tags:
+  - fyp
+  - benchmark-design
+  - vision-encoders
+  - literature-review
+links:
+  - literature-matrix-reviewed-papers
+  - image-encoders-research-track
+  - distance-geometry-ml
+  - papers/ddpm-cd-diffusion-feature-extractor
+  - papers/precision-spatio-temporal-feature-fusion
+  - papers/vmamba-visual-state-space-model
+  - papers/representative-attention-vision-transformers
+concepts:
+  - controlled benchmark
+  - CNN
+  - Transformer
+  - Mamba
+  - SSM
+  - metric learning
+---
+
+## Dates
+
+04/05/2026 - 10/05/2026
+
+## Planned Work
+
+| Task | Status |
+| --- | --- |
+| Review vision encoders and their performance characteristics | Completed |
+| Study novel architectures for segmentation and change detection | Completed |
+| Define a controlled benchmark direction | Completed |
+| Continue distance geometry learning | Completed for norm-based distances |
+
+## Findings
+
+| Model family | Observation |
+| --- | --- |
+| CNNs | Lightweight and efficient for training, but limited in global context. |
+| Transformers | Stronger context modeling, but attention cost can be high. |
+| Hybrid models | Can combine CNN locality with Transformer or SSM context. |
+| State-space models | Mamba-style encoders are promising for efficient long-range modeling. |
+| Diffusion feature extraction | DDPM-CD shows that pretrained generative models can support change detection features. |
+
+## Decisions
+
+| Decision | Reason |
+| --- | --- |
+| Compare model families under a controlled protocol. | Architecture conclusions are weak if training, crop size, and dataset settings differ. |
+| Separate encoder study from decoder design first. | This makes it easier to identify whether performance changes come from representation quality. |
+| Include overlap and boundary metrics in the evaluation plan. | F1 and IoU do not fully explain boundary quality. |
+
+## Reviewed Papers
+
+| Paper | Use |
+| --- | --- |
+| [DDPM-CD](/papers/ddpm-cd-diffusion-feature-extractor) | Pretrained feature extraction direction. |
+| [Precision Spatio-Temporal Feature Fusion](/papers/precision-spatio-temporal-feature-fusion) | Local department direction on Mamba-based change detection. |
+| [Mamba-FCS](/papers/mamba-fcs-spatio-frequency-feature-fusion) | Semantic change detection and frequency features. |
+| [VMamba](/papers/vmamba-visual-state-space-model) | Vision SSM candidate. |
+| [Representative Attention](/papers/representative-attention-vision-transformers) | Efficient attention baseline idea. |
+
+## Next Week
+
+Week 4 focuses on selecting appropriate models, datasets, implementation tools, and evaluation metrics for the benchmark setup.

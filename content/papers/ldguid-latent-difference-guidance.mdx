@@ -1,0 +1,47 @@
+---
+title: "LDGuid: Robust Change Detection via Latent Difference Guidance"
+slug: "ldguid-latent-difference-guidance"
+date: "2026-05-21"
+activity_date: "2026-04-23"
+updated: "2026-05-21"
+summary: "LDGuid explicitly learns task-relevant latent differences and injects them into change detection models."
+status: "published"
+category: "paper-note"
+week: 1
+tags:
+  - change-detection
+  - latent-difference
+  - robustness
+authors:
+  - "Jiaxuan Zhao"
+  - "Ali Bereyhi"
+venue: "arXiv 2026"
+url: "https://arxiv.org/abs/2605.15582"
+bibtex_key: "zhao2026ldguid"
+links:
+  - literature-matrix-reviewed-papers
+concepts:
+  - latent difference
+  - information bottleneck
+  - semantic difference
+datasets:
+  - LEVIR-CD
+  - WHU-CD
+  - SVCD
+  - CaBuAr
+references:
+  - key: "zhao2026ldguid"
+    citation: "J. Zhao and A. Bereyhi, LDGuid: A Framework for Robust Change Detection via Latent Difference Guidance, arXiv:2605.15582, 2026."
+---
+
+## Core Reading Note
+
+LDGuid argues that a model should not be forced to discover semantic difference implicitly. It pretrains a difference embedding module and uses that latent difference as guidance for the main change detection model.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Explicit difference modeling | Supports the idea of separating change evidence from background variation. |
+| Bottleneck training | Connects to representation compression and task-relevant feature extraction. |
+| Robustness | Relevant for disaster data where spectral noise and domain shift are expected. |

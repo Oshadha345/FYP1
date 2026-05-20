@@ -14,15 +14,14 @@ A Next.js 15 portfolio for documenting Oshadha Samarakoon's contribution toward 
 
 The site is intentionally small at the top level:
 
-- `/` graph overview and latest research activity
-- `/weekly-logs` auto-aggregated weekly research timeline
+- `/` simple project introduction and 14-week timeline
+- `/weekly-logs` interactive weekly reflection and activity timeline
 - `/notes` unified notes database for research, math, deep learning, course, programming, systems, book, and experiment notes
 - `/papers` paper archive with PDF, highlights, annotations, concepts, datasets, and implementation ideas
 - `/blog` polished essays
 - `/resources` datasets, tools, templates, and references
-- `/fyp` live research roadmap synthesized from the graph
 
-Content lives in `content/**` as MDX. Use frontmatter fields such as `links`, `related`, `notes`, `papers`, and `experiments` to create backlinks and graph edges.
+Content lives in `content/**` as MDX. Use frontmatter fields such as `links`, `related`, `notes`, `papers`, and `experiments` to create backlinks and graph edges. Use `week` to assign an entry to a project week, and `activity_date` when the work was done earlier than the publish date.
 
 ## Local Development
 

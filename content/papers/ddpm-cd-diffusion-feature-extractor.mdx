@@ -1,0 +1,48 @@
+---
+title: "DDPM-CD: Diffusion Models as Feature Extractors for Remote Sensing Change Detection"
+slug: "ddpm-cd-diffusion-feature-extractor"
+date: "2026-05-21"
+activity_date: "2026-05-06"
+updated: "2026-05-21"
+summary: "DDPM-CD uses a pretrained diffusion model as a feature extractor for downstream change detection."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - change-detection
+  - diffusion
+  - self-supervised-learning
+authors:
+  - "Wele Gedara Chaminda Bandara"
+  - "Nithin Gopalakrishnan Nair"
+  - "Vishal M. Patel"
+venue: "WACV"
+url: "https://github.com/wgcban/ddpm-cd"
+bibtex_key: "bandara2024ddpmcd"
+links:
+  - literature-matrix-reviewed-papers
+concepts:
+  - diffusion model
+  - feature extraction
+  - unlabeled remote sensing data
+datasets:
+  - LEVIR-CD
+  - WHU-CD
+  - DSIFN-CD
+  - CDD
+references:
+  - key: "bandara2024ddpmcd"
+    citation: "W. G. C. Bandara, N. G. Nair, and V. M. Patel, DDPM-CD: Denoising Diffusion Probabilistic Models as Feature Extractors for Remote Sensing Change Detection, WACV."
+---
+
+## Core Reading Note
+
+The useful idea is not image synthesis itself. The paper uses a diffusion model pretrained on remote sensing imagery as a feature extractor, then trains a lightweight change classifier on top of those features.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Unlabeled imagery | Important because labeled disaster change masks are expensive. |
+| Feature reuse | Suggests that representation quality can matter as much as decoder design. |
+| Benchmark role | Useful comparison point for pretrained feature extraction. |

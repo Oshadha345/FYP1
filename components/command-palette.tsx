@@ -105,7 +105,7 @@ export function CommandPalette() {
                   }
                 }}
                 className="h-10 flex-1 bg-transparent text-sm text-slate-950 outline-none placeholder:text-slate-400"
-                placeholder="Jump to notes, papers, weekly logs, resources, or FYP"
+                placeholder="Jump to notes, papers, weekly logs, or resources"
               />
               <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close command palette">
                 <X className="size-4" aria-hidden="true" />

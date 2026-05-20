@@ -1,0 +1,72 @@
+---
+title: "Week 04: Benchmark Implementation Setup"
+slug: "week-004-benchmark-implementation-setup"
+date: "2026-05-21"
+activity_date: "2026-05-19"
+updated: "2026-05-21"
+summary: "Current implementation phase for selecting benchmark models, datasets, metrics, and experiment tracking structure."
+status: "published"
+category: "weekly-log"
+week: 4
+tags:
+  - fyp
+  - implementation
+  - benchmark
+  - experiment-tracking
+links:
+  - image-encoders-research-track
+  - papers/lightweight-liquid-siamese-change-detection
+  - papers/changeflow-latent-rectified-flow
+concepts:
+  - benchmark setup
+  - evaluation metrics
+  - experiment protocol
+---
+
+## Planned Work
+
+| Task | Status |
+| --- | --- |
+| Select appropriate models for benchmark implementation | In progress |
+| Select datasets for the first controlled benchmark | In progress |
+| Set up benchmark environment and experiment tracking | In progress |
+| Define evaluation metrics and protocol | In progress |
+
+## Work Log
+
+| Date | Activity | Outcome |
+| --- | --- | --- |
+| 19/05/2026 | Shortlisted model and dataset candidates for benchmark implementation. | Initial benchmark candidates recorded for review. |
+| 20/05/2026 | Reviewed lightweight Siamese and generative change detection directions. | Added implementation notes for lightweight and uncertainty-aware baselines. |
+| 21/05/2026 | Organized reviewed papers and linked them to weekly activity records. | Website now tracks papers, notes, and learning activities by week. |
+
+## Current Benchmark Candidates
+
+| Family | Candidate examples | Reason |
+| --- | --- | --- |
+| CNN | ResNet / ConvNeXt style encoder baselines | Efficient, simple, strong local features. |
+| Transformer | ChangeFormer / Swin-style encoders | Strong global context and established CD usage. |
+| SSM/VSS | VMamba, Vision Mamba, MambaVision | Linear-complexity context modeling direction. |
+| Lightweight Siamese | Liquid Siamese style designs | Useful for edge-oriented remote sensing systems. |
+
+## Metrics Under Consideration
+
+| Metric | Purpose |
+| --- | --- |
+| F1 score | Main class-imbalance-aware change detection score. |
+| IoU | Mask overlap quality. |
+| Precision and recall | Separates false alarms from missed changes. |
+| Boundary-sensitive metric | Needed for region-boundary refinement phase. |
+| FLOPs, parameters, latency, memory | Needed for fair encoder efficiency comparison. |
+
+## Immediate Decisions
+
+| Decision | Reason |
+| --- | --- |
+| Keep Week 4 focused on setup, not final results. | Results should only be reported after the protocol is fixed. |
+| Track every activity as a linked note or paper. | This keeps the evidence trail clear for supervisors and examiners. |
+| Use `activity_date` for late entries. | Some records are added after the actual work date. |
+
+## Next Week
+
+Week 5 will focus on state-space model benchmarking after the first implementation protocol is stable.

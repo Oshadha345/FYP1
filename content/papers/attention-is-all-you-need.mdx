@@ -1,0 +1,49 @@
+---
+title: "Attention Is All You Need"
+slug: "attention-is-all-you-need"
+date: "2026-05-21"
+activity_date: "2026-05-06"
+updated: "2026-05-21"
+summary: "Foundation paper for the Transformer architecture and attention-based global context modeling."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - transformer
+  - attention
+  - foundations
+authors:
+  - "Ashish Vaswani"
+  - "Noam Shazeer"
+  - "Niki Parmar"
+  - "Jakob Uszkoreit"
+  - "Llion Jones"
+  - "Aidan N. Gomez"
+  - "Lukasz Kaiser"
+  - "Illia Polosukhin"
+venue: "NeurIPS 2017"
+url: "https://arxiv.org/abs/1706.03762"
+bibtex_key: "vaswani2017attention"
+links:
+  - representative-attention-vision-transformers
+  - changeformer-transformer-siamese-change-detection
+concepts:
+  - self-attention
+  - positional encoding
+  - encoder-decoder
+references:
+  - key: "vaswani2017attention"
+    citation: "A. Vaswani et al., Attention Is All You Need, NeurIPS, 2017."
+---
+
+## Core Reading Note
+
+This is a foundation reference for attention-based models. For the FYP, the important concept is not the original machine translation setting, but the ability of attention to model relationships across positions.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Global context | Explains why Transformers became attractive for image encoders. |
+| Cost | Full attention has quadratic token interaction cost. |
+| Baseline understanding | Needed before evaluating efficient attention and SSM alternatives. |

@@ -20,7 +20,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-[#f8fbf9] text-slate-950">
       <ReadingProgress />
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(187,247,208,0.28),transparent_24%),radial-gradient(circle_at_82%_0%,rgba(186,230,253,0.30),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,251,249,0.96)_30%,rgba(255,255,255,0.98))]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(187,247,208,0.30),transparent_24%),radial-gradient(circle_at_82%_0%,rgba(186,230,253,0.32),transparent_22%),radial-gradient(circle_at_76%_18%,rgba(253,186,116,0.14),transparent_18%),linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,251,249,0.96)_30%,rgba(255,255,255,0.98))]" />
 
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/72 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-[118rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
@@ -42,7 +42,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   href={item.href}
                   className={cn(
                     "min-w-28 border border-slate-950 px-4 py-2 text-center text-xs font-medium uppercase tracking-[0.14em] transition first:rounded-l-md last:rounded-r-md",
-                    active ? "bg-slate-950 text-white" : "bg-white/35 text-slate-800 hover:bg-slate-100",
+                    active ? "bg-slate-950 text-white" : "bg-white/35 text-slate-800 hover:bg-cyan-50",
                   )}
                 >
                   {item.title}
@@ -95,8 +95,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
       <footer className="relative border-t border-slate-200 bg-white/70 px-4 py-8 text-sm text-slate-500 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-[118rem] flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>{siteConfig.name}</p>
-          <p>University of Peradeniya - EEE</p>
+          <p>{siteConfig.name} - {siteConfig.author} ({siteConfig.registrationNumber})</p>
+          <p>{siteConfig.email}</p>
         </div>
       </footer>
     </div>

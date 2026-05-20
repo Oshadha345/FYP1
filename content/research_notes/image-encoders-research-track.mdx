@@ -1,0 +1,52 @@
+---
+title: "Image Encoders Research Track"
+slug: "image-encoders-research-track"
+date: "2026-05-21"
+activity_date: "2026-05-09"
+updated: "2026-05-21"
+summary: "Research track for studying CNN, Transformer, and SSM/VSS image encoders before selecting benchmark models."
+status: "published"
+category: "research"
+week: 3
+tags:
+  - image-encoders
+  - cnn
+  - transformers
+  - mamba
+repository: "https://github.com/Oshadha345/Image-Encoders"
+links:
+  - papers/representative-attention-vision-transformers
+  - papers/vmamba-visual-state-space-model
+  - papers/vision-mamba-remote-sensing-survey
+concepts:
+  - ResNet
+  - ConvNeXt
+  - ViT
+  - Swin
+  - MambaVision
+  - VMamba
+---
+
+## Research Goal
+
+The purpose of this workspace is to understand how different image encoders behave before using them in change detection benchmarks.
+
+## Tracks
+
+| Track | Models | Reason for inclusion |
+| --- | --- | --- |
+| CNN | ResNet, ConvNeXt | Efficient local feature extraction and strong baselines. |
+| Transformer | ViT, DeiT, Swin | Global context and attention-based reasoning. |
+| SSM/VSS | MambaVision, VMamba, Spatial-Mamba | Linear-complexity global modeling and possible edge efficiency. |
+
+## First Milestone
+
+| Item | Target |
+| --- | --- |
+| Models | ResNet18 and ResNet50 |
+| Dataset | ImageNet-100 |
+| Crop sweep | 160, 192, 224, 256, 320 |
+| Metrics | Top-1, Top-5, FLOPs, parameters, latency, memory |
+| Output | One comparison table and one analysis report |
+
+Repository: [Image-Encoders](https://github.com/Oshadha345/Image-Encoders)

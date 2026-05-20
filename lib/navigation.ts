@@ -6,7 +6,6 @@ import {
   NotebookText,
   ScrollText,
   Search,
-  Target,
   type LucideIcon,
 } from "lucide-react";
 
@@ -60,13 +59,6 @@ export const navigation: NavItem[] = [
     description: "Datasets, tools, references, templates, and useful links.",
     icon: Library,
     keywords: ["datasets", "tools", "templates"],
-  },
-  {
-    title: "FYP",
-    href: "/fyp",
-    description: "Project roadmap, milestones, literature progress, and experiment status.",
-    icon: Target,
-    keywords: ["final year project", "roadmap", "milestones"],
   },
 ];
 
