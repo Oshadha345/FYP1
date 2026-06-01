@@ -1,0 +1,56 @@
+---
+title: "GLMamba: A Global-Local Mamba Network for Efficient Remote Sensing Change Detection"
+slug: "glmamba-global-local-mamba-change-detection"
+date: "2026-05-31"
+activity_date: "2026-05-27"
+updated: "2026-06-01"
+summary: "Paper note on GLMamba, a remote sensing change detection model that studies global-local state-space modeling and efficient bitemporal fusion."
+status: "published"
+category: "paper-note"
+week: 5
+tags:
+  - change-detection
+  - mamba
+  - state-space-models
+authors:
+  - "Shengyan Liu"
+  - "Chengye Zhu"
+  - "Haoyu Yin"
+  - "Kaibo Qin"
+  - "Haifeng Lin"
+  - "Junqing Huang"
+  - "Min Xia"
+  - "Liguo Weng"
+venue: "IEEE JSTARS 2026"
+doi: "10.1109/JSTARS.2026.3675679"
+bibtex_key: "liu2026glmamba"
+links:
+  - week-05-paper-bibtex-index
+concepts:
+  - global-local modeling
+  - bitemporal fusion
+  - efficient change detection
+datasets:
+  - LEVIR-CD
+  - GZ-CD
+  - SYSU-CD
+references:
+  - key: "liu2026glmamba"
+    citation: "S. Liu et al., GLMamba: A Global-Local Mamba Network for Efficient Remote Sensing Change Detection, IEEE JSTARS, 2026."
+---
+
+## Reading Note
+
+GLMamba is relevant to Week 05 because it studies efficient global-local feature modeling for bitemporal remote sensing change detection. I am treating it as a literature reference for comparing state-space style encoders, not as a disclosure of our own design.
+
+## Useful Questions
+
+| Question | Why it matters |
+| --- | --- |
+| How are global and local cues balanced? | Change detection needs both large-scene context and small boundary details. |
+| How is bitemporal information fused? | Fusion design affects false positives and missed changes. |
+| What is the efficiency tradeoff? | FYP work needs to compare accuracy with deployability. |
+
+## Public Takeaway
+
+State-space models are being actively explored in remote sensing change detection because they provide long-range modeling without the same cost profile as full self-attention.

@@ -1,0 +1,46 @@
+---
+title: "Subtle-Aware Mixed-Precision Quantization for Efficient Change Detection"
+slug: "subtle-aware-mixed-precision-quantization-change-detection"
+date: "2026-05-31"
+activity_date: "2026-05-30"
+updated: "2026-06-01"
+summary: "Paper note on preserving small and subtle changes when compressing change detection models with mixed-precision quantization."
+status: "published"
+category: "paper-note"
+week: 5
+tags:
+  - quantization
+  - efficient-inference
+  - change-detection
+authors:
+  - "Tushar Shinde"
+venue: "CVPR Workshop 2026"
+bibtex_key: "shinde2026subtleaware"
+links:
+  - week-05-paper-bibtex-index
+  - papers/channel-wise-vector-quantization
+concepts:
+  - mixed-precision quantization
+  - subtle change preservation
+  - model compression
+datasets:
+  - LEVIR-CD
+  - WHU-CD
+references:
+  - key: "shinde2026subtleaware"
+    citation: "T. Shinde, Subtle-Aware Mixed-Precision Quantization for Efficient Change Detection, CVPR Workshop, 2026."
+---
+
+## Reading Note
+
+This paper is relevant because efficient models can lose the small visual cues that matter in change detection. The key lesson is that compression should not be judged only by overall accuracy; it should also be checked against small-change and boundary-sensitive behavior.
+
+## FYP-Level Use
+
+| Point | Public note |
+| --- | --- |
+| Mixed precision | Different layers may need different bit widths. |
+| Subtle changes | Small changed regions can be damaged by aggressive compression. |
+| Evaluation | Efficiency should be measured together with IoU, F1, and boundary metrics. |
+
+This note is public literature context only.

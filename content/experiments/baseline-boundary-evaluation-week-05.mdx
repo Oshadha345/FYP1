@@ -1,0 +1,82 @@
+---
+title: "Week 05 Baseline and Boundary Evaluation"
+slug: "baseline-boundary-evaluation-week-05"
+date: "2026-05-31"
+activity_date: "2026-05-25"
+updated: "2026-06-01"
+summary: "Experiment record for the first baseline training checks and evaluation scripts for DSIFN-CD and WHU-CD."
+status: "published"
+category: "experiment"
+week: 5
+tags:
+  - baseline
+  - evaluation
+  - boundary-metrics
+  - DSIFN-CD
+  - WHU-CD
+links:
+  - papers/channel-wise-vector-quantization
+  - week-05-private-research-diary-index
+concepts:
+  - Precision
+  - Recall
+  - F1
+  - IoU
+  - Boundary F1
+  - Boundary IoU
+datasets:
+  - DSIFN-CD
+  - WHU-CD
+references:
+  - key: "shi2022dsifn"
+    citation: "Q. Shi et al., Deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images, Information Fusion, vol. 83-84, pp. 43-58, 2022."
+  - key: "ji2019whu"
+    citation: "S. Ji, S. Wei, and M. Lu, Fully convolutional networks for multisource building extraction from an open aerial and satellite imagery data set, IEEE Transactions on Geoscience and Remote Sensing, vol. 57, no. 1, pp. 574-586, 2019."
+---
+
+## Purpose
+
+This record captures the first baseline evaluation work for the project. The goal was not to claim a final model improvement, but to make sure the training and evaluation pipeline can produce stable and comparable benchmark evidence.
+
+## Completed Work
+
+| Item | Status | Notes |
+| --- | --- | --- |
+| DSIFN-CD training check | Completed | Used to verify multi-epoch training-script stability. |
+| WHU-CD training check | Completed | Used as the main building-change reference dataset. |
+| Region metrics | Completed | Precision, Recall, F1-score, and IoU. |
+| Boundary metrics | Completed | Boundary F1 and Boundary IoU with a 3-pixel tolerance band. |
+| Baseline score logging | Completed | Internal baseline scores are available for future comparison, but are not published here. |
+
+## Metric Definitions
+
+| Metric | What it measures |
+| --- | --- |
+| Precision | How many predicted changed pixels are correct. |
+| Recall | How many true changed pixels are recovered. |
+| F1-score | Balance between precision and recall. |
+| IoU | Overlap between predicted and ground-truth change masks. |
+| Boundary F1 | Boundary precision/recall using a tolerance band around edges. |
+| Boundary IoU | Boundary overlap quality near object edges. |
+
+## Boundary Evaluation Detail
+
+The boundary metrics use a 3-pixel tolerance band. This is important because exact edge alignment can be too strict when masks are rasterized, but a tolerance that is too large would hide boundary errors.
+
+```python
+def boundary_score(pred_edges, gt_edges, tolerance_px=3):
+    pred_band = dilate(pred_edges, radius=tolerance_px)
+    gt_band = dilate(gt_edges, radius=tolerance_px)
+    precision = overlap(pred_edges, gt_band) / max(count(pred_edges), 1)
+    recall = overlap(gt_edges, pred_band) / max(count(gt_edges), 1)
+    return 2 * precision * recall / max(precision + recall, 1e-8)
+```
+
+## Next Analysis
+
+Week 6 should inspect where the baseline fails:
+
+- missed thin or small changed structures
+- over-prediction around noisy boundaries
+- false positives caused by illumination or registration mismatch
+- dataset-specific behavior between DSIFN-CD and WHU-CD

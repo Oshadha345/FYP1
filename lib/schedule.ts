@@ -72,7 +72,7 @@ export const projectWeeks: ProjectWeek[] = [
     code: "W04",
     title: "Benchmark Implementation Setup",
     shortTitle: "Implementation Setup",
-    status: "in-progress",
+    status: "completed",
     focus: "Implementation",
     summary:
       "Preparing the implementation environment, experiment notes, and baseline structure for upcoming benchmarking work.",
@@ -86,23 +86,31 @@ export const projectWeeks: ProjectWeek[] = [
   {
     week: 5,
     code: "W05",
-    title: "State-Space Model Benchmarking",
-    shortTitle: "SSM Benchmarking",
-    status: "proposed",
-    focus: "Model benchmark",
+    title: "Baseline Training and Boundary Evaluation",
+    shortTitle: "Baseline Evaluation",
+    status: "completed",
+    focus: "Evaluation scripts",
     summary:
-      "Benchmark selected state-space model ideas against controlled change detection tasks.",
-    activityLinks: [],
+      "Ran initial baseline training checks, wrote region and boundary evaluation scripts, and reviewed CVQ and JEPA theory at paper level.",
+    logHref: "/weekly-logs/week-005-baseline-evaluation-and-cvq",
+    activityLinks: [
+      { label: "Week 05 reflection", href: "/weekly-logs/week-005-baseline-evaluation-and-cvq", type: "write-up" },
+      { label: "Boundary evaluation record", href: "/notes/baseline-boundary-evaluation-week-05", type: "experiment" },
+      { label: "CVQ paper", href: "/papers/channel-wise-vector-quantization", type: "paper" },
+      { label: "JEPA loss objectives", href: "/notes/jepa-training-paradigm-loss-objectives", type: "note" },
+      { label: "Week 05 BibTeX index", href: "/resources/week-05-paper-bibtex-index", type: "resource" },
+      { label: "Angular distance measures", href: "/notes/angular-correlation-distance-measures", type: "note" },
+    ],
   },
   {
     week: 6,
     code: "W06",
     title: "Boundary and Domain-Shift Analysis",
     shortTitle: "Boundary Analysis",
-    status: "proposed",
+    status: "in-progress",
     focus: "Error analysis",
     summary:
-      "Study boundary errors and domain-shift cases that affect satellite-image change detection quality.",
+      "Analyze baseline model behavior, false positives, missed changes, boundary errors, and dataset-specific failure modes.",
     activityLinks: [],
   },
   {

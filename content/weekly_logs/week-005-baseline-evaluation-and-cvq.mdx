@@ -1,0 +1,89 @@
+---
+title: "Week 05: Baseline Training and Boundary Evaluation"
+slug: "week-005-baseline-evaluation-and-cvq"
+date: "2026-05-31"
+activity_date: "2026-05-25"
+updated: "2026-06-01"
+summary: "Completed initial baseline training checks, region and boundary metric scripts, and public theory notes on CVQ and JEPA."
+status: "published"
+category: "weekly-log"
+week: 5
+tags:
+  - fyp
+  - baseline
+  - evaluation
+  - boundary-metrics
+  - cvq
+references:
+  - key: "shi2022dsifn"
+    citation: "Q. Shi et al., Deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images, Information Fusion, vol. 83-84, pp. 43-58, 2022."
+  - key: "ji2019whu"
+    citation: "S. Ji, S. Wei, and M. Lu, Fully convolutional networks for multisource building extraction from an open aerial and satellite imagery data set, IEEE Transactions on Geoscience and Remote Sensing, vol. 57, no. 1, pp. 574-586, 2019."
+  - key: "song2026cvq"
+    citation: "W. Song et al., Channel-wise Vector Quantization, arXiv:2605.26089, 2026."
+links:
+  - baseline-boundary-evaluation-week-05
+  - week-05-private-research-diary-index
+  - jepa-training-paradigm-loss-objectives
+  - angular-correlation-distance-measures
+  - papers/channel-wise-vector-quantization
+  - resources/week-05-paper-bibtex-index
+concepts:
+  - DSIFN-CD
+  - WHU-CD
+  - Boundary F1
+  - Boundary IoU
+  - JEPA
+  - CVQ
+---
+
+## Dates
+
+25/05/2026 - 31/05/2026
+
+## Goals for the Week
+
+| Goal | Result |
+| --- | --- |
+| Execute the first baseline training runs on target datasets. | Initial runs on DSIFN-CD and WHU-CD were used to verify script stability across epochs. |
+| Write evaluation scripts and establish baseline metrics. | Region metrics and boundary-specific metrics were implemented. |
+| Study new directions from the Week 05 paper set. | CVQ, JEPA, Mamba-based change detection, quantization, and frequency-domain ideas were reviewed at paper level. |
+| Continue distance-geometry learning. | Angular and correlation-based measures were completed. |
+
+## Tasks Completed
+
+| Task | Output |
+| --- | --- |
+| Ran initial baseline evaluations on DSIFN-CD and WHU-CD. | Training script stability was checked over multiple epochs. |
+| Implemented region metric scripts. | Precision, Recall, F1-score, and IoU are now available for benchmark reporting. |
+| Implemented boundary metric scripts. | Boundary F1 and Boundary IoU were implemented with a 3-pixel tolerance band. |
+| Recorded baseline benchmark evidence. | Internal benchmark scores are available for future comparison, but are not published on this site. |
+| Studied CVQ and JEPA theory. | Public notes now cover channel-wise tokenization, joint-embedding prediction, and their loss objectives. |
+
+## Technical Challenge
+
+| Challenge | Resolution direction |
+| --- | --- |
+| Boundary metric correctness | The custom boundary scripts must extract binary edge pixels and match predicted boundaries to ground truth within the strict 3-pixel tolerance band. |
+| Confidential experiment details | Architecture sketches, ablations, checkpoint details, and numeric results are kept in the private research diary only. |
+
+## Week 05 Paper and Experiment Focus
+
+| Record | Why it mattered |
+| --- | --- |
+| [Channel-wise Vector Quantization](/papers/channel-wise-vector-quantization) | Main paper studied for channel-wise visual tokenization. |
+| [JEPA training paradigm and loss objectives](/notes/jepa-training-paradigm-loss-objectives) | Public theory note for I-JEPA, V-JEPA, and V-JEPA 2. |
+| [Private research diary index](/notes/week-05-private-research-diary-index) | Public marker for the internal diary; confidential details are not published. |
+| [Baseline boundary evaluation record](/notes/baseline-boundary-evaluation-week-05) | Tracks metric implementation and benchmark evaluation scripts. |
+| [Week 05 paper BibTeX index](/resources/week-05-paper-bibtex-index) | Collects citation records for the papers reviewed this week. |
+| [Subtle-aware mixed-precision quantization](/papers/subtle-aware-mixed-precision-quantization-change-detection) | Relevant to efficient deployment while preserving small changes. |
+
+## Next Steps
+
+Proceed to Week 6: analyze baseline model behavior and locate exact failure modes near object boundaries, including false positives, missed thin structures, and boundary displacement.
+
+## References
+
+- Q. Shi et al., "Deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images," Information Fusion, vol. 83-84, pp. 43-58, 2022.
+- S. Ji, S. Wei, and M. Lu, "Fully convolutional networks for multisource building extraction from an open aerial and satellite imagery data set," IEEE Transactions on Geoscience and Remote Sensing, vol. 57, no. 1, pp. 574-586, 2019.
+- W. Song et al., "Channel-wise Vector Quantization," arXiv:2605.26089, 2026.
