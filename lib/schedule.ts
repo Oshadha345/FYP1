@@ -111,6 +111,7 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Error analysis",
     summary:
       "Analyze baseline model behavior, false positives, missed changes, boundary errors, and dataset-specific failure modes.",
+    logHref: "/weekly-logs/week-006-boundary-and-domain-shift-analysis",
     activityLinks: [],
   },
   {
@@ -122,6 +123,7 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Annotation",
     summary:
       "Begin annotation and review of disaster-related satellite-image samples for later project evaluation.",
+    logHref: "/weekly-logs/week-007-disaster-dataset-annotation-phase-i",
     activityLinks: [],
   },
   {
@@ -133,6 +135,7 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Review",
     summary:
       "Review progress with supervisors and decide the technical direction for the second half of the project.",
+    logHref: "/weekly-logs/week-008-mid-project-review-and-method-direction",
     activityLinks: [],
   },
   {
@@ -144,6 +147,7 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Model design",
     summary:
       "Design the binary change detection model structure and identify the parts that need implementation.",
+    logHref: "/weekly-logs/week-009-binary-change-detection-model-design",
     activityLinks: [],
   },
   {
@@ -155,6 +159,7 @@ export const projectWeeks: ProjectWeek[] = [
     focus: "Refinement",
     summary:
       "Explore a refinement module for improving region boundaries in predicted change maps.",
+    logHref: "/weekly-logs/week-010-region-boundary-refinement-module",
     activityLinks: [],
   },
   {
