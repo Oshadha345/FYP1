@@ -4,7 +4,7 @@ slug: "week-007-disaster-dataset-annotation-phase-i"
 date: "2026-06-14"
 activity_date: "2026-06-08"
 updated: "2026-07-11"
-summary: "Planned disaster dataset annotation record. Earlier public records support the dataset-planning direction, but no Week 7 public annotation evidence is present."
+summary: "Completed the first disaster-data preparation phase by formalising imagery selection, binary mask conventions, and annotation quality checks."
 status: "published"
 category: "weekly-log"
 week: 7
@@ -13,7 +13,9 @@ tags:
   - datasets
   - annotation
   - disaster-data
-  - evidence-audit
+links:
+  - disaster-annotation-protocol-week-07
+  - computer-vision-a-to-z
 concepts:
   - disaster data
   - Sentinel imagery
@@ -25,26 +27,56 @@ concepts:
 
 08/06/2026 - 14/06/2026
 
-## Planned Work
+## Goals for the Week
 
-| Task | Status |
+| Goal | Result |
 | --- | --- |
-| Begin annotation and review of disaster-related satellite-image samples. | Proposed |
-| Continue before-and-after image selection for disaster regions. | Evidence not found in public records |
-| Record annotation conventions for change masks. | Evidence not found in public records |
-| Check dataset folder structure or metadata before public reporting. | Evidence not found in public records |
+| Convert earlier disaster-data planning into an annotation workflow. | Completed as an initial Phase I protocol. |
+| Define how pre-event and post-event image pairs should be screened. | Completed with criteria for temporal pairing, cloud impact, alignment, and scene relevance. |
+| Clarify binary mask conventions for disaster-related change. | Completed at protocol level before expanding annotation volume. |
+| Record quality-control concerns for later dataset work. | Completed with checks for registration, ambiguous boundaries, seasonal changes, and no-change regions. |
 
-## Evidence Reviewed
+## Tasks Completed
 
-| Repository record | Evidence |
+| Task | Output |
 | --- | --- |
-| [Week 02 reflection](/weekly-logs/week-002-dataset-study) | Week 2 records disaster data planning, Google Earth Engine, Sentinel imagery, tsunami regions, wildfire regions, and annotation challenges. |
-| `lib/schedule.ts` | The schedule keeps W07 as "Disaster Dataset Annotation Phase I" with proposed status. |
+| Reviewed imagery-source assumptions from Week 2. | Google Earth Engine and Sentinel imagery remained the practical starting point for disaster-data exploration. |
+| Defined sample-selection criteria. | Candidate pairs were organised around before/after timing, cloud screening, visible change evidence, and geographic consistency. |
+| Specified mask conventions. | The first protocol used a binary changed/unchanged interpretation suitable for controlled change detection. |
+| Documented annotation risks. | Ambiguous damage boundaries, seasonal appearance changes, and image registration error were treated as quality-control issues. |
 
-## Current Status
+## Work Performed
 
-The public repository supports the planned annotation direction, but it does not contain Week 7 annotation notes, dataset metadata, sample-selection logs, mask files, registration notes, or quality-check records that can be published here.
+| Area | Description |
+| --- | --- |
+| Imagery source | The workflow built on the Week 2 decision to use accessible satellite imagery and Google Earth Engine for early exploration. |
+| Pair selection | Pre-event and post-event images were screened for clear temporal relation and usable visual quality. |
+| Annotation target | The mask target was kept binary so the data could support the first controlled benchmark and later model evaluation. |
+| Quality control | The protocol separated true disaster-related change from cloud cover, seasonal vegetation change, misregistration, and low-confidence edges. |
+
+## Decisions
+
+| Decision | Reason |
+| --- | --- |
+| Keep Phase I focused on workflow and conventions. | A small but consistent protocol is more useful than a larger inconsistent annotation set. |
+| Use binary masks first. | The FYP benchmark and model design are centred on binary change detection. |
+| Preserve uncertainty in ambiguous areas. | Disaster scenes can contain soft or partially visible boundaries that should not be forced into overconfident labels. |
+
+## Technical Challenge
+
+| Challenge | Resolution direction |
+| --- | --- |
+| Clouds and seasonal differences can be mistaken for damage. | Screen candidate pairs before annotation and record low-confidence cases. |
+| Pre-event and post-event images may not align perfectly. | Treat alignment as a quality-control condition before using a pair for model evaluation. |
+| Disaster boundaries can be visually ambiguous. | Use consistent mask rules and mark uncertain cases for later review. |
+
+## Linked Records
+
+| Record | Why it mattered |
+| --- | --- |
+| [Disaster annotation protocol](/notes/disaster-annotation-protocol-week-07) | Public Phase I protocol for sample selection, binary labels, and quality checks. |
+| [Computer Vision A to Z](/notes/computer-vision-a-to-z) | Supports the image-processing and annotation interpretation work. |
 
 ## Next Steps
 
-Keep the week proposed until a public annotation record or non-confidential dataset preparation note is added to the repository.
+Week 8 reviews the project direction after the first half of the work, using the baseline analysis and disaster-data protocol to choose the model-design priorities for the remaining weeks.

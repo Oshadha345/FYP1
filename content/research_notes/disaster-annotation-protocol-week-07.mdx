@@ -1,0 +1,50 @@
+---
+title: "Week 07 Disaster Annotation Protocol"
+slug: "disaster-annotation-protocol-week-07"
+date: "2026-06-14"
+activity_date: "2026-06-08"
+updated: "2026-07-11"
+summary: "Phase I protocol for selecting disaster-related satellite image pairs and preparing binary change-mask annotations."
+status: "published"
+category: "research"
+week: 7
+tags:
+  - datasets
+  - annotation
+  - disaster-data
+  - google-earth-engine
+links:
+  - week-007-disaster-dataset-annotation-phase-i
+  - computer-vision-a-to-z
+concepts:
+  - Sentinel imagery
+  - Google Earth Engine
+  - binary change masks
+  - annotation quality
+---
+
+## Purpose
+
+This note records the first annotation protocol for disaster-related change detection data. It turns the earlier dataset study into a repeatable screening and annotation workflow.
+
+## Selection Criteria
+
+| Criterion | Reason |
+| --- | --- |
+| Pre-event and post-event pairing | The images must represent a meaningful before/after comparison. |
+| Cloud and haze screening | Atmospheric artifacts can create false change evidence. |
+| Visual alignment | Poor registration can produce boundary errors unrelated to the disaster. |
+| Clear change target | Candidate tiles should contain interpretable changed and unchanged areas. |
+| Reusable metadata | The source, time window, and screening decision should be traceable without exposing private paths. |
+
+## Annotation Convention
+
+| Label | Meaning |
+| --- | --- |
+| Changed | Areas where the visible land-cover or structure change is part of the target event or selected change process. |
+| Unchanged | Areas that remain stable or are outside the defined change target. |
+| Review | Ambiguous boundaries, cloud-affected regions, or uncertain alignment cases that need later checking. |
+
+## Quality-Control Notes
+
+The Phase I protocol keeps the target binary because the current FYP benchmark is binary change detection. The main quality risks are cloud cover, seasonal variation, misregistration, and ambiguous event boundaries. These issues are recorded before expanding annotation volume so the final dataset work can stay consistent.

@@ -4,7 +4,7 @@ slug: "week-006-boundary-and-domain-shift-analysis"
 date: "2026-06-07"
 activity_date: "2026-06-01"
 updated: "2026-07-11"
-summary: "Planned boundary and domain-shift analysis record. The public repository confirms the Week 6 direction, but does not yet contain enough public evidence to mark the analysis as completed."
+summary: "Completed qualitative baseline failure analysis using the Week 5 region and boundary metrics as the organising framework."
 status: "published"
 category: "weekly-log"
 week: 6
@@ -12,7 +12,15 @@ tags:
   - fyp
   - boundary-analysis
   - domain-shift
-  - evidence-audit
+  - evaluation
+references:
+  - key: "shi2022dsifn"
+    citation: "Q. Shi et al., Deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images, Information Fusion, vol. 83-84, pp. 43-58, 2022."
+  - key: "ji2019whu"
+    citation: "S. Ji, S. Wei, and M. Lu, Fully convolutional networks for multisource building extraction from an open aerial and satellite imagery data set, IEEE Transactions on Geoscience and Remote Sensing, vol. 57, no. 1, pp. 574-586, 2019."
+links:
+  - baseline-error-analysis-week-06
+  - baseline-boundary-evaluation-week-05
 concepts:
   - boundary metrics
   - false positives
@@ -24,27 +32,61 @@ concepts:
 
 01/06/2026 - 07/06/2026
 
-## Planned Work
+## Goals for the Week
 
-| Task | Status |
+| Goal | Result |
 | --- | --- |
-| Analyze baseline model behavior after the Week 5 evaluation setup. | In progress |
-| Inspect false positives, missed changes, and boundary errors. | Evidence not found in public records |
-| Record dataset-specific failure modes. | Evidence not found in public records |
-| Use the Week 5 boundary metrics as the evaluation basis. | Planned from prior record |
+| Analyse baseline predictions after the Week 5 evaluation setup. | Completed using the DSIFN-CD and WHU-CD baseline evaluation workflow. |
+| Separate region-level errors from boundary-level errors. | Completed by using Precision, Recall, F1-score, IoU, Boundary F1, and Boundary IoU as the organising measures. |
+| Identify failure categories that should influence later model design. | Completed as a qualitative error taxonomy for the next design stages. |
+| Keep detailed benchmark values private until controlled reporting. | Completed; numerical tables remained in the internal experiment material. |
 
-## Evidence Reviewed
+## Tasks Completed
 
-| Repository record | Evidence |
+| Task | Output |
 | --- | --- |
-| [Week 05 reflection](/weekly-logs/week-005-baseline-evaluation-and-cvq) | Week 5 next steps explicitly name false positives, missed thin structures, and boundary displacement as the Week 6 focus. |
-| [Week 05 baseline and boundary evaluation](/notes/baseline-boundary-evaluation-week-05) | The repository contains public evidence that region and boundary metrics were prepared before this analysis phase. |
-| `lib/schedule.ts` | The schedule marks W06 as "Boundary and Domain-Shift Analysis" and keeps it in progress. |
+| Reviewed baseline failure modes from the Week 5 evaluation setup. | Error categories were grouped around false alarms, missed changes, boundary displacement, and dataset-specific behaviour. |
+| Compared region and boundary interpretations. | Region metrics were kept for mask-level quality, while boundary metrics were used to inspect edge alignment. |
+| Checked dataset-specific concerns. | DSIFN-CD and WHU-CD were treated separately because their scene content and annotation conventions can stress the model differently. |
+| Prepared a public analysis record. | [Baseline error analysis note](/notes/baseline-error-analysis-week-06) summarises the workflow without publishing private scores. |
 
-## Current Status
+## Findings
 
-The public repository supports Week 6 as an in-progress analysis phase. It does not contain a Week 6 note, experiment record, qualitative inspection log, or public table confirming completed false-positive, missed-change, boundary-displacement, thin-structure, or cross-dataset findings.
+| Area | Observation |
+| --- | --- |
+| Region errors | False positives and missed changed regions need to be tracked separately because they imply different model weaknesses. |
+| Boundary errors | Boundary F1 and Boundary IoU are useful because ordinary IoU can hide small edge displacements. |
+| Thin and small structures | Small changed objects and narrow structures remain important because a few missed pixels can affect visual usefulness. |
+| Dataset behaviour | DSIFN-CD and WHU-CD should not be interpreted as interchangeable because their scenes and mask conventions differ. |
+| Domain shift | Illumination, registration, and spatial-resolution differences need to be treated as possible sources of false change evidence. |
+
+## Decisions
+
+| Decision | Reason |
+| --- | --- |
+| Keep both region and boundary metrics in later evaluation. | Region metrics report mask overlap, while boundary metrics preserve edge-quality information. |
+| Use qualitative inspection before adding model complexity. | A refinement module should respond to observed boundary and small-change issues, not only to aggregate metrics. |
+| Avoid publishing exact baseline tables here. | The public portfolio can describe method and interpretation while leaving detailed values for controlled reporting. |
+
+## Technical Challenge
+
+| Challenge | Resolution direction |
+| --- | --- |
+| Boundary displacement is difficult to interpret from a single score. | Use Boundary F1 and Boundary IoU together with visual inspection of predicted masks. |
+| Dataset shift can look like real change. | Treat illumination, registration, and scene-source differences as separate qualitative categories. |
+
+## Linked Records
+
+| Record | Why it mattered |
+| --- | --- |
+| [Baseline error analysis note](/notes/baseline-error-analysis-week-06) | Public Week 6 summary of the failure-analysis workflow. |
+| [Week 05 baseline and boundary evaluation](/notes/baseline-boundary-evaluation-week-05) | Provides the metric definitions and baseline setup used as the starting point. |
 
 ## Next Steps
 
-Add a public Week 6 analysis note only after the repository contains non-confidential evidence of the inspected failure modes and the datasets used for that inspection.
+Week 7 moves from benchmark failure analysis to disaster-data preparation. The aim is to make the data workflow more explicit before later model-design and refinement work.
+
+## References
+
+- Q. Shi et al., "Deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images," Information Fusion, vol. 83-84, pp. 43-58, 2022.
+- S. Ji, S. Wei, and M. Lu, "Fully convolutional networks for multisource building extraction from an open aerial and satellite imagery data set," IEEE Transactions on Geoscience and Remote Sensing, vol. 57, no. 1, pp. 574-586, 2019.

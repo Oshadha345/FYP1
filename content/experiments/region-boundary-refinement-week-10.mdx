@@ -1,0 +1,53 @@
+---
+title: "Week 10 Region-Boundary Refinement Design"
+slug: "region-boundary-refinement-week-10"
+date: "2026-07-05"
+activity_date: "2026-06-29"
+updated: "2026-07-11"
+summary: "Public design record for the region-boundary refinement stage that follows the binary change detection model design."
+status: "published"
+category: "experiment"
+week: 10
+tags:
+  - boundary-refinement
+  - decoder-design
+  - evaluation
+  - change-detection
+links:
+  - week-010-region-boundary-refinement-module
+  - baseline-error-analysis-week-06
+  - binary-change-model-design-week-09
+  - papers/precision-spatio-temporal-feature-fusion
+concepts:
+  - region refinement
+  - boundary refinement
+  - Boundary F1
+  - Boundary IoU
+---
+
+## Purpose
+
+This record captures the public design of the Week 10 refinement stage. The module is motivated by the need to improve spatial quality near changed-region boundaries without claiming a measured performance gain before controlled ablation.
+
+## Module Inputs and Outputs
+
+| Item | Role |
+| --- | --- |
+| Binary prediction | Provides the initial changed/unchanged estimate from the Week 9 model path. |
+| Decoder or multiscale features | Provide local spatial detail for refinement. |
+| Region signal | Supports coherent changed areas and suppresses isolated noise. |
+| Boundary signal | Focuses on edge alignment and thin-structure preservation. |
+| Refined output | Produces a corrected binary change map for later quantitative evaluation. |
+
+## Validation Plan
+
+| Check | Purpose |
+| --- | --- |
+| Tensor compatibility | Ensure prediction and feature maps can be combined at the intended stage. |
+| Qualitative output review | Check whether refinement behaviour is visually plausible before running ablations. |
+| Region metrics | Confirm that refinement does not damage mask-level quality. |
+| Boundary metrics | Measure whether edge-level behaviour changes during later evaluation. |
+
+## Hand-Off
+
+The next step is Week 11 decoder, refinement-head, and loss design. Quantitative contribution will be evaluated during the later controlled ablation phase rather than claimed from the design note alone.

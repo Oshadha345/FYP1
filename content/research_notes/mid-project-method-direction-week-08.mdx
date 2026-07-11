@@ -1,0 +1,50 @@
+---
+title: "Week 08 Mid-Project Method Direction"
+slug: "mid-project-method-direction-week-08"
+date: "2026-06-21"
+activity_date: "2026-06-15"
+updated: "2026-07-11"
+summary: "Mid-project review note consolidating the first-half work and selecting boundary-aware binary change detection as the second-half direction."
+status: "published"
+category: "research"
+week: 8
+tags:
+  - fyp
+  - method-direction
+  - benchmark
+  - model-design
+links:
+  - week-008-mid-project-review-and-method-direction
+  - literature-matrix-reviewed-papers
+  - image-encoders-research-track
+  - baseline-error-analysis-week-06
+concepts:
+  - binary change detection
+  - boundary-aware evaluation
+  - refinement module
+---
+
+## Review Summary
+
+The first half of the project established the problem framing, dataset assumptions, benchmark protocol, baseline evaluation workflow, and disaster-data annotation protocol. The review step connected these pieces into a second-half plan.
+
+## Direction Selected
+
+| Decision | Rationale |
+| --- | --- |
+| Keep binary change detection as the main scope. | It matches the current benchmark protocol and avoids expanding into semantic change categories too early. |
+| Prioritise boundary-aware behaviour. | Week 5 and Week 6 made boundary metrics and qualitative edge errors central to evaluation. |
+| Design the model in stages. | Encoder comparison, temporal feature comparison, refinement, loss design, and training should remain separable. |
+| Preserve disaster-data caution. | Annotation noise and domain shift can affect later claims if they are not tracked from the start. |
+
+## Deferred Alternatives
+
+| Alternative | Reason for deferral |
+| --- | --- |
+| Full semantic change detection | It would require a different annotation target and evaluation setup. |
+| Generative mask modelling | Useful literature direction, but not the first implementation priority. |
+| Large disaster dataset expansion | Annotation consistency needs to be stabilised before scale. |
+
+## Output
+
+The review produced the Week 9-14 direction: binary model design, region-boundary refinement, decoder and loss design, benchmark training, controlled evaluation, and final documentation.

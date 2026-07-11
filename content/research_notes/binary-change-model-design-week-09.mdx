@@ -1,0 +1,49 @@
+---
+title: "Week 09 Binary Change Model Design"
+slug: "binary-change-model-design-week-09"
+date: "2026-06-28"
+activity_date: "2026-06-22"
+updated: "2026-07-11"
+summary: "Public high-level design note for the binary change detection model, covering bitemporal inputs, shared encoding, feature differences, fusion, and binary decoding."
+status: "published"
+category: "research"
+week: 9
+tags:
+  - binary-change-detection
+  - model-design
+  - siamese-network
+  - feature-fusion
+links:
+  - week-009-binary-change-detection-model-design
+  - papers/changeformer-transformer-siamese-change-detection
+  - papers/glmamba-global-local-mamba-change-detection
+  - papers/semi-supervised-consistency-regularization-change-detection
+concepts:
+  - Siamese encoder
+  - temporal feature difference
+  - bitemporal fusion
+  - binary decoder
+---
+
+## Design Requirements
+
+| Requirement | Source |
+| --- | --- |
+| Process two temporal images consistently. | Bitemporal change detection literature and the benchmark setup. |
+| Represent temporal difference explicitly. | Latent-difference and feature-difference paper notes. |
+| Preserve local detail for boundaries. | Week 6 boundary analysis and boundary-metric requirements. |
+| Keep the output binary. | Current FYP scope and benchmark protocol. |
+
+## Public Architecture Overview
+
+| Module | Interface |
+| --- | --- |
+| Input pair | Pre-event image and post-event image. |
+| Shared encoder | Produces comparable multiscale features for both images. |
+| Difference representation | Builds candidate change evidence from temporal feature differences and fused features. |
+| Decoder | Combines spatial detail and context to produce a binary change map. |
+| Refinement hand-off | Passes prediction and feature information to the Week 10 region-boundary refinement stage. |
+
+## Design Notes
+
+The design follows a Siamese-style structure because the two images should be processed under the same representation assumptions. Feature comparison is kept explicit so that the decoder receives change evidence rather than two unrelated feature maps. Detailed implementation choices remain part of the private development material until they are validated through controlled experiments.

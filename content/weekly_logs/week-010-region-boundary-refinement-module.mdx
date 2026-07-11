@@ -4,7 +4,7 @@ slug: "week-010-region-boundary-refinement-module"
 date: "2026-07-05"
 activity_date: "2026-06-29"
 updated: "2026-07-11"
-summary: "Planned region-boundary refinement record. Prior records motivate boundary-aware evaluation, but no public Week 10 refinement implementation evidence is present."
+summary: "Completed the public design of a region-boundary refinement stage for improving the spatial quality of binary change maps."
 status: "published"
 category: "weekly-log"
 week: 10
@@ -12,7 +12,15 @@ tags:
   - fyp
   - boundary-refinement
   - region-refinement
-  - evidence-audit
+  - decoder-design
+references:
+  - key: "wijenayake2025precision"
+    citation: "W. M. B. S. K. Wijenayake et al., Precision Spatio-Temporal Feature Fusion for Robust Remote Sensing Change Detection, arXiv:2507.11523, 2025."
+links:
+  - region-boundary-refinement-week-10
+  - baseline-error-analysis-week-06
+  - binary-change-model-design-week-09
+  - papers/precision-spatio-temporal-feature-fusion
 concepts:
   - boundary metrics
   - decoder refinement
@@ -23,28 +31,63 @@ concepts:
 
 29/06/2026 - 05/07/2026
 
-## Planned Work
+## Goals for the Week
 
-| Task | Status |
+| Goal | Result |
 | --- | --- |
-| Explore a refinement module for improving region boundaries in predicted change maps. | Proposed |
-| Review how region and boundary metrics should guide refinement work. | Planned from prior records |
-| Record implementation details only when they are safe for the public portfolio. | Pending evidence |
-| Avoid publishing private ablations, checkpoint details, or unpublished numeric results. | Ongoing restriction |
+| Design a refinement stage motivated by Week 6 boundary analysis. | Completed as a public module-level design record. |
+| Define the inputs and outputs of the refinement stage. | Completed using the binary change prediction and decoder features from the Week 9 design. |
+| Separate region evidence from boundary evidence. | Completed by assigning distinct responsibilities to region consistency and boundary correction. |
+| Prepare the work for decoder and loss design in Week 11. | Completed by listing the remaining training and supervision decisions. |
 
-## Evidence Reviewed
+## Refinement Design
 
-| Repository record | Evidence |
+| Stage | Role |
 | --- | --- |
-| [Week 04 reflection](/weekly-logs/week-004-benchmark-implementation-setup) | Week 4 identifies a boundary-sensitive metric as needed for the later region-boundary refinement phase. |
-| [Week 05 reflection](/weekly-logs/week-005-baseline-evaluation-and-cvq) | Week 5 records implemented region and boundary metric scripts. |
-| [Precision Spatio-Temporal Feature Fusion paper note](/papers/precision-spatio-temporal-feature-fusion) | The repository contains a public note that marks decoder refinement as relevant to future region-boundary refinement. |
-| `lib/schedule.ts` | The schedule keeps W10 as "Region-Boundary Refinement Module" with proposed status. |
+| Base prediction input | The module starts from the binary change map produced by the Week 9 design path. |
+| Feature input | Decoder or multiscale features provide local detail that the coarse prediction may not preserve. |
+| Region reasoning | The region path supports coherent changed and unchanged areas. |
+| Boundary reasoning | The boundary path focuses on edge alignment, thin structures, and noisy mask borders. |
+| Output combination | The refined output is treated as a corrected binary prediction, with quantitative contribution reserved for later controlled evaluation. |
 
-## Current Status
+## Decisions
 
-The repository motivates a future refinement phase, but it does not contain public Week 10 evidence for Sobel operations, region gates, boundary gates, residual refinement, feature-pyramid refinement, boundary losses, implementation records, or measured refinement results.
+| Decision | Reason |
+| --- | --- |
+| Keep refinement separate from the base binary model. | This makes later ablation easier and keeps the Week 9 model design clear. |
+| Treat region and boundary evidence as related but not identical. | Region metrics and boundary metrics measure different failure modes. |
+| Use boundary-aware evaluation before claiming improvement. | A refinement module should be judged with both mask-level and edge-level measures. |
+| Defer final loss design to Week 11. | Auxiliary supervision and loss balancing need a separate design step. |
+
+## Technical Challenge
+
+| Challenge | Resolution direction |
+| --- | --- |
+| Refinement can over-correct noisy predictions. | Keep the refined output tied to the original binary prediction and verify behaviour qualitatively before ablation. |
+| Boundary emphasis can damage region consistency. | Evaluate region metrics and boundary metrics together rather than optimising one in isolation. |
+| Thin structures are easy to remove during decoding. | Preserve multiscale local detail for the refinement stage. |
+
+## Outputs Produced
+
+| Output | Description |
+| --- | --- |
+| Public refinement design note | [Region-boundary refinement design](/notes/region-boundary-refinement-week-10) summarises module responsibilities. |
+| Week 11 hand-off | Decoder details, refinement-head behaviour, and loss design were prepared as the next active work package. |
+| Evaluation plan update | Boundary F1 and Boundary IoU remain required alongside region metrics for later assessment. |
+
+## Linked Records
+
+| Record | Why it mattered |
+| --- | --- |
+| [Region-boundary refinement design](/notes/region-boundary-refinement-week-10) | Public Week 10 module design record. |
+| [Baseline error analysis note](/notes/baseline-error-analysis-week-06) | Motivation for focusing on boundary and small-change behaviour. |
+| [Binary change model design note](/notes/binary-change-model-design-week-09) | Defines the upstream binary prediction path. |
+| [Precision Spatio-Temporal Feature Fusion](/papers/precision-spatio-temporal-feature-fusion) | Existing paper note linking decoder refinement and loss design to the project direction. |
 
 ## Next Steps
 
-Keep Week 10 proposed until a public refinement-module design or implementation record exists.
+Week 11 becomes the active phase for specifying decoder structure, refinement-head behaviour, and loss functions before training and controlled evaluation.
+
+## References
+
+- W. M. B. S. K. Wijenayake et al., "Precision Spatio-Temporal Feature Fusion for Robust Remote Sensing Change Detection," arXiv:2507.11523, 2025.

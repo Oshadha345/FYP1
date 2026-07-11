@@ -1,0 +1,55 @@
+---
+title: "Week 06 Baseline Error Analysis"
+slug: "baseline-error-analysis-week-06"
+date: "2026-06-07"
+activity_date: "2026-06-01"
+updated: "2026-07-11"
+summary: "Public error-analysis record for interpreting baseline change detection behaviour with region and boundary metrics."
+status: "published"
+category: "experiment"
+week: 6
+tags:
+  - baseline
+  - evaluation
+  - boundary-metrics
+  - domain-shift
+links:
+  - week-006-boundary-and-domain-shift-analysis
+  - baseline-boundary-evaluation-week-05
+concepts:
+  - Precision
+  - Recall
+  - F1
+  - IoU
+  - Boundary F1
+  - Boundary IoU
+datasets:
+  - DSIFN-CD
+  - WHU-CD
+---
+
+## Purpose
+
+This record summarises the public part of the Week 6 baseline analysis. The aim was to interpret model behaviour after the initial DSIFN-CD and WHU-CD baseline checks, not to publish final benchmark rankings.
+
+## Analysis Structure
+
+| Layer | What was checked |
+| --- | --- |
+| Region quality | Precision, Recall, F1-score, and IoU were used to organise false positives and missed changes. |
+| Boundary quality | Boundary F1 and Boundary IoU were used to inspect edge alignment with a tolerance-band interpretation. |
+| Dataset behaviour | DSIFN-CD and WHU-CD were kept separate when reasoning about scene content and mask convention differences. |
+| Qualitative review | Prediction examples were interpreted through error categories instead of only aggregate values. |
+
+## Error Categories
+
+| Category | Public interpretation |
+| --- | --- |
+| False positives | Candidate changes can be triggered by appearance differences that are not true mask changes. |
+| Missed changes | Small or low-contrast changed regions require attention beyond aggregate overlap. |
+| Boundary displacement | Slight edge shifts can matter visually even when region overlap remains acceptable. |
+| Domain shift | Illumination, registration, and spatial-resolution differences can change the input distribution between image pairs or datasets. |
+
+## Output
+
+The output of this record was a design-facing error taxonomy. Detailed numerical benchmark values remain internal until the controlled comparison stage, but the public conclusion is that later model design must preserve both region consistency and boundary quality.

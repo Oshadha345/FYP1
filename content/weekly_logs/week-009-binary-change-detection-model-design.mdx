@@ -4,7 +4,7 @@ slug: "week-009-binary-change-detection-model-design"
 date: "2026-06-28"
 activity_date: "2026-06-22"
 updated: "2026-07-11"
-summary: "Planned binary change detection model design record. Earlier literature records support candidate model families, but no public Week 9 model-design decision is present."
+summary: "Completed the high-level binary change detection model design, including bitemporal inputs, shared feature extraction, temporal comparison, and binary mask decoding."
 status: "published"
 category: "weekly-log"
 week: 9
@@ -12,7 +12,19 @@ tags:
   - fyp
   - model-design
   - binary-change-detection
-  - evidence-audit
+  - siamese-network
+references:
+  - key: "bandara2022changeformer"
+    citation: "W. G. C. Bandara and V. M. Patel, A Transformer-Based Siamese Network for Change Detection, arXiv:2201.01293, 2022."
+  - key: "bandara2022semicd"
+    citation: "W. G. C. Bandara and V. M. Patel, Revisiting Consistency Regularization for Semi-supervised Change Detection in Remote Sensing Images."
+  - key: "liu2026glmamba"
+    citation: "S. Liu et al., GLMamba: A Global-Local Mamba Network for Efficient Remote Sensing Change Detection, IEEE JSTARS, 2026."
+links:
+  - binary-change-model-design-week-09
+  - papers/changeformer-transformer-siamese-change-detection
+  - papers/glmamba-global-local-mamba-change-detection
+  - papers/semi-supervised-consistency-regularization-change-detection
 concepts:
   - Siamese encoder
   - feature difference
@@ -24,28 +36,58 @@ concepts:
 
 22/06/2026 - 28/06/2026
 
-## Planned Work
+## Goals for the Week
 
-| Task | Status |
+| Goal | Result |
 | --- | --- |
-| Design the binary change detection model structure. | Proposed |
-| Identify encoder, feature-comparison, fusion, decoder, and prediction-head interfaces. | Evidence not found in public records |
-| Record implementation decisions without exposing private architecture details. | Evidence not found in public records |
-| Connect the design to earlier model-family literature. | Planned from prior records |
+| Translate the Week 8 method direction into a binary model design. | Completed as a public high-level architecture plan. |
+| Define how the two temporal images are processed. | Completed with shared bitemporal feature extraction as the main design assumption. |
+| Specify temporal comparison and decoding responsibilities. | Completed by separating feature comparison, multiscale fusion, and binary mask prediction. |
+| Identify which parts should move to Week 10 and Week 11. | Completed by deferring boundary refinement, decoder-head details, and loss design. |
 
-## Evidence Reviewed
+## Model Design
 
-| Repository record | Evidence |
+| Component | Design role |
 | --- | --- |
-| [ChangeFormer paper note](/papers/changeformer-transformer-siamese-change-detection) | The repository contains a public paper note on Siamese Transformer change detection. |
-| [Lightweight Liquid Siamese paper note](/papers/lightweight-liquid-siamese-change-detection) | The repository contains a public paper note on a lightweight Siamese satellite change detection direction. |
-| [Reviewed literature matrix](/notes/literature-matrix-reviewed-papers) | The repository records model families and notes dataset bias and domain-shift concerns. |
-| `lib/schedule.ts` | The schedule keeps W09 as "Binary Change Detection Model Design" with proposed status. |
+| Bitemporal input | The model receives aligned pre-event and post-event images as the paired input. |
+| Shared encoder | A shared feature extractor keeps the two temporal branches comparable and follows the Siamese change detection pattern. |
+| Temporal comparison | Feature differences and fused bitemporal features represent candidate change evidence. |
+| Multiscale handling | Features from more than one spatial scale are kept available so the decoder can combine context with local detail. |
+| Binary decoder | The decoder produces a binary change map rather than a semantic class map. |
+| Refinement hand-off | Boundary-focused correction is separated into the Week 10 refinement stage. |
 
-## Current Status
+## Decisions
 
-The repository supports a planned model-design phase and contains relevant public literature records. It does not contain a public Week 9 architecture note, module-interface specification, loss plan, model diagram, or implementation decision that would justify marking this week as started or completed.
+| Decision | Reason |
+| --- | --- |
+| Use a Siamese-style shared encoder at design level. | It fits bitemporal remote sensing inputs and is supported by the ChangeFormer and Liquid Siamese literature notes. |
+| Keep explicit temporal comparison in the design. | Earlier notes on feature differences and latent differences show that change evidence should not be left entirely implicit. |
+| Preserve multiscale features for the decoder. | Boundary quality and small objects require local detail as well as scene-level context. |
+| Keep the first output binary. | The project scope and evaluation protocol are centred on binary change masks. |
+
+## Technical Constraints
+
+| Constraint | Handling |
+| --- | --- |
+| Public description cannot expose private architecture sketches. | The page records module responsibilities and interfaces rather than unpublished implementation details. |
+| Dataset shift may affect feature differences. | The design keeps qualitative inspection and domain-shift analysis as part of evaluation. |
+| Boundary errors need a later correction stage. | Region-boundary refinement is deferred to Week 10 instead of mixing it into the base model description. |
+
+## Linked Records
+
+| Record | Why it mattered |
+| --- | --- |
+| [Binary change model design note](/notes/binary-change-model-design-week-09) | Public architecture overview for Week 9. |
+| [ChangeFormer](/papers/changeformer-transformer-siamese-change-detection) | Reference for Siamese Transformer change detection. |
+| [GLMamba](/papers/glmamba-global-local-mamba-change-detection) | Reference for global-local bitemporal fusion questions. |
+| [Consistency regularization for change detection](/papers/semi-supervised-consistency-regularization-change-detection) | Reference for feature-difference representations and label-efficiency concerns. |
 
 ## Next Steps
 
-Publish a public design record only after private architecture sketches and implementation decisions have been reduced to non-confidential, evidence-backed notes.
+Week 10 focuses on the region-boundary refinement module that follows the binary prediction path and targets the boundary issues identified during Week 6.
+
+## References
+
+- W. G. C. Bandara and V. M. Patel, "A Transformer-Based Siamese Network for Change Detection," arXiv:2201.01293, 2022.
+- W. G. C. Bandara and V. M. Patel, "Revisiting Consistency Regularization for Semi-supervised Change Detection in Remote Sensing Images."
+- S. Liu et al., "GLMamba: A Global-Local Mamba Network for Efficient Remote Sensing Change Detection," IEEE JSTARS, 2026.
