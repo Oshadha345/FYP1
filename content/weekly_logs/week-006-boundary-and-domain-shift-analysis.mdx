@@ -1,10 +1,10 @@
 ---
 title: "Week 06: Boundary and Domain-Shift Analysis"
 slug: "week-006-boundary-and-domain-shift-analysis"
-date: "2026-06-07"
-activity_date: "2026-06-01"
-updated: "2026-07-11"
-summary: "Completed qualitative baseline failure analysis using the Week 5 region and boundary metrics as the organising framework."
+date: "2026-06-06"
+activity_date: "2026-05-31"
+updated: "2026-08-03"
+summary: "Completed controlled benchmarking on LoveDA and ISPRS Potsdam, then separated boundary, interior, and cross-domain behavior."
 status: "published"
 category: "weekly-log"
 week: 6
@@ -13,80 +13,89 @@ tags:
   - boundary-analysis
   - domain-shift
   - evaluation
-references:
-  - key: "shi2022dsifn"
-    citation: "Q. Shi et al., Deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images, Information Fusion, vol. 83-84, pp. 43-58, 2022."
-  - key: "ji2019whu"
-    citation: "S. Ji, S. Wei, and M. Lu, Fully convolutional networks for multisource building extraction from an open aerial and satellite imagery data set, IEEE Transactions on Geoscience and Remote Sensing, vol. 57, no. 1, pp. 574-586, 2019."
+  - loveda
+  - potsdam
 links:
   - baseline-error-analysis-week-06
   - baseline-boundary-evaluation-week-05
+  - papers/vmamba-visual-state-space-model
+  - papers/vision-mamba-efficient-visual-representation
 concepts:
-  - boundary metrics
-  - false positives
-  - missed changes
-  - domain shift
+  - boundary mIoU
+  - interior mIoU
+  - cross-domain evaluation
+  - source-only evaluation
 ---
 
 ## Dates
 
-01/06/2026 - 07/06/2026
+31/05/2026 - 06/06/2026
 
 ## Goals for the Week
 
 | Goal | Result |
 | --- | --- |
-| Analyse baseline predictions after the Week 5 evaluation setup. | Completed using the DSIFN-CD and WHU-CD baseline evaluation workflow. |
-| Separate region-level errors from boundary-level errors. | Completed by using Precision, Recall, F1-score, IoU, Boundary F1, and Boundary IoU as the organising measures. |
-| Identify failure categories that should influence later model design. | Completed as a qualitative error taxonomy for the next design stages. |
-| Keep detailed benchmark values private until controlled reporting. | Completed; numerical tables remained in the internal experiment material. |
-
-## Tasks Completed
-
-| Task | Output |
-| --- | --- |
-| Reviewed baseline failure modes from the Week 5 evaluation setup. | Error categories were grouped around false alarms, missed changes, boundary displacement, and dataset-specific behaviour. |
-| Compared region and boundary interpretations. | Region metrics were kept for mask-level quality, while boundary metrics were used to inspect edge alignment. |
-| Checked dataset-specific concerns. | DSIFN-CD and WHU-CD were treated separately because their scene content and annotation conventions can stress the model differently. |
-| Prepared a public analysis record. | [Baseline error analysis note](/notes/baseline-error-analysis-week-06) summarises the workflow without publishing private scores. |
+| Analyse boundary detection performance of implemented models. | Completed using boundary and interior mIoU diagnostics. |
+| Investigate domain-shift effects. | Completed with LoveDA urban-to-rural and rural-to-urban source-only evaluation. |
+| Compare CNN, Transformer, and SSM backbones. | Completed on LoveDA and ISPRS Potsdam with controlled runtime measurements. |
+| Identify failure categories for later design. | Boundary quality and domain shift were confirmed as key issues. |
 
 ## Findings
 
 | Area | Observation |
 | --- | --- |
-| Region errors | False positives and missed changed regions need to be tracked separately because they imply different model weaknesses. |
-| Boundary errors | Boundary F1 and Boundary IoU are useful because ordinary IoU can hide small edge displacements. |
-| Thin and small structures | Small changed objects and narrow structures remain important because a few missed pixels can affect visual usefulness. |
-| Dataset behaviour | DSIFN-CD and WHU-CD should not be interpreted as interchangeable because their scenes and mask conventions differ. |
-| Domain shift | Illumination, registration, and spatial-resolution differences need to be treated as possible sources of false change evidence. |
+| Benchmarking | Controlled benchmarking was performed on both LoveDA and ISPRS Potsdam. |
+| Model families | CNN, Transformer, and State-Space Models were compared under one report. |
+| Boundary bottleneck | Boundary-region mIoU was much lower than interior mIoU across all inspected models. |
+| Domain shift | Cross-domain evaluations showed limited generalization without targeted adaptation. |
+
+## Controlled Benchmark Results
+
+Top-3 values were marked in the reference report. The values below are copied exactly from that report.
+
+| Type | Backbone | Params (M) | FLOPs (G) | Mem (GB) | FPS | LoveDA mIoU | LoveDA OA | LoveDA F1 | U->R | R->U | Potsdam mIoU | Potsdam OA | Potsdam F1 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| CNN | DeepLabv3 | 36.0 | 105.3 | 0.40 | 18.52 | 43.01 | 59.14 | 64.20 | 30.36 | 39.98 | 75.09 | 89.06 | 84.44 |
+| Transformer | UNetFormer | 16.2 | 48.9 | 0.18 | 40.60 | 48.61 | 65.04 | 63.99 | 34.56 | 44.84 | 74.99 | 89.12 | 84.46 |
+| SSM | VMamba-Tiny | 27.6 | 26.1 | 0.41 | 18.44 | 55.19 | 72.15 | 70.30 | 35.42 | 53.19 | 77.06 | 90.16 | 86.06 |
+| SSM | VMamba-Small | 49.1 | 42.5 | 0.49 | 10.50 | 55.66 | 73.49 | 70.69 | 40.62 | 53.52 | 77.59 | 90.43 | 86.46 |
+| SSM | VMamba-Base | 81.7 | 67.3 | 0.70 | 7.77 | 55.61 | 72.89 | 70.54 | 35.82 | 55.50 | 77.43 | 90.61 | 86.19 |
+| SSM | MambaVision-T | 36.8 | 44.9 | 0.19 | 40.83 | 54.39 | 71.00 | 69.88 | 38.12 | 53.89 | 76.59 | 90.01 | 85.65 |
+| SSM | MambaVision-T2 | 40.1 | 50.7 | 0.21 | 34.87 | 54.93 | 72.24 | 69.97 | 38.17 | 51.02 | 76.65 | 90.00 | 85.72 |
+| SSM | MambaVision-S | 55.6 | 65.6 | 0.27 | 30.19 | 53.71 | 71.19 | 69.07 | 39.47 | 53.46 | 76.77 | 90.13 | 85.77 |
+| SSM | MambaVision-B | 104.2 | 123.8 | 0.45 | 17.72 | 55.17 | 72.42 | 70.43 | 40.24 | 51.96 | 77.08 | 90.27 | 86.03 |
+| SSM | MambaVision-L | 236.6 | 273.6 | 0.97 | 8.64 | 55.25 | 72.79 | 70.39 | 38.53 | 54.01 | 77.07 | 90.30 | 85.98 |
+| SSM | MambaVision-L2 | 250.2 | 297.5 | 1.03 | 7.83 | 54.97 | 71.54 | 70.17 | 41.74 | 54.62 | 76.89 | 90.18 | 85.85 |
+| SSM | Spatial-Mamba-T | 30.7 | 33.3 | 0.21 | 25.76 | 45.56 | 65.31 | 61.85 | 33.10 | 45.30 | 68.23 | 84.78 | 79.46 |
+| SSM | Spatial-Mamba-S | 47.1 | 46.7 | 0.27 | 17.64 | 46.54 | 65.57 | 62.88 | 29.72 | 43.71 | 69.21 | 85.48 | 80.18 |
+| SSM | Spatial-Mamba-B | 100.5 | 92.3 | 0.52 | 10.97 | 48.03 | 66.35 | 64.19 | 35.23 | 46.55 | 70.00 | 85.92 | 80.81 |
+
+FPS was measured at 512 x 512, batch size 4, FP32, AMP off, 300 iterations with 50 warmup iterations.
+
+## Boundary and Domain Diagnostics
+
+Boundary/interior mIoU use tau = 2 pixel dilation. Structural classes are Building and Road. Natural classes are Forest, Agriculture, and Water.
+
+| Backbone | Boundary | Interior | Delta | R->U Struct | R->U Nat | U->R Struct | U->R Nat |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| VMamba-Tiny | 29.0 | 58.5 | 29.5 | 55.9 | 57.7 | 41.4 | 34.2 |
+| VMamba-Small | 28.2 | 59.1 | 30.8 | 56.0 | 58.2 | 42.3 | 46.2 |
+| VMamba-Base | 29.4 | 58.9 | 29.5 | 58.1 | 63.0 | 46.4 | 40.9 |
+| MambaVision-T | 29.5 | 57.6 | 28.0 | 56.8 | 55.0 | 39.3 | 41.1 |
+| MambaVision-S | 27.0 | 57.0 | 30.0 | 55.7 | 60.5 | 39.2 | 47.1 |
+| MambaVision-B | 29.0 | 58.4 | 29.4 | 57.0 | 54.9 | 44.5 | 42.7 |
+| SpatialM-Tiny | 17.9 | 28.4 | 10.5 | 44.9 | 50.4 | 31.4 | 35.3 |
+| SpatialM-Small | 19.4 | 33.9 | 14.5 | 42.9 | 48.0 | 30.8 | 29.6 |
+| SpatialM-Base | 26.6 | 50.8 | 24.2 | 43.9 | 49.5 | 29.9 | 32.0 |
 
 ## Decisions
 
 | Decision | Reason |
 | --- | --- |
-| Keep both region and boundary metrics in later evaluation. | Region metrics report mask overlap, while boundary metrics preserve edge-quality information. |
-| Use qualitative inspection before adding model complexity. | A refinement module should respond to observed boundary and small-change issues, not only to aggregate metrics. |
-| Avoid publishing exact baseline tables here. | The public portfolio can describe method and interpretation while leaving detailed values for controlled reporting. |
-
-## Technical Challenge
-
-| Challenge | Resolution direction |
-| --- | --- |
-| Boundary displacement is difficult to interpret from a single score. | Use Boundary F1 and Boundary IoU together with visual inspection of predicted masks. |
-| Dataset shift can look like real change. | Treat illumination, registration, and scene-source differences as separate qualitative categories. |
-
-## Linked Records
-
-| Record | Why it mattered |
-| --- | --- |
-| [Baseline error analysis note](/notes/baseline-error-analysis-week-06) | Public Week 6 summary of the failure-analysis workflow. |
-| [Week 05 baseline and boundary evaluation](/notes/baseline-boundary-evaluation-week-05) | Provides the metric definitions and baseline setup used as the starting point. |
+| Continue boundary-refinement literature review. | Boundary regions show a major drop compared with interior regions. |
+| Treat domain shift as a primary evaluation concern. | U->R and R->U values show that source-only generalization is limited. |
+| Keep efficiency in the comparison. | Params, FLOPs, memory, and FPS reveal different deployment tradeoffs from accuracy alone. |
 
 ## Next Steps
 
-Week 7 moves from benchmark failure analysis to disaster-data preparation. The aim is to make the data workflow more explicit before later model-design and refinement work.
-
-## References
-
-- Q. Shi et al., "Deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images," Information Fusion, vol. 83-84, pp. 43-58, 2022.
-- S. Ji, S. Wei, and M. Lu, "Fully convolutional networks for multisource building extraction from an open aerial and satellite imagery data set," IEEE Transactions on Geoscience and Remote Sensing, vol. 57, no. 1, pp. 574-586, 2019.
+Week 7 moves to disaster dataset annotation and binary mask preparation.

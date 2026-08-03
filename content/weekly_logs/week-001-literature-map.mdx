@@ -3,7 +3,7 @@ title: "Week 01: Literature Map and Research Questions"
 slug: "week-001-literature-map"
 date: "2026-04-26"
 activity_date: "2026-04-20"
-updated: "2026-05-21"
+updated: "2026-08-03"
 summary: "Initial project week focused on understanding remote sensing change detection, common datasets, model families, and early research gaps."
 status: "published"
 category: "weekly-log"
@@ -16,11 +16,12 @@ references:
   - key: "bandara2022changeformer"
     citation: "W. G. C. Bandara and V. M. Patel, A Transformer-Based Siamese Network for Change Detection, arXiv:2201.01293, 2022."
   - key: "chen2020stanet"
-    citation: "H. Chen and Z. Shi, A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection, Remote Sensing, vol. 12, no. 10, 2020."
+    citation: "H. Chen and Z. Shi, A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection, Remote Sensing, vol. 12, no. 10, Art. no. 1662, 2020."
   - key: "zhao2026ldguid"
     citation: "J. Zhao and A. Bereyhi, LDGuid: A Framework for Robust Change Detection via Latent Difference Guidance, arXiv:2605.15582, 2026."
 links:
   - papers/changeformer-transformer-siamese-change-detection
+  - papers/stanet-spatial-temporal-attention-change-detection
   - papers/ldguid-latent-difference-guidance
   - deep-learning-core-learning-log
   - deep-learning-goodfellow
@@ -52,6 +53,7 @@ concepts:
 | Datasets | DSIFN-CD, WHU-CD, SYSU-CD, and LEVIR-CD are common benchmark datasets. |
 | Open problem | Change class limitations, dataset bias, spectral noise, and domain shift can reduce model robustness. |
 | Transformer direction | ChangeFormer is a useful reference for Siamese Transformer change detection [@bandara2022changeformer]. |
+| Dataset direction | STANet and LEVIR-CD are useful references for attention-based change detection and benchmark dataset context [@chen2020stanet]. |
 | Difference modeling | LDGuid suggests that explicitly learning semantic differences can improve robustness [@zhao2026ldguid]. |
 
 ## Decisions
@@ -69,5 +71,5 @@ Week 2 focuses on dataset study, disaster data planning, Google Earth Engine, an
 ## References
 
 - W. G. C. Bandara and V. M. Patel, "A Transformer-Based Siamese Network for Change Detection," arXiv:2201.01293, 2022.
-- H. Chen and Z. Shi, "A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection," Remote Sensing, vol. 12, no. 10, 2020.
+- H. Chen and Z. Shi, "A Spatial-Temporal Attention-Based Method and a New Dataset for Remote Sensing Image Change Detection," Remote Sensing, vol. 12, no. 10, Art. no. 1662, 2020.
 - J. Zhao and A. Bereyhi, "LDGuid: A Framework for Robust Change Detection via Latent Difference Guidance," arXiv:2605.15582, 2026.

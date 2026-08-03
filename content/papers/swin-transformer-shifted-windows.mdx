@@ -1,0 +1,63 @@
+---
+title: "Swin Transformer: Hierarchical Vision Transformer Using Shifted Windows"
+slug: "swin-transformer-shifted-windows"
+date: "2026-08-03"
+activity_date: "2026-05-10"
+updated: "2026-08-03"
+summary: "Paper note on Swin Transformer, used as a core reference for hierarchical Transformer backbones and shifted-window attention."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - transformer
+  - vision-backbone
+  - shifted-windows
+authors:
+  - "Ze Liu"
+  - "Yutong Lin"
+  - "Yue Cao"
+  - "Han Hu"
+  - "Yixuan Wei"
+  - "Zheng Zhang"
+  - "Stephen Lin"
+  - "Baining Guo"
+venue: "arXiv 2021"
+url: "https://arxiv.org/abs/2103.14030"
+bibtex_key: "liu2021swintransformerhierarchicalvision"
+links:
+  - literature-matrix-reviewed-papers
+  - image-encoders-research-track
+concepts:
+  - shifted window attention
+  - hierarchical features
+  - vision transformer
+references:
+  - key: "liu2021swin"
+    citation: "Z. Liu et al., Swin Transformer: Hierarchical Vision Transformer using Shifted Windows, arXiv:2103.14030, 2021."
+---
+
+## Reading Note
+
+Swin Transformer is relevant to the FYP because it gives a hierarchical Transformer backbone with local window attention and shifted windows for cross-window information exchange.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Hierarchical representation | Useful for dense prediction tasks where both local and global context matter. |
+| Shifted windows | Reduces attention cost while allowing communication across nearby windows. |
+| Baseline family | Provides a Transformer reference family against CNN and SSM/VSS backbones. |
+
+## BibTeX
+
+```bibtex
+@misc{liu2021swintransformerhierarchicalvision,
+      title={Swin Transformer: Hierarchical Vision Transformer using Shifted Windows}, 
+      author={Ze Liu and Yutong Lin and Yue Cao and Han Hu and Yixuan Wei and Zheng Zhang and Stephen Lin and Baining Guo},
+      year={2021},
+      eprint={2103.14030},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2103.14030}, 
+}
+```

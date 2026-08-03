@@ -1,10 +1,10 @@
 ---
 title: "Week 04: Benchmark Implementation Setup"
 slug: "week-004-benchmark-implementation-setup"
-date: "2026-05-21"
-activity_date: "2026-05-19"
-updated: "2026-05-21"
-summary: "Current implementation phase for selecting benchmark models, datasets, metrics, and experiment tracking structure."
+date: "2026-05-23"
+activity_date: "2026-05-17"
+updated: "2026-08-03"
+summary: "Completed benchmark implementation setup by shortlisting models and datasets, setting up tools, and defining the evaluation protocol."
 status: "published"
 category: "weekly-log"
 week: 4
@@ -15,6 +15,8 @@ tags:
   - experiment-tracking
 links:
   - image-encoders-research-track
+  - papers/vision-mamba-efficient-visual-representation
+  - papers/vmamba-visual-state-space-model
   - papers/lightweight-liquid-siamese-change-detection
   - papers/changeflow-latent-rectified-flow
 concepts:
@@ -23,14 +25,18 @@ concepts:
   - experiment protocol
 ---
 
+## Dates
+
+17/05/2026 - 23/05/2026
+
 ## Planned Work
 
 | Task | Status |
 | --- | --- |
-| Select appropriate models for benchmark implementation | In progress |
-| Select datasets for the first controlled benchmark | In progress |
-| Set up benchmark environment and experiment tracking | In progress |
-| Define evaluation metrics and protocol | In progress |
+| Select appropriate models for benchmark implementation | Completed |
+| Select datasets for the first controlled benchmark | Completed |
+| Set up benchmark environment and experiment tracking | Completed |
+| Define evaluation metrics and protocol | Completed |
 
 ## Work Log
 
@@ -39,6 +45,7 @@ concepts:
 | 19/05/2026 | Shortlisted model and dataset candidates for benchmark implementation. | Initial benchmark candidates recorded for review. |
 | 20/05/2026 | Reviewed lightweight Siamese and generative change detection directions. | Added implementation notes for lightweight and uncertainty-aware baselines. |
 | 21/05/2026 | Organized reviewed papers and linked them to weekly activity records. | Website now tracks papers, notes, and learning activities by week. |
+| 23/05/2026 | Finalized the Week 4 setup report. | Models and datasets were shortlisted and the benchmark framework direction was fixed. |
 
 ## Current Benchmark Candidates
 
@@ -66,6 +73,18 @@ concepts:
 | Keep Week 4 focused on setup, not final results. | Results should only be reported after the protocol is fixed. |
 | Track every activity as a linked note or paper. | This keeps the evidence trail clear for supervisors and examiners. |
 | Use `activity_date` for late entries. | Some records are added after the actual work date. |
+
+## Observations
+
+| Observation | Note |
+| --- | --- |
+| Shortlist | Models and datasets were shortlisted for benchmark implementation. |
+| Semantic segmentation metric | mIoU is commonly used as a key performance metric in semantic segmentation. |
+
+## References
+
+- L. Zhu, B. Liao, Q. Zhang, X. Wang, W. Liu, and X. Wang, "Vision Mamba: Efficient visual representation learning with bidirectional state space model," arXiv:2401.09417, 2024.
+- Y. Liu, Y. Tian, Y. Zhao, H. Yu, L. Xie, Y. Wang, Q. Ye, J. Jiao, and Y. Liu, "VMamba: Visual state space model," arXiv:2401.10166, 2024.
 
 ## Next Week
 

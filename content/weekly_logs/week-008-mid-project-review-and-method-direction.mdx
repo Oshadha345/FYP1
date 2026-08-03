@@ -1,10 +1,10 @@
 ---
 title: "Week 08: Mid-Project Review and Method Direction"
 slug: "week-008-mid-project-review-and-method-direction"
-date: "2026-06-21"
-activity_date: "2026-06-15"
-updated: "2026-07-11"
-summary: "Completed the mid-project review by consolidating literature, benchmark setup, error analysis, and dataset-planning decisions into the second-half method direction."
+date: "2026-06-20"
+activity_date: "2026-06-14"
+updated: "2026-08-03"
+summary: "Presented progress to the supervisors, reviewed benchmark and annotation evidence, and collected additional dataset samples."
 status: "published"
 category: "weekly-log"
 week: 8
@@ -26,60 +26,31 @@ concepts:
 
 ## Dates
 
-15/06/2026 - 21/06/2026
+14/06/2026 - 20/06/2026
 
-## Goals for the Week
+## Planned Work
 
-| Goal | Result |
+- Prepare the mid-project presentation and slide deck.
+- Review dataset annotations and controlled benchmark results.
+- Present progress to project supervisors and obtain feedback on model design.
+
+## Completed Work
+
+| Item | Outcome |
 | --- | --- |
-| Review progress from Weeks 1-7. | Completed by summarising literature, dataset planning, benchmark setup, baseline evaluation, and annotation Phase I. |
-| Select the technical focus for the second half of FYP1. | Completed with boundary-aware binary change detection kept as the main direction. |
-| Identify which alternatives should not be prioritised immediately. | Completed by deferring semantic change detection, generative mask modelling, and broad dataset expansion. |
-| Define implementation priorities for Weeks 9-14. | Completed as a staged path from model design to refinement, loss design, training, evaluation, and documentation. |
-
-## Work Reviewed
-
-| Area | Review outcome |
-| --- | --- |
-| Literature | CNN, Transformer, diffusion, and state-space model directions were already mapped through paper notes and the literature matrix. |
-| Benchmark setup | The first controlled benchmark needed consistent datasets, metrics, and experiment tracking before model claims. |
-| Boundary analysis | Week 6 made boundary quality and small-change behaviour central to later design. |
-| Disaster data | Week 7 clarified that annotation consistency and data quality are project risks, not only data-collection tasks. |
+| Supervisor presentation | Presented progress to project supervisors. |
+| Dataset review | Reviewed dataset annotations and controlled benchmark results. |
+| Dataset variety | Collected additional dataset samples to compensate for the lack of variety. |
+| Method discussion | Started discussions on building the final change detection model. |
 
 ## Decisions
 
 | Decision | Reason |
 | --- | --- |
-| Keep the next model stage binary rather than semantic. | Binary change detection gives a cleaner evaluation target for the current FYP1 scope. |
-| Prioritise bitemporal feature comparison and boundary-aware refinement. | Earlier work showed that both change evidence and boundary quality need explicit attention. |
-| Use existing literature notes as design references. | ChangeFormer, GLMamba, consistency regularization, and local precision-fusion work cover the main design pressures. |
-| Defer final loss and training decisions to later weeks. | Architecture, refinement, and loss design should be separated so each decision can be evaluated clearly. |
-
-## Technical Direction
-
-| Priority | Direction |
-| --- | --- |
-| Model structure | Design a bitemporal binary change detection model with shared feature extraction and explicit temporal comparison. |
-| Decoder behaviour | Produce a binary change map while preserving multiscale spatial detail. |
-| Refinement | Add a region-boundary refinement stage after the baseline binary prediction design. |
-| Evaluation | Keep region metrics, boundary metrics, and qualitative inspection together. |
-
-## Risks and Constraints
-
-| Risk | Mitigation |
-| --- | --- |
-| Boundary refinement could add complexity without clear evaluation value. | Keep later ablations controlled and report boundary metrics separately. |
-| Disaster annotation can introduce label noise. | Keep the annotation protocol explicit and review ambiguous regions before using them for conclusions. |
-| Model-family comparisons can become unfair. | Preserve consistent dataset, crop, and metric settings across experiments. |
-
-## Linked Records
-
-| Record | Why it mattered |
-| --- | --- |
-| [Mid-project method direction](/notes/mid-project-method-direction-week-08) | Public summary of the review decisions and second-half priorities. |
-| [Reviewed literature matrix](/notes/literature-matrix-reviewed-papers) | Consolidates the literature groups used for direction selection. |
-| [Image encoders research track](/notes/image-encoders-research-track) | Provides the encoder-family context for the model design stage. |
+| Continue with binary change detection. | It keeps the evaluation scope clean for FYP1. |
+| Keep boundary behavior visible in later reports. | Week 6 showed a clear boundary/interior performance gap. |
+| Use the reviewed benchmarks to guide design. | The second half of the project needs controlled comparison, not only model implementation. |
 
 ## Next Steps
 
-Week 9 converts the selected direction into a public-safe binary change detection model design with defined inputs, feature comparison, decoder role, and deferred refinement work.
+Week 9 starts the binary change detection model design stage.

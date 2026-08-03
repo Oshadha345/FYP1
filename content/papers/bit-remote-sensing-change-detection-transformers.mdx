@@ -1,0 +1,60 @@
+---
+title: "BIT: Remote Sensing Image Change Detection With Transformers"
+slug: "bit-remote-sensing-change-detection-transformers"
+date: "2026-08-03"
+activity_date: "2026-07-12"
+updated: "2026-08-03"
+summary: "Paper note on BIT-CD, a Transformer-based remote sensing change detection baseline used in the Week 12 benchmark tables."
+status: "published"
+category: "paper-note"
+week: 12
+tags:
+  - bit-cd
+  - transformer
+  - change-detection
+authors:
+  - "Hao Chen"
+  - "Zipeng Qi"
+  - "Zhenwei Shi"
+venue: "IEEE TGRS 2021 / arXiv"
+url: "https://arxiv.org/abs/2103.00208"
+doi: "10.1109/TGRS.2021.3095166"
+bibtex_key: "chen2021remotesensingimagechange"
+links:
+  - week-012-training-on-benchmark-change-detection-datasets
+  - papers/changeformer-transformer-siamese-change-detection
+concepts:
+  - bitemporal image transformer
+  - semantic tokens
+  - transformer encoder
+references:
+  - key: "chen2021bit"
+    citation: "H. Chen, Z. Qi, and Z. Shi, Remote Sensing Image Change Detection with Transformers, arXiv:2103.00208, 2021."
+---
+
+## Reading Note
+
+BIT-CD represents a bitemporal image using compact semantic tokens and applies a Transformer to model spatial-temporal context.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Benchmark baseline | BIT-CD is included in the Week 12 DSIFN-CD and WHU-CD comparison tables. |
+| Token view | It helps explain why compact token representations can be useful for high-resolution change detection. |
+| Transformer family | It is a non-SSM reference when comparing model families. |
+
+## BibTeX
+
+```bibtex
+@misc{chen2021remotesensingimagechange,
+      title={Remote Sensing Image Change Detection with Transformers}, 
+      author={Hao Chen and Zipeng Qi and Zhenwei Shi},
+      year={2021},
+      eprint={2103.00208},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      doi={https://doi.org/10.1109/TGRS.2021.3095166},
+      url={https://arxiv.org/abs/2103.00208}, 
+}
+```

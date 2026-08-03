@@ -1,0 +1,90 @@
+---
+title: "Week 12: Training on Benchmark Change Detection Datasets"
+slug: "week-012-training-on-benchmark-change-detection-datasets"
+date: "2026-07-18"
+activity_date: "2026-07-12"
+updated: "2026-08-03"
+summary: "Completed training and benchmark evaluation on DSIFN-CD and WHU-CD with exact F1, mIoU, OA, Recall, Precision, and BF1 tables."
+status: "published"
+category: "weekly-log"
+week: 12
+tags:
+  - fyp
+  - training
+  - benchmark
+  - dsifn-cd
+  - whu-cd
+references:
+  - key: "chen2021bit"
+    citation: "H. Chen, Z. Qi, and Z. Shi, Remote Sensing Image Change Detection with Transformers, arXiv:2103.00208, 2021."
+  - key: "chen2024changemamba"
+    citation: "H. Chen et al., ChangeMamba: Remote Sensing Change Detection With Spatiotemporal State Space Model, arXiv:2404.03425, 2024."
+  - key: "han2024cgnet"
+    citation: "C. Han et al., Change Guiding Network: Incorporating Change Prior to Guide Change Detection in Remote Sensing Imagery, arXiv:2404.09179, 2024."
+links:
+  - papers/bit-remote-sensing-change-detection-transformers
+  - papers/changemamba-spatiotemporal-state-space-change-detection
+  - papers/cgnet-change-guiding-network
+  - papers/schanger-semantic-change-spatial-consistency
+datasets:
+  - DSIFN-CD
+  - WHU-CD
+concepts:
+  - F1
+  - mIoU
+  - Overall Accuracy
+  - Boundary F1
+---
+
+## Dates
+
+12/07/2026 - 18/07/2026
+
+## Planned Work
+
+- Train the proposed change detection architecture on DSIFN-CD and WHU-CD.
+- Evaluate predictions using F1, mIoU, Overall Accuracy, Recall, Precision, and Boundary F1.
+
+## Completed Work
+
+| Item | Outcome |
+| --- | --- |
+| DSIFN-CD training | Completed training and evaluation. |
+| WHU-CD training | Completed training and evaluation. |
+| Evaluation reports | Generated tables for F1, mIoU, OA, Recall, Precision, and BF1. |
+| Visual comparisons | Prepared qualitative examples, metric tables, performance curves, and result analysis for both benchmarks. |
+
+## DSIFN-CD Benchmark Evaluation
+
+| Rank | Model | Backbone | F1 | mIoU | OA | Recall | Precision | BF1 |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ours | Proposed Model | VMamba-small | 0.7127 | 0.7223 | 0.9039 | 0.7012 | 0.7245 | 0.3705 |
+| 1 | BIT-CD | ResNet-18 | 0.6732 | 0.6929 | 0.8919 | 0.6552 | 0.6923 | 0.2819 |
+| 2 | SChanger | - | 0.6629 | 0.6835 | 0.8857 | 0.6612 | 0.6647 | 0.2847 |
+| 3 | ChangeMamba | VMamba-tiny | 0.6435 | 0.6729 | 0.8849 | 0.6113 | 0.6792 | 0.1903 |
+| 4 | CGNet | - | 0.6204 | 0.6290 | 0.8343 | 0.7970 | 0.5079 | 0.2903 |
+| 5 | FC-EF | - | 0.6078 | 0.6400 | 0.8604 | 0.6365 | 0.5816 | 0.1955 |
+
+## WHU-CD Benchmark Evaluation
+
+| Rank | Model | Backbone | F1 | mIoU | OA | Recall | Precision | BF1 |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ours | Proposed Model | VMamba-base | 0.9617 | 0.9612 | 0.9963 | 0.9573 | 0.9662 | 0.9321 |
+| 1 | ChangeMamba | VMamba-tiny | 0.9521 | 0.9519 | 0.9954 | 0.9401 | 0.9644 | 0.8605 |
+| 2 | CGNet | - | 0.9331 | 0.9340 | 0.9936 | 0.9299 | 0.9364 | 0.8138 |
+| 3 | BIT-CD | ResNet-18 | 0.8940 | 0.8989 | 0.9899 | 0.8845 | 0.9037 | 0.6879 |
+| 4 | DSAMNet | - | 0.8905 | 0.8956 | 0.9891 | 0.9167 | 0.8657 | 0.5855 |
+| 5 | IFNet | - | 0.8389 | 0.8534 | 0.9849 | 0.8147 | 0.8644 | 0.3245 |
+
+## Key Findings
+
+| Finding | Evidence |
+| --- | --- |
+| DSIFN-CD improvement | Proposed model achieved 0.7127 F1 and 0.7223 mIoU. BIT-CD recorded 0.6732 F1. |
+| DSIFN-CD boundary gain | Proposed model BF1 was 0.3705 compared with BIT-CD BF1 of 0.2819. |
+| WHU-CD result | Proposed VMamba-base model recorded 0.9617 F1, 0.9612 mIoU, 0.9963 OA, and 0.9321 BF1. |
+| Boundary metric importance | BF1 separated visually important boundary quality from ordinary region metrics. |
+
+## Next Steps
+
+Week 13 focuses on evaluation, ablation, visual comparison, and model comparison.

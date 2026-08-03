@@ -1,10 +1,10 @@
 ---
-title: "Week 05: Baseline Training and Boundary Evaluation"
+title: "Week 05: State-Space Model Benchmarking"
 slug: "week-005-baseline-evaluation-and-cvq"
-date: "2026-05-31"
-activity_date: "2026-05-25"
-updated: "2026-06-01"
-summary: "Completed initial baseline training checks, region and boundary metric scripts, and public theory notes on CVQ and JEPA."
+date: "2026-05-30"
+activity_date: "2026-05-24"
+updated: "2026-08-03"
+summary: "Designed the benchmark framework, set up the code environment, smoke-tested selected models, and continued public CVQ/JEPA theory reading."
 status: "published"
 category: "weekly-log"
 week: 5
@@ -13,6 +13,7 @@ tags:
   - baseline
   - evaluation
   - boundary-metrics
+  - state-space-models
   - cvq
 references:
   - key: "shi2022dsifn"
@@ -39,13 +40,14 @@ concepts:
 
 ## Dates
 
-25/05/2026 - 31/05/2026
+24/05/2026 - 30/05/2026
 
 ## Goals for the Week
 
 | Goal | Result |
 | --- | --- |
-| Execute the first baseline training runs on target datasets. | Initial runs on DSIFN-CD and WHU-CD were used to verify script stability across epochs. |
+| Design the benchmark framework for selected models and datasets. | Completed as the first controlled benchmarking setup. |
+| Set up the code environment. | Completed with smoke testing and debugging of selected models. |
 | Write evaluation scripts and establish baseline metrics. | Region metrics and boundary-specific metrics were implemented. |
 | Study new directions from the Week 05 paper set. | CVQ, JEPA, Mamba-based change detection, quantization, and frequency-domain ideas were reviewed at paper level. |
 | Continue distance-geometry learning. | Angular and correlation-based measures were completed. |
@@ -54,7 +56,8 @@ concepts:
 
 | Task | Output |
 | --- | --- |
-| Ran initial baseline evaluations on DSIFN-CD and WHU-CD. | Training script stability was checked over multiple epochs. |
+| Designed the benchmark framework. | Selected models and datasets were organized under a common evaluation structure. |
+| Smoke-tested implemented models. | Early debugging focused on training stability and environment issues. |
 | Implemented region metric scripts. | Precision, Recall, F1-score, and IoU are now available for benchmark reporting. |
 | Implemented boundary metric scripts. | Boundary F1 and Boundary IoU were implemented with a 3-pixel tolerance band. |
 | Recorded baseline benchmark evidence. | Internal benchmark scores are available for future comparison, but are not published on this site. |
@@ -65,6 +68,8 @@ concepts:
 | Challenge | Resolution direction |
 | --- | --- |
 | Boundary metric correctness | The custom boundary scripts must extract binary edge pixels and match predicted boundaries to ground truth within the strict 3-pixel tolerance band. |
+| Hyperparameter sensitivity | Fine tuning hyperparameters was identified as important for stable model performance. |
+| LoveDA class imbalance | LoveDA has a highly imbalanced class distribution, and the background class is ignored during evaluation. |
 | Confidential experiment details | Architecture sketches, ablations, checkpoint details, and numeric results are kept in the private research diary only. |
 
 ## Week 05 Paper and Experiment Focus

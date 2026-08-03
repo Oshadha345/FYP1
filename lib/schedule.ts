@@ -86,12 +86,12 @@ export const projectWeeks: ProjectWeek[] = [
   {
     week: 5,
     code: "W05",
-    title: "Baseline Training and Boundary Evaluation",
-    shortTitle: "Baseline Evaluation",
+    title: "State-Space Model Benchmarking",
+    shortTitle: "SSM Benchmarking",
     status: "completed",
-    focus: "Evaluation scripts",
+    focus: "Benchmark setup",
     summary:
-      "Ran initial baseline training checks, wrote region and boundary evaluation scripts, and reviewed CVQ and JEPA theory at paper level.",
+      "Designed the benchmark framework, smoke-tested selected models, and reviewed CVQ and JEPA theory at paper level.",
     logHref: "/weekly-logs/week-005-baseline-evaluation-and-cvq",
     activityLinks: [
       { label: "Week 05 reflection", href: "/weekly-logs/week-005-baseline-evaluation-and-cvq", type: "write-up" },
@@ -110,11 +110,12 @@ export const projectWeeks: ProjectWeek[] = [
     status: "completed",
     focus: "Error analysis",
     summary:
-      "Analysed baseline behaviour and documented the main region, boundary, and dataset-specific failure modes.",
+      "Completed controlled benchmark and boundary/domain-shift diagnostics on LoveDA and ISPRS Potsdam.",
     logHref: "/weekly-logs/week-006-boundary-and-domain-shift-analysis",
     activityLinks: [
       { label: "Week 06 reflection", href: "/weekly-logs/week-006-boundary-and-domain-shift-analysis", type: "write-up" },
       { label: "Baseline error analysis", href: "/notes/baseline-error-analysis-week-06", type: "experiment" },
+      { label: "VMamba paper", href: "/papers/vmamba-visual-state-space-model", type: "paper" },
     ],
   },
   {
@@ -125,7 +126,7 @@ export const projectWeeks: ProjectWeek[] = [
     status: "completed",
     focus: "Annotation",
     summary:
-      "Completed the first disaster-data preparation phase with sample-selection rules, binary mask conventions, and quality checks.",
+      "Annotated 200 representative bi-temporal scenes and prepared five public sample triplets with before, after, and mask views.",
     logHref: "/weekly-logs/week-007-disaster-dataset-annotation-phase-i",
     activityLinks: [
       { label: "Week 07 reflection", href: "/weekly-logs/week-007-disaster-dataset-annotation-phase-i", type: "write-up" },
@@ -140,7 +141,7 @@ export const projectWeeks: ProjectWeek[] = [
     status: "completed",
     focus: "Review",
     summary:
-      "Reviewed first-half progress and selected boundary-aware binary change detection as the second-half direction.",
+      "Presented mid-project progress, reviewed annotations and benchmark results, and collected additional dataset samples.",
     logHref: "/weekly-logs/week-008-mid-project-review-and-method-direction",
     activityLinks: [
       { label: "Week 08 reflection", href: "/weekly-logs/week-008-mid-project-review-and-method-direction", type: "write-up" },
@@ -155,11 +156,12 @@ export const projectWeeks: ProjectWeek[] = [
     status: "completed",
     focus: "Model design",
     summary:
-      "Designed the bitemporal binary change detection model structure, including shared encoding, temporal comparison, and binary decoding.",
+      "Studied state-of-the-art results and started the binary change detection design around benchmark datasets.",
     logHref: "/weekly-logs/week-009-binary-change-detection-model-design",
     activityLinks: [
       { label: "Week 09 reflection", href: "/weekly-logs/week-009-binary-change-detection-model-design", type: "write-up" },
       { label: "Binary model design note", href: "/notes/binary-change-model-design-week-09", type: "note" },
+      { label: "ChangeMamba paper", href: "/papers/changemamba-spatiotemporal-state-space-change-detection", type: "paper" },
     ],
   },
   {
@@ -170,11 +172,12 @@ export const projectWeeks: ProjectWeek[] = [
     status: "completed",
     focus: "Refinement",
     summary:
-      "Designed a region-boundary refinement stage for improving the spatial quality of binary change maps.",
+      "Completed dataset tests for the simple encoder-decoder baseline and recorded DSIFN-CD split results.",
     logHref: "/weekly-logs/week-010-region-boundary-refinement-module",
     activityLinks: [
       { label: "Week 10 reflection", href: "/weekly-logs/week-010-region-boundary-refinement-module", type: "write-up" },
       { label: "Region-boundary refinement design", href: "/notes/region-boundary-refinement-week-10", type: "experiment" },
+      { label: "DSIFN paper", href: "/papers/deeply-supervised-image-fusion-network-dsifn", type: "paper" },
     ],
   },
   {
@@ -182,44 +185,58 @@ export const projectWeeks: ProjectWeek[] = [
     code: "W11",
     title: "Decoder, Refinement Head, and Loss Design",
     shortTitle: "Decoder and Loss",
-    status: "in-progress",
+    status: "completed",
     focus: "Loss design",
     summary:
-      "Specify decoder structure, refinement head behavior, and loss functions for the proposed model.",
-    activityLinks: [],
+      "Completed decoder, refinement-head, and joint-loss design; recorded exact A3-A5 ablation results.",
+    logHref: "/weekly-logs/week-011-decoder-refinement-head-and-loss-design",
+    activityLinks: [
+      { label: "Week 11 reflection", href: "/weekly-logs/week-011-decoder-refinement-head-and-loss-design", type: "write-up" },
+    ],
   },
   {
     week: 12,
     code: "W12",
     title: "Training on Benchmark Change Detection Datasets",
     shortTitle: "Training",
-    status: "proposed",
+    status: "completed",
     focus: "Training",
     summary:
-      "Train the selected model on benchmark datasets and record training behavior and initial results.",
-    activityLinks: [],
+      "Completed training and benchmark evaluation on DSIFN-CD and WHU-CD with exact F1, mIoU, OA, Recall, Precision, and BF1 tables.",
+    logHref: "/weekly-logs/week-012-training-on-benchmark-change-detection-datasets",
+    activityLinks: [
+      { label: "Week 12 reflection", href: "/weekly-logs/week-012-training-on-benchmark-change-detection-datasets", type: "write-up" },
+      { label: "BIT-CD paper", href: "/papers/bit-remote-sensing-change-detection-transformers", type: "paper" },
+      { label: "CGNet paper", href: "/papers/cgnet-change-guiding-network", type: "paper" },
+    ],
   },
   {
     week: 13,
     code: "W13",
     title: "Evaluation, Ablation, and Model Comparison",
     shortTitle: "Evaluation",
-    status: "proposed",
+    status: "completed",
     focus: "Evaluation",
     summary:
-      "Evaluate results, compare with baselines, and run ablations to understand model contribution.",
-    activityLinks: [],
+      "Completed backbone comparison, qualitative visual evaluation, and efficiency-versus-accuracy analysis.",
+    logHref: "/weekly-logs/week-013-evaluation-ablation-and-model-comparison",
+    activityLinks: [
+      { label: "Week 13 reflection", href: "/weekly-logs/week-013-evaluation-ablation-and-model-comparison", type: "write-up" },
+    ],
   },
   {
     week: 14,
     code: "W14",
     title: "Final Dataset Review and Project Documentation",
     shortTitle: "Documentation",
-    status: "proposed",
+    status: "in-progress",
     focus: "Documentation",
     summary:
       "Finalize FYP1 documentation, organize evidence, and prepare material for project review.",
-    activityLinks: [],
+    logHref: "/weekly-logs/week-014-final-dataset-review-and-project-documentation",
+    activityLinks: [
+      { label: "Week 14 reflection", href: "/weekly-logs/week-014-final-dataset-review-and-project-documentation", type: "write-up" },
+    ],
   },
 ];
 

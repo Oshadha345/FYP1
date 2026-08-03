@@ -1,0 +1,79 @@
+---
+title: "Week 13: Evaluation, Ablation, and Model Comparison"
+slug: "week-013-evaluation-ablation-and-model-comparison"
+date: "2026-07-25"
+activity_date: "2026-07-19"
+updated: "2026-08-03"
+summary: "Completed backbone comparison, qualitative visual evaluation, and efficiency-versus-accuracy analysis."
+status: "published"
+category: "weekly-log"
+week: 13
+tags:
+  - fyp
+  - evaluation
+  - ablation
+  - qualitative-results
+links:
+  - week-012-training-on-benchmark-change-detection-datasets
+  - papers/mambavision-hybrid-mamba-transformer
+concepts:
+  - backbone scaling
+  - GFLOPs
+  - qualitative evaluation
+  - boundary overlay
+---
+
+## Dates
+
+19/07/2026 - 25/07/2026
+
+## Planned Work
+
+- Evaluate parameter complexity, GFLOPs, and detection accuracy across MambaVision backbone variants.
+- Perform visual qualitative evaluation using I1, I2, GT, Baseline predictions, model predictions, error maps, and boundary overlays.
+- Conduct ablation analysis to study efficiency versus accuracy across Tiny, Small, and Base backbones.
+
+## Completed Work
+
+| Item | Outcome |
+| --- | --- |
+| Backbone metrics | Compiled Params, GFLOPs, F1, IoU, and OA for MambaVision-T, MambaVision-S, and MambaVision-B variants. |
+| Visual comparison | Generated multi-row qualitative comparisons with TP, TN, FP, and FN error distributions. |
+| Efficiency analysis | Compared parameter efficiency and real-time suitability for remote sensing change detection scenarios. |
+
+## Quantitative Backbone Model Comparison
+
+| Backbone | Params (M) | GFLOPs | F1 (%) | IoU (%) | OA (%) |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| MambaVision-T | 46.80 | 50.05 | 94.58 | 89.72 | 96.24 |
+| MambaVision-S | 65.40 | 64.08 | 95.67 | 91.71 | 96.98 |
+| MambaVision-B | 113.44 | 109.15 | 95.77 | 91.89 | 97.07 |
+
+## Qualitative Evaluation
+
+<figure>
+  <img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week13/week13_fig1.png" alt="Qualitative change detection results sample set A" />
+  <figcaption>Figure 1: Qualitative comparison of change detection predictions on complex high-resolution urban and industrial change scenes.</figcaption>
+</figure>
+
+<figure>
+  <img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week13/week13_fig2.png" alt="Qualitative change detection results sample set B" />
+  <figcaption>Figure 2: Qualitative comparison showing fine boundaries, terrain variation, and error breakdown across baseline and model predictions.</figcaption>
+</figure>
+
+## Key Observations
+
+| Observation | Evidence |
+| --- | --- |
+| Backbone scaling effect | Scaling from MambaVision-T to MambaVision-B increased F1 from 94.58% to 95.77% and IoU from 89.72% to 91.89%. |
+| Highest OA | MambaVision-B recorded 97.07% OA. |
+| Efficiency tradeoff | MambaVision-T used 46.80M parameters and 50.05 GFLOPs while maintaining 94.58% F1. |
+| Balanced choice | MambaVision-S recorded 65.40M parameters, 64.08 GFLOPs, and 95.67% F1. |
+
+## Decision
+
+MambaVision-S is the balanced configuration for standard deployment because it provides strong accuracy with moderate parameter and compute cost. MambaVision-B is preferred only when maximum precision is the priority.
+
+## Next Steps
+
+Week 14 focuses on final dataset review, repository organization, and project documentation.

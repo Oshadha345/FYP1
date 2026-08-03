@@ -1,0 +1,60 @@
+---
+title: "SNUNet-CD: A Densely Connected Siamese Network for Change Detection"
+slug: "snunet-cd-densely-connected-siamese-network"
+date: "2026-08-03"
+activity_date: "2026-05-10"
+updated: "2026-08-03"
+summary: "Paper note on SNUNet-CD, a CNN/Siamese baseline for VHR remote sensing image change detection."
+status: "published"
+category: "paper-note"
+week: 3
+tags:
+  - snunet-cd
+  - siamese-network
+  - cnn
+  - change-detection
+authors:
+  - "Sheng Fang"
+  - "Kaiyu Li"
+  - "Jinyuan Shao"
+  - "Zhe Li"
+venue: "IEEE GRSL 2021"
+url: "https://github.com/likyoo/Siam-NestedUNet"
+doi: "10.1109/LGRS.2021.3056416"
+bibtex_key: "fang2021snunet"
+links:
+  - week-003-controlled-benchmark-design
+  - literature-matrix-reviewed-papers
+concepts:
+  - NestedUNet
+  - Siamese network
+  - dense connections
+references:
+  - key: "fang2021snunet"
+    citation: "S. Fang, K. Li, J. Shao, and Z. Li, SNUNet-CD: A densely connected Siamese network for change detection of VHR images, IEEE Geoscience and Remote Sensing Letters, 2021."
+---
+
+## Reading Note
+
+SNUNet-CD is a CNN-family change detection baseline. It is useful for understanding why dense encoder-decoder connections and shallow localization information matter in VHR change detection.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| CNN comparison | Helps compare CNN-based change detection against Transformer and SSM backbones. |
+| Boundary concern | Dense skip connections are relevant when studying small object and boundary preservation. |
+| Week 3 context | It supports the controlled benchmark design stage. |
+
+## BibTeX
+
+```bibtex
+@article{fang2021snunet,
+  title={SNUNet-CD: A Densely Connected Siamese Network for Change Detection of VHR Images},
+  author={Fang, Sheng and Li, Kaiyu and Shao, Jinyuan and Li, Zhe},
+  journal={IEEE Geoscience and Remote Sensing Letters},
+  year={2021},
+  pages={1-5},
+  doi={10.1109/LGRS.2021.3056416}
+}
+```

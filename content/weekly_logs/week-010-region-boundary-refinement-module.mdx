@@ -1,10 +1,10 @@
 ---
 title: "Week 10: Region-Boundary Refinement Module"
 slug: "week-010-region-boundary-refinement-module"
-date: "2026-07-05"
-activity_date: "2026-06-29"
-updated: "2026-07-11"
-summary: "Completed the public design of a region-boundary refinement stage for improving the spatial quality of binary change maps."
+date: "2026-07-04"
+activity_date: "2026-06-28"
+updated: "2026-08-03"
+summary: "Completed initial dataset testing for the simple encoder-decoder setup and recorded DSIFN-CD custom split results."
 status: "published"
 category: "weekly-log"
 week: 10
@@ -14,80 +14,53 @@ tags:
   - region-refinement
   - decoder-design
 references:
-  - key: "wijenayake2025precision"
-    citation: "W. M. B. S. K. Wijenayake et al., Precision Spatio-Temporal Feature Fusion for Robust Remote Sensing Change Detection, arXiv:2507.11523, 2025."
+  - key: "zhang2020dsifn"
+    citation: "C. Zhang et al., A deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images, ISPRS Journal of Photogrammetry and Remote Sensing, vol. 166, pp. 183-200, 2020, doi: 10.1016/j.isprsjprs.2020.06.003."
+  - key: "chen2024changemamba"
+    citation: "H. Chen et al., ChangeMamba: Remote sensing change detection with spatiotemporal state space model, IEEE Transactions on Geoscience and Remote Sensing, vol. 62, pp. 1-20, 2024, doi: 10.1109/TGRS.2024.3417253."
 links:
   - region-boundary-refinement-week-10
-  - baseline-error-analysis-week-06
   - binary-change-model-design-week-09
-  - papers/precision-spatio-temporal-feature-fusion
+  - papers/deeply-supervised-image-fusion-network-dsifn
+  - papers/changemamba-spatiotemporal-state-space-change-detection
 concepts:
-  - boundary metrics
-  - decoder refinement
-  - region-boundary refinement
+  - boundary refinement
+  - encoder-decoder baseline
+  - DSIFN-CD
+datasets:
+  - DSIFN-CD
 ---
 
 ## Dates
 
-29/06/2026 - 05/07/2026
+28/06/2026 - 04/07/2026
 
-## Goals for the Week
+## Planned Work
 
-| Goal | Result |
+- Design the architecture of the region-boundary refinement module.
+- Integrate boundary detection output with region-level change maps.
+- Implement feature alignment modules to refine boundary delineation.
+
+## Completed Work
+
+| Item | Outcome |
 | --- | --- |
-| Design a refinement stage motivated by Week 6 boundary analysis. | Completed as a public module-level design record. |
-| Define the inputs and outputs of the refinement stage. | Completed using the binary change prediction and decoder features from the Week 9 design. |
-| Separate region evidence from boundary evidence. | Completed by assigning distinct responsibilities to region consistency and boundary correction. |
-| Prepare the work for decoder and loss design in Week 11. | Completed by listing the remaining training and supervision decisions. |
+| Dataset tests | The datasets were trained and tested for the simple encoder-decoder architecture. |
+| Refinement design | Boundary refinement and regional refinement modules were designed. |
+| Codebase setup | Codebase for the designed architecture was set up with Codex assistance. |
 
-## Refinement Design
+## Results on DSIFN-CD Custom Split
 
-| Stage | Role |
-| --- | --- |
-| Base prediction input | The module starts from the binary change map produced by the Week 9 design path. |
-| Feature input | Decoder or multiscale features provide local detail that the coarse prediction may not preserve. |
-| Region reasoning | The region path supports coherent changed and unchanged areas. |
-| Boundary reasoning | The boundary path focuses on edge alignment, thin structures, and noisy mask borders. |
-| Output combination | The refined output is treated as a corrected binary prediction, with quantitative contribution reserved for later controlled evaluation. |
-
-## Decisions
-
-| Decision | Reason |
-| --- | --- |
-| Keep refinement separate from the base binary model. | This makes later ablation easier and keeps the Week 9 model design clear. |
-| Treat region and boundary evidence as related but not identical. | Region metrics and boundary metrics measure different failure modes. |
-| Use boundary-aware evaluation before claiming improvement. | A refinement module should be judged with both mask-level and edge-level measures. |
-| Defer final loss design to Week 11. | Auxiliary supervision and loss balancing need a separate design step. |
-
-## Technical Challenge
-
-| Challenge | Resolution direction |
-| --- | --- |
-| Refinement can over-correct noisy predictions. | Keep the refined output tied to the original binary prediction and verify behaviour qualitatively before ablation. |
-| Boundary emphasis can damage region consistency. | Evaluate region metrics and boundary metrics together rather than optimising one in isolation. |
-| Thin structures are easy to remove during decoding. | Preserve multiscale local detail for the refinement stage. |
-
-## Outputs Produced
-
-| Output | Description |
-| --- | --- |
-| Public refinement design note | [Region-boundary refinement design](/notes/region-boundary-refinement-week-10) summarises module responsibilities. |
-| Week 11 hand-off | Decoder details, refinement-head behaviour, and loss design were prepared as the next active work package. |
-| Evaluation plan update | Boundary F1 and Boundary IoU remain required alongside region metrics for later assessment. |
-
-## Linked Records
-
-| Record | Why it mattered |
-| --- | --- |
-| [Region-boundary refinement design](/notes/region-boundary-refinement-week-10) | Public Week 10 module design record. |
-| [Baseline error analysis note](/notes/baseline-error-analysis-week-06) | Motivation for focusing on boundary and small-change behaviour. |
-| [Binary change model design note](/notes/binary-change-model-design-week-09) | Defines the upstream binary prediction path. |
-| [Precision Spatio-Temporal Feature Fusion](/papers/precision-spatio-temporal-feature-fusion) | Existing paper note linking decoder refinement and loss design to the project direction. |
-
-## Next Steps
-
-Week 11 becomes the active phase for specifying decoder structure, refinement-head behaviour, and loss functions before training and controlled evaluation.
+| Method | F1 | IoU | OA |
+| --- | ---: | ---: | ---: |
+| Baseline | 76.63 | 62.12 | 83.80 |
+| VMamba no boundary refinement | 93.21 | 87.28 | 95.72 |
 
 ## References
 
-- W. M. B. S. K. Wijenayake et al., "Precision Spatio-Temporal Feature Fusion for Robust Remote Sensing Change Detection," arXiv:2507.11523, 2025.
+- C. Zhang, P. Yue, D. Tapete, L. Jiang, B. Shangguan, L. Huang, and G. Liu, "A deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images," ISPRS Journal of Photogrammetry and Remote Sensing, vol. 166, pp. 183-200, 2020, doi: 10.1016/j.isprsjprs.2020.06.003.
+- H. Chen, J. Song, C. Han, J. Xia, and N. Yokoya, "ChangeMamba: Remote sensing change detection with spatiotemporal state space model," IEEE Transactions on Geoscience and Remote Sensing, vol. 62, pp. 1-20, 2024, doi: 10.1109/TGRS.2024.3417253.
+
+## Next Steps
+
+Week 11 focuses on decoder, refinement-head, and loss design.

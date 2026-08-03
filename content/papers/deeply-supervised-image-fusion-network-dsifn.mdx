@@ -1,0 +1,66 @@
+---
+title: "DSIFN: Deeply Supervised Image Fusion Network"
+slug: "deeply-supervised-image-fusion-network-dsifn"
+date: "2026-08-03"
+activity_date: "2026-07-04"
+updated: "2026-08-03"
+summary: "Paper note on DSIFN, a deeply supervised image fusion network and dataset reference used in Week 10 and later benchmark reporting."
+status: "published"
+category: "paper-note"
+week: 10
+tags:
+  - dsifn
+  - image-fusion
+  - change-detection
+  - dataset
+authors:
+  - "Chenxiao Zhang"
+  - "Ping Yue"
+  - "Deodato Tapete"
+  - "Lichun Jiang"
+  - "Bing Shangguan"
+  - "Liang Huang"
+  - "Guang Liu"
+venue: "ISPRS Journal of Photogrammetry and Remote Sensing 2020"
+url: "https://www.sciencedirect.com/science/article/abs/pii/S0924271620301532"
+doi: "10.1016/j.isprsjprs.2020.06.003"
+bibtex_key: "zhang2020dsifn"
+links:
+  - week-010-region-boundary-refinement-module
+  - week-012-training-on-benchmark-change-detection-datasets
+concepts:
+  - image fusion
+  - deeply supervised learning
+  - DSIFN-CD
+datasets:
+  - DSIFN-CD
+references:
+  - key: "zhang2020dsifn"
+    citation: "C. Zhang et al., A deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images, ISPRS Journal of Photogrammetry and Remote Sensing, vol. 166, pp. 183-200, 2020."
+---
+
+## Reading Note
+
+DSIFN is important because it is directly connected to the DSIFN-CD benchmark used in the project. It provides a supervised image-fusion reference for high-resolution bi-temporal remote sensing change detection.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Dataset reference | DSIFN-CD appears in Week 10 and Week 12 benchmark work. |
+| Supervised fusion | Useful for understanding classic feature-fusion approaches before newer SSM comparisons. |
+| Evaluation context | Helps explain why DSIFN-CD is used as a benchmark rather than only a dataset name. |
+
+## BibTeX
+
+```bibtex
+@article{zhang2020dsifn,
+  title={A deeply supervised image fusion network for change detection in high resolution bi-temporal remote sensing images},
+  author={Zhang, Chenxiao and Yue, Ping and Tapete, Deodato and Jiang, Lichun and Shangguan, Bing and Huang, Liang and Liu, Guang},
+  journal={ISPRS Journal of Photogrammetry and Remote Sensing},
+  volume={166},
+  pages={183--200},
+  year={2020},
+  doi={10.1016/j.isprsjprs.2020.06.003}
+}
+```

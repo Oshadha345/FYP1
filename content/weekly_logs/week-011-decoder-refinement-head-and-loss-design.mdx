@@ -1,0 +1,66 @@
+---
+title: "Week 11: Decoder, Refinement Head, and Loss Design"
+slug: "week-011-decoder-refinement-head-and-loss-design"
+date: "2026-07-11"
+activity_date: "2026-07-05"
+updated: "2026-08-03"
+summary: "Completed decoder, refinement-head, and joint-loss design; recorded exact A3-A5 ablation results."
+status: "published"
+category: "weekly-log"
+week: 11
+tags:
+  - fyp
+  - decoder
+  - loss-design
+  - ablation
+links:
+  - week-010-region-boundary-refinement-module
+  - week-012-training-on-benchmark-change-detection-datasets
+concepts:
+  - adaptive decoder
+  - boundary residual
+  - joint loss
+  - ablation study
+---
+
+## Dates
+
+05/07/2026 - 11/07/2026
+
+## Planned Work
+
+- Design the decoder for multi-scale region feature fusion.
+- Implement the boundary refinement head for coarse change predictions.
+- Formulate the multi-task joint loss function combining BCE, Dice, coarse, and boundary supervision.
+- Evaluate model variants A3, A4, and A5 on benchmark datasets to quantify incremental performance gains.
+
+## Completed Work
+
+| Item | Outcome |
+| --- | --- |
+| Decoder design | Completed the decoder design for multi-scale feature fusion. |
+| Refinement head | Completed the bounded residual refinement design for improving final prediction quality. |
+| Training objective | Completed the joint loss formulation with final, coarse, and boundary supervision. |
+| Variant comparison | Recorded quantitative ablation results for A3, A4, and A5. |
+
+## Public Loss Summary
+
+The public summary keeps the exact loss composition without exposing extra implementation details:
+
+$$
+L = L_{BCE} + L_{Dice} + 0.4L_{coarse} + 0.1L_{boundary}
+$$
+
+BCE and Dice supervise the final prediction. The coarse loss stabilizes the region decoder. The boundary term encourages contour consistency.
+
+## Ablation Results
+
+| ID | Variant | Main added component | Params (M) | F1 (%) | IoU (%) | OA (%) |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| A3 | +SignedDiff | Signed temporal stream | 55.34 | 94.28 | 89.19 | 95.99 |
+| A4 | +ARF-FPN | Adaptive RF decoder | 65.12 | 94.36 | 89.32 | 96.05 |
+| A5 | +BoundaryResidual | Bounded residual head | 65.19 | 93.59 | 87.94 | 95.53 |
+
+## Decision
+
+A4 gave the best values in this ablation table, with 94.36% F1, 89.32% IoU, and 96.05% OA. Week 12 moves from design and ablation to full benchmark training and evaluation.

@@ -1,10 +1,10 @@
 ---
 title: "Week 07: Disaster Dataset Annotation Phase I"
 slug: "week-007-disaster-dataset-annotation-phase-i"
-date: "2026-06-14"
-activity_date: "2026-06-08"
-updated: "2026-07-11"
-summary: "Completed the first disaster-data preparation phase by formalising imagery selection, binary mask conventions, and annotation quality checks."
+date: "2026-06-13"
+activity_date: "2026-06-07"
+updated: "2026-08-03"
+summary: "Completed Phase I annotation by selecting 200 representative bi-temporal scenes and producing binary masks for selected examples."
 status: "published"
 category: "weekly-log"
 week: 7
@@ -18,65 +18,85 @@ links:
   - computer-vision-a-to-z
 concepts:
   - disaster data
-  - Sentinel imagery
-  - Google Earth Engine
-  - change masks
+  - binary masks
+  - bi-temporal imagery
+  - annotation quality
 ---
 
 ## Dates
 
-08/06/2026 - 14/06/2026
+07/06/2026 - 13/06/2026
 
-## Goals for the Week
+## Planned Work
 
-| Goal | Result |
-| --- | --- |
-| Convert earlier disaster-data planning into an annotation workflow. | Completed as an initial Phase I protocol. |
-| Define how pre-event and post-event image pairs should be screened. | Completed with criteria for temporal pairing, cloud impact, alignment, and scene relevance. |
-| Clarify binary mask conventions for disaster-related change. | Completed at protocol level before expanding annotation volume. |
-| Record quality-control concerns for later dataset work. | Completed with checks for registration, ambiguous boundaries, seasonal changes, and no-change regions. |
+- Initiation of Disaster Dataset Annotation Phase I.
+- Selection and preprocessing of bi-temporal satellite images for annotations.
+- Production of binary change maps and masks for selected change scenes.
 
-## Tasks Completed
+## Completed Work
 
 | Task | Output |
 | --- | --- |
-| Reviewed imagery-source assumptions from Week 2. | Google Earth Engine and Sentinel imagery remained the practical starting point for disaster-data exploration. |
-| Defined sample-selection criteria. | Candidate pairs were organised around before/after timing, cloud screening, visible change evidence, and geographic consistency. |
-| Specified mask conventions. | The first protocol used a binary changed/unchanged interpretation suitable for controlled change detection. |
-| Documented annotation risks. | Ambiguous damage boundaries, seasonal appearance changes, and image registration error were treated as quality-control issues. |
+| Scene selection | Selected 200 representative bi-temporal remote sensing scenes containing significant land-use and infrastructure changes. |
+| Manual annotation | Produced high-quality binary change masks to distinguish real changes from seasonal and illumination variation. |
+| Public examples | Prepared five before/after/mask triplets for reviewer-facing evidence. |
+| Quality planning | Planned annotation quality checking and verification for the next review. |
 
-## Work Performed
+## Public Annotation Examples
 
-| Area | Description |
-| --- | --- |
-| Imagery source | The workflow built on the Week 2 decision to use accessible satellite imagery and Google Earth Engine for early exploration. |
-| Pair selection | Pre-event and post-event images were screened for clear temporal relation and usable visual quality. |
-| Annotation target | The mask target was kept binary so the data could support the first controlled benchmark and later model evaluation. |
-| Quality control | The protocol separated true disaster-related change from cloud cover, seasonal vegetation change, misregistration, and low-confidence edges. |
+These five sample triplets show the before image, after image, and binary mask structure used in the annotation workflow.
+
+<div className="not-prose space-y-6">
+  <section className="rounded-xl border border-slate-200 bg-white/70 p-4">
+    <h3 className="mb-3 text-base font-semibold text-slate-950">Scene 1</h3>
+    <div className="grid gap-3 md:grid-cols-3">
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/before/00001.png" alt="Scene 1 before" /><figcaption className="mt-2 text-center text-sm text-slate-600">Before</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/after/00001.png" alt="Scene 1 after" /><figcaption className="mt-2 text-center text-sm text-slate-600">After</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/masks/00001.png" alt="Scene 1 binary change mask" /><figcaption className="mt-2 text-center text-sm text-slate-600">Mask</figcaption></figure>
+    </div>
+  </section>
+  <section className="rounded-xl border border-slate-200 bg-white/70 p-4">
+    <h3 className="mb-3 text-base font-semibold text-slate-950">Scene 2</h3>
+    <div className="grid gap-3 md:grid-cols-3">
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/before/00002.png" alt="Scene 2 before" /><figcaption className="mt-2 text-center text-sm text-slate-600">Before</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/after/00002.png" alt="Scene 2 after" /><figcaption className="mt-2 text-center text-sm text-slate-600">After</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/masks/00002.png" alt="Scene 2 binary change mask" /><figcaption className="mt-2 text-center text-sm text-slate-600">Mask</figcaption></figure>
+    </div>
+  </section>
+  <section className="rounded-xl border border-slate-200 bg-white/70 p-4">
+    <h3 className="mb-3 text-base font-semibold text-slate-950">Scene 3</h3>
+    <div className="grid gap-3 md:grid-cols-3">
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/before/00003.png" alt="Scene 3 before" /><figcaption className="mt-2 text-center text-sm text-slate-600">Before</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/after/00003.png" alt="Scene 3 after" /><figcaption className="mt-2 text-center text-sm text-slate-600">After</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/masks/00003.png" alt="Scene 3 binary change mask" /><figcaption className="mt-2 text-center text-sm text-slate-600">Mask</figcaption></figure>
+    </div>
+  </section>
+  <section className="rounded-xl border border-slate-200 bg-white/70 p-4">
+    <h3 className="mb-3 text-base font-semibold text-slate-950">Scene 4</h3>
+    <div className="grid gap-3 md:grid-cols-3">
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/before/00004.png" alt="Scene 4 before" /><figcaption className="mt-2 text-center text-sm text-slate-600">Before</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/after/00004.png" alt="Scene 4 after" /><figcaption className="mt-2 text-center text-sm text-slate-600">After</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/masks/00004.png" alt="Scene 4 binary change mask" /><figcaption className="mt-2 text-center text-sm text-slate-600">Mask</figcaption></figure>
+    </div>
+  </section>
+  <section className="rounded-xl border border-slate-200 bg-white/70 p-4">
+    <h3 className="mb-3 text-base font-semibold text-slate-950">Scene 5</h3>
+    <div className="grid gap-3 md:grid-cols-3">
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/before/00005.png" alt="Scene 5 before" /><figcaption className="mt-2 text-center text-sm text-slate-600">Before</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/after/00005.png" alt="Scene 5 after" /><figcaption className="mt-2 text-center text-sm text-slate-600">After</figcaption></figure>
+      <figure><img className="w-full rounded-lg border border-slate-200" src="/uploads/reference/week07/masks/00005.png" alt="Scene 5 binary change mask" /><figcaption className="mt-2 text-center text-sm text-slate-600">Mask</figcaption></figure>
+    </div>
+  </section>
+</div>
 
 ## Decisions
 
 | Decision | Reason |
 | --- | --- |
-| Keep Phase I focused on workflow and conventions. | A small but consistent protocol is more useful than a larger inconsistent annotation set. |
-| Use binary masks first. | The FYP benchmark and model design are centred on binary change detection. |
-| Preserve uncertainty in ambiguous areas. | Disaster scenes can contain soft or partially visible boundaries that should not be forced into overconfident labels. |
-
-## Technical Challenge
-
-| Challenge | Resolution direction |
-| --- | --- |
-| Clouds and seasonal differences can be mistaken for damage. | Screen candidate pairs before annotation and record low-confidence cases. |
-| Pre-event and post-event images may not align perfectly. | Treat alignment as a quality-control condition before using a pair for model evaluation. |
-| Disaster boundaries can be visually ambiguous. | Use consistent mask rules and mark uncertain cases for later review. |
-
-## Linked Records
-
-| Record | Why it mattered |
-| --- | --- |
-| [Disaster annotation protocol](/notes/disaster-annotation-protocol-week-07) | Public Phase I protocol for sample selection, binary labels, and quality checks. |
-| [Computer Vision A to Z](/notes/computer-vision-a-to-z) | Supports the image-processing and annotation interpretation work. |
+| Use annotated masks for later training and evaluation. | They provide ground truth masks for change detection models. |
+| Proceed to annotation quality checking. | The first annotation phase must be verified before drawing conclusions. |
+| Keep binary masks first. | The FYP benchmark and model design are centred on binary change detection. |
 
 ## Next Steps
 
-Week 8 reviews the project direction after the first half of the work, using the baseline analysis and disaster-data protocol to choose the model-design priorities for the remaining weeks.
+Week 8 focuses on the mid-project review, dataset quality discussion, and method direction.

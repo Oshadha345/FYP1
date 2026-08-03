@@ -1,0 +1,62 @@
+---
+title: "CGNet: Change Guiding Network"
+slug: "cgnet-change-guiding-network"
+date: "2026-08-03"
+activity_date: "2026-07-12"
+updated: "2026-08-03"
+summary: "Paper note on Change Guiding Network, a baseline that uses change prior information to guide multi-scale fusion."
+status: "published"
+category: "paper-note"
+week: 12
+tags:
+  - cgnet
+  - change-detection
+  - multi-scale-fusion
+authors:
+  - "Chengxi Han"
+  - "Chen Wu"
+  - "Haonan Guo"
+  - "Meiqi Hu"
+  - "Jiepan Li"
+  - "Hongruixuan Chen"
+venue: "IEEE JSTARS 2023 / arXiv"
+url: "https://arxiv.org/abs/2404.09179"
+doi: "10.1109/JSTARS.2023.3310208"
+bibtex_key: "han2024changeguidingnetworkincorporating"
+links:
+  - week-012-training-on-benchmark-change-detection-datasets
+concepts:
+  - change prior
+  - multi-scale feature fusion
+  - edge integrity
+references:
+  - key: "han2024cgnet"
+    citation: "C. Han et al., Change Guiding Network: Incorporating Change Prior to Guide Change Detection in Remote Sensing Imagery, arXiv:2404.09179, 2024."
+---
+
+## Reading Note
+
+CGNet is relevant because it explicitly uses change-prior information to guide feature fusion. This makes it useful when studying edge integrity and internal holes in predicted change maps.
+
+## FYP Relevance
+
+| Point | Why it matters |
+| --- | --- |
+| Boundary behavior | The paper is connected to edge integrity and hole reduction. |
+| Week 12 baseline | CGNet appears in both DSIFN-CD and WHU-CD benchmark comparison tables. |
+| Evaluation | It helps compare region-level scores with boundary-sensitive BF1. |
+
+## BibTeX
+
+```bibtex
+@misc{han2024changeguidingnetworkincorporating,
+      title={Change Guiding Network: Incorporating Change Prior to Guide Change Detection in Remote Sensing Imagery}, 
+      author={Chengxi Han and Chen Wu and Haonan Guo and Meiqi Hu and Jiepan Li and Hongruixuan Chen},
+      year={2024},
+      eprint={2404.09179},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      doi={https://doi.org/10.1109/JSTARS.2023.3310208},
+      url={https://arxiv.org/abs/2404.09179}, 
+}
+```
